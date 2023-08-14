@@ -1,11 +1,12 @@
 import { styled } from "styled-components";
 import ReloadFetchButton from "../RelaodFetchButton";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function RandomMovie({ randomMovie }) {
   return (
     <StyledMain>
-      <ImageContainer>
+      <ImageContainer href={`/movie/${randomMovie.id}`}>
         <StyledImage
           src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
           alt={randomMovie.title}
@@ -32,7 +33,7 @@ const StyledMain = styled.main`
   justify-content: center;
 `;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled(Link)`
   position: relative;
   margin: 2rem;
 `;
