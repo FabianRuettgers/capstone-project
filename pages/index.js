@@ -1,3 +1,5 @@
+import ErrorFetching from "@/components/ErrorFetching";
+import Header from "@/components/Header";
 import RandomMovie from "@/components/RandomMovie";
 import useSWR from "swr";
 
@@ -12,12 +14,21 @@ export default function HomePage() {
   }
 
   if (!data.results || data.results.length === 0) {
-    return <p>Error</p>;
+    return (
+      <>
+        <Header />
+        <ErrorFetching />
+      </>
+    );
   }
 
   const randomMovie =
     data.results[Math.floor(Math.random() * data.results.length)];
 
-  console.log(randomMovie);
-  return <RandomMovie randomMovie={randomMovie} />;
+  return (
+    <>
+      <Header />
+      <RandomMovie randomMovie={randomMovie} />
+    </>
+  );
 }

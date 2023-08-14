@@ -8,9 +8,10 @@ export default function RandomMovie({ randomMovie }) {
       <ImageContainer>
         <StyledImage
           src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
-          alt="Movie Poster"
+          alt={randomMovie.title}
           height={750}
           width={500}
+          priority
         />
 
         <Rating>{randomMovie.vote_average} / 10</Rating>
