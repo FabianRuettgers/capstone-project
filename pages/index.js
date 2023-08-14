@@ -25,6 +25,7 @@ export default function HomePage() {
   const randomMovie =
     data.results[Math.floor(Math.random() * data.results.length)];
 
+  console.log(randomMovie);
   return (
     <>
       <Header />
