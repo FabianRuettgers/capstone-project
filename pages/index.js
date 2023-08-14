@@ -1,4 +1,4 @@
-import Image from "next/image";
+import RandomMovie from "@/components/RandomMovie";
 import useSWR from "swr";
 
 const API_KEY = process.env.API_KEY;
@@ -19,23 +19,5 @@ export default function HomePage() {
     data.results[Math.floor(Math.random() * data.results.length)];
 
   console.log(randomMovie);
-  return (
-    <main>
-      <div>
-        <div>
-          <Image
-            src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
-            alt="Movie Poster"
-            width={400}
-            height={400}
-          />
-
-          <p>{randomMovie.vote_average} / 10</p>
-          <div>
-            <button></button>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
+  return <RandomMovie randomMovie={randomMovie} />;
 }
