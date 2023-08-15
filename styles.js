@@ -13,11 +13,12 @@ export default createGlobalStyle`
   --secondary-color: #A62626; //helleres rot
   --ternery-color: #400A14; //dunkelrot
   --highlight-color: #BF8F54;// gold
+  --lowlight-dark:#404040; // dunkel grau
   --background-color: #8C1127; //rot
   --background-color-light: #ffffff; //weiß
   --text-color-light: #ffffff; // weiß
   --text-color-dark: #404040; // dunkel grau
-  --shadow-color-dark: black; // dunkel grau
+  --shadow-color-dark: black; // schwarz
    
 
   }

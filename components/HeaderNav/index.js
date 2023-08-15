@@ -29,4 +29,5 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 28px var(--shadow-color-dark);
+  z-index: 1000;
 `;

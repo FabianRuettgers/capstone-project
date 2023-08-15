@@ -5,28 +5,47 @@ export default function DetailGrid({ movie }) {
   return (
     <StyledSection>
       <Box>
-        <StyledImage
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.title}
-          layout="responsive"
-          object-fit="cover"
-          height={750}
-          width={500}
-          priority
-        />
+        {movie.poster_path ? (
+          <StyledImage
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+            layout="responsive"
+            object-fit="cover"
+            height={750}
+            width={500}
+            priority
+          />
+        ) : (
+          <StyledImage
+            src={`/Backup.jpg`}
+            alt={movie.title}
+            layout="responsive"
+            object-fit="cover"
+            height={750}
+            width={500}
+            priority
+          />
+        )}
+
         <Wrapper>
           <Container>
             <Label>Länge</Label>
-            <StyledParagrah>{movie.runtime} min</StyledParagrah>
+            <StyledParagrah>
+              {movie.runtime ? `${movie.runtime} min` : "unbekannt"}
+            </StyledParagrah>
           </Container>
           <Container>
             <Label>Genre</Label>
-            <StyledParagrah>{movie.genres[0].name}</StyledParagrah>
+            <StyledParagrah>
+              {movie.genre ? movie.genres[0].name : "unbekannt"}
+            </StyledParagrah>
           </Container>
           <Container>
             <Label>Bewertung</Label>
             <StyledParagrah>
-              {movie.vote_average.toFixed(1)} / 10
+              {movie.vote_average
+                ? `${movie.vote_average.toFixed(1)} / 10`
+                : "unbekannt"}
             </StyledParagrah>
           </Container>
         </Wrapper>
