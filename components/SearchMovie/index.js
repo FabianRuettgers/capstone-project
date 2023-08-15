@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { styled } from "styled-components";
 
@@ -62,7 +62,9 @@ const ImageContainer = styled.div`
   grid-area: 1 / 1 / 3 / 2;
   width: 100%;
   height: 100%;
-  padding: 0.5rem;
+  display: grid;
+  align-items: center;
+  justify-items: center;
 `;
 
 const StyledImage = styled(Image)`
@@ -113,13 +115,17 @@ const StyledLink = styled(Link)`
 const Heading = styled.h2`
   padding: 0;
   margin: 0;
-  font-size: 120%;
+  font-size: 1rem;
+  padding-bottom: 1rem;
   grid-area: 1 / 2 / 2 / 3;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 `;
 
 const StyledParagraph = styled.p`
-  font-size: 100%;
-
+  font-size: 1rem;
   padding: 0;
   margin: 0;
   grid-area: 2 / 2 / 3 / 3;

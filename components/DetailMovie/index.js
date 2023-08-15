@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { styled } from "styled-components";
 
 export default function DetailGrid({ movie }) {
@@ -10,7 +10,7 @@ export default function DetailGrid({ movie }) {
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
             layout="responsive"
-            object-fit="cover"
+            object-fit="contain"
             height={750}
             width={500}
             priority
@@ -20,7 +20,7 @@ export default function DetailGrid({ movie }) {
             src={`/Backup.jpg`}
             alt={movie.title}
             layout="responsive"
-            object-fit="cover"
+            object-fit="contain"
             height={750}
             width={500}
             priority
@@ -37,7 +37,7 @@ export default function DetailGrid({ movie }) {
           <Container>
             <Label>Genre</Label>
             <StyledParagrah>
-              {movie.genre ? movie.genres[0].name : "unbekannt"}
+              {movie.genres.lenght === 0 ? movie.genres[0].name : "unbekannt"}
             </StyledParagrah>
           </Container>
           <Container>
@@ -75,12 +75,15 @@ const Label = styled.p`
 `;
 
 const Heading = styled.h1`
-  font-size: xx-large;
+  font-size: 1.9rem;
   margin-top: 3rem;
   margin-bottom: 2rem;
   border-bottom: 2px solid var(--highlight-color);
   padding-bottom: 1rem;
   color: var(--text-color-light);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const StyledImage = styled(Image)`
@@ -89,7 +92,6 @@ const StyledImage = styled(Image)`
 `;
 
 const Box = styled.div`
-  object-fit: contain;
   height: auto;
   width: 100%;
   display: grid;
@@ -102,6 +104,7 @@ const StyledSection = styled.section`
   margin-right: 2rem;
   margin-top: 12vh;
   padding-top: 2rem;
+  display: grid;
 `;
 
 const Wrapper = styled.div`
@@ -112,9 +115,10 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   text-align: center;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   background-color: #bf8f54;
   color: #3a3b3c;
-
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   box-shadow: 0 0 8px var(--shadow-color-dark);
 `;
