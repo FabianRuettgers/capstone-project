@@ -1,11 +1,11 @@
 import HeaderMenu from "@/components/HeaderMenu";
 import SearchMovie from "@/components/SearchMovie";
-import { useState } from "react";
 import { styled } from "styled-components";
 import useSWR from "swr";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function Search() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useLocalStorageState("");
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
   const { data, error } = useSWR(

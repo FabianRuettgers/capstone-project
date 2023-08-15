@@ -83,7 +83,6 @@ const Heading = styled.h1`
   color: var(--text-color-light);
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 `;
 
 const StyledImage = styled(Image)`
