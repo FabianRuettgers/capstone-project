@@ -5,15 +5,9 @@ import useSWR from "swr";
 import useLocalStorageState from "use-local-storage-state";
 
 export default function Search() {
-  const [query, setQuery] = useLocalStorageState("");
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const [query, setQuery] = useLocalStorageState("input", "");
 
-  const { data, error } = useSWR(
-    query
-      ? `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=de&api_key=4c606aec01f0a1c7daed75110995b085`
-      : null,
-    fetcher
-  );
+  const { data, error } = useSWR(query ? `/api/movie/search/${query}` : null);
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);

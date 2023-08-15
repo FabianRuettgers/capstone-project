@@ -2,6 +2,7 @@ import Image from "next/image";
 import { styled } from "styled-components";
 
 export default function DetailGrid({ movie }) {
+  console.log(movie);
   return (
     <StyledSection>
       <Box>
@@ -37,7 +38,7 @@ export default function DetailGrid({ movie }) {
           <Container>
             <Label>Genre</Label>
             <StyledParagrah>
-              {movie.genres.lenght === 0 ? movie.genres[0].name : "unbekannt"}
+              {movie.genres.lenght !== 0 ? movie.genres[0].name : "unbekannt"}
             </StyledParagrah>
           </Container>
           <Container>
