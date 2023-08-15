@@ -44,8 +44,12 @@ const StyledHeader = styled.header`
 const StyledButton = styled.button`
   margin: 0;
   padding: 0.25rem;
+  margin-left: 1rem;
   border: none;
   background: none;
   position: absolute;
   left: 0;
+  &:active {
+    transform: scale(0.85);
+  }
 `;

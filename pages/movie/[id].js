@@ -4,6 +4,7 @@ import DetailProvider from "@/components/DetailProvider";
 import ErrorFetching from "@/components/ErrorFetching";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import { styled } from "styled-components";
 
 const API_KEY = process.env.API_KEY;
 
@@ -32,8 +33,17 @@ export default function Detailpage() {
   return (
     <>
       <HeaderMenu title={"Film Details"} />
-      <DetailMovie movie={Movie} />
-      <DetailProvider id={Movie.id} />
+      <Wrapper>
+        <DetailMovie movie={Movie} />
+        <DetailProvider id={Movie.id} />
+      </Wrapper>
     </>
   );
 }
+
+const Wrapper = styled.main`
+  max-width: 420px;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+`;
