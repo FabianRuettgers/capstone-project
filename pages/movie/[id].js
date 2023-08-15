@@ -16,7 +16,7 @@ export default function Detailpage() {
     return null;
   }
 
-  if (error || !data || data.success === false) {
+  if (error || !data || data.result.success === false) {
     return (
       <>
         <HeaderMenu title={"Film Details"} />
@@ -26,6 +26,7 @@ export default function Detailpage() {
   }
 
   const movie = data.result;
+
   return (
     <>
       <HeaderMenu title={"Film Details"} />
