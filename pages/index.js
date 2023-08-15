@@ -1,22 +1,21 @@
 import ErrorFetching from "@/components/ErrorFetching";
-import Header from "@/components/Header";
+import HeaderNav from "@/components/HeaderNav";
 import RandomMovie from "@/components/RandomMovie";
+import { styled } from "styled-components";
 import useSWR from "swr";
 
 const API_KEY = process.env.API_KEY;
 
 export default function HomePage() {
-  const { data, error } = useSWR(
-    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=de&sort_by=popularity.desc&api_key=${API_KEY}`
-  );
-  if (!data) {
-    return <p>Loading ...</p>;
+  const { data, error, isLoading } = useSWR(`/api/movies`);
+  if (isLoading) {
+    return null;
   }
 
-  if (!data.results || data.results.length === 0) {
+  if (error || !data || data.success === false) {
     return (
       <>
-        <Header />
+        <HeaderNav />
         <ErrorFetching />
       </>
     );
@@ -24,12 +23,19 @@ export default function HomePage() {
 
   const randomMovie =
     data.results[Math.floor(Math.random() * data.results.length)];
-
-  console.log(randomMovie);
   return (
     <>
-      <Header />
-      <RandomMovie randomMovie={randomMovie} />
+      <HeaderNav />
+      <Wrapper>
+        <RandomMovie randomMovie={randomMovie} />
+      </Wrapper>
     </>
   );
 }
+
+const Wrapper = styled.main`
+  max-width: 420px;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+`;

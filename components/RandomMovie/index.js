@@ -1,19 +1,21 @@
 import { styled } from "styled-components";
 import ReloadFetchButton from "../RelaodFetchButton";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function RandomMovie({ randomMovie }) {
   return (
     <StyledMain>
       <ImageContainer>
-        <StyledImage
-          src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
-          alt={randomMovie.title}
-          height={750}
-          width={500}
-          priority
-        />
-
+        <StyledLink href={`/movie/${randomMovie.id}`}>
+          <StyledImage
+            src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
+            alt={randomMovie.title}
+            height={750}
+            width={500}
+            priority
+          />
+        </StyledLink>
         <Rating>{randomMovie.vote_average} / 10</Rating>
         <ButtonWrapper>
           <ReloadFetchButton />
@@ -22,6 +24,11 @@ export default function RandomMovie({ randomMovie }) {
     </StyledMain>
   );
 }
+
+const StyledLink = styled(Link)`
+  width: 100%;
+  height: 100%;
+`;
 
 const StyledMain = styled.main`
   height: 76vh;
@@ -43,6 +50,7 @@ const StyledImage = styled(Image)`
   object-fit: cover;
   box-shadow: 0 0 12px var(--shadow-color-dark);
   border-radius: 2rem;
+  position: relative;
 `;
 
 const Rating = styled.p`
