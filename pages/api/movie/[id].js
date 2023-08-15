@@ -10,7 +10,9 @@ export default async function handler(request, response) {
       const movie = await movieResponse.json();
       response.status(200).json({ result: movie });
     } catch (error) {
-      response.status(405).json({ message: "Error" });
+      response.status(500).json({ message: "Error" });
     }
+  } else {
+    response.status(405).json({ message: "Method Not Allowed" });
   }
 }
