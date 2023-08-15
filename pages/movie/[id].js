@@ -6,15 +6,11 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { styled } from "styled-components";
 
-const API_KEY = process.env.API_KEY;
-
 export default function Detailpage() {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data, error, isLoading } = useSWR(
-    `https://api.themoviedb.org/3/movie/${id}?language=de&api_key=${API_KEY}`
-  );
+  const { data, error, isLoading } = useSWR(`/api/movie/${id}`);
 
   if (isLoading) {
     return null;
@@ -29,7 +25,7 @@ export default function Detailpage() {
     );
   }
 
-  const movie = data;
+  const movie = data.result;
   return (
     <>
       <HeaderMenu title={"Film Details"} />

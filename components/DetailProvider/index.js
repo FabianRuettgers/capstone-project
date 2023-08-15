@@ -2,15 +2,9 @@ import Image from "next/image";
 import { styled } from "styled-components";
 import useSWR from "swr";
 
-const API_KEY = process.env.API_KEY;
-
 export default function DetailProvider({ id }) {
-  const { data, error } = useSWR(
-    `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${API_KEY}`
-  );
-  if (!id) {
-    return <div>Loading...</div>;
-  }
+  const { data, error } = useSWR(`/api/providers/${id}`);
+
   if (error) {
     return <div>Error loading data</div>;
   }
