@@ -10,7 +10,7 @@ export default async function handler(request, response) {
       const provider = await providerResponse.json();
       response.status(200).json({ results: provider.results });
     } catch (error) {
-      response.status(500).json({ message: "Error" });
+      response.status(405).json({ message: "Error" });
     }
   }
 }
