@@ -29,13 +29,13 @@ export default function Detailpage() {
     );
   }
 
-  const Movie = data;
+  const movie = data;
   return (
     <>
       <HeaderMenu title={"Film Details"} />
       <Wrapper>
-        <DetailMovie movie={Movie} />
-        <DetailProvider id={Movie.id} />
+        <DetailMovie movie={movie} />
+        <DetailProvider id={movie.id} />
       </Wrapper>
     </>
   );

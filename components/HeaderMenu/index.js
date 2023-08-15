@@ -7,21 +7,19 @@ export default function Header({ title }) {
     router.back();
   }
   return (
-    <>
-      <StyledHeader>
-        <StyledButton onClick={handleGoBack}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="48"
-            viewBox="0 -960 960 960"
-            width="48"
-          >
-            <path d="M359-242 120-481l239-239 43 43-166 166h604v60H236l166 166-43 43Z" />
-          </svg>
-        </StyledButton>
-        <h1>{title}</h1>
-      </StyledHeader>
-    </>
+    <StyledHeader>
+      <StyledButton onClick={handleGoBack}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="48"
+          viewBox="0 -960 960 960"
+          width="48"
+        >
+          <path d="M359-242 120-481l239-239 43 43-166 166h604v60H236l166 166-43 43Z" />
+        </svg>
+      </StyledButton>
+      <h1>{title}</h1>
+    </StyledHeader>
   );
 }
 

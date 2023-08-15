@@ -2,43 +2,41 @@ import Image from "next/image";
 import { styled } from "styled-components";
 
 export default function DetailGrid({ movie }) {
-  if (movie) {
-    return (
-      <StyledSection>
-        <Box>
-          <StyledImage
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-            layout="responsive"
-            object-fit="cover"
-            height={750}
-            width={500}
-            priority
-          />
-          <Wrapper>
-            <Container>
-              <Label>Länge</Label>
-              <StyledParagrah>{movie.runtime} min</StyledParagrah>
-            </Container>
-            <Container>
-              <Label>Genre</Label>
-              <StyledParagrah>{movie.genres[0].name}</StyledParagrah>
-            </Container>
-            <Container>
-              <Label>Bewertung</Label>
-              <StyledParagrah>
-                {movie.vote_average.toFixed(1)} / 10
-              </StyledParagrah>
-            </Container>
-          </Wrapper>
-        </Box>
-        <Heading>{movie.title}</Heading>
-        <Describtion>
-          {movie.overview ? movie.overview : "keine Filmbeschreibung vorhanden"}
-        </Describtion>
-      </StyledSection>
-    );
-  }
+  return (
+    <StyledSection>
+      <Box>
+        <StyledImage
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          alt={movie.title}
+          layout="responsive"
+          object-fit="cover"
+          height={750}
+          width={500}
+          priority
+        />
+        <Wrapper>
+          <Container>
+            <Label>Länge</Label>
+            <StyledParagrah>{movie.runtime} min</StyledParagrah>
+          </Container>
+          <Container>
+            <Label>Genre</Label>
+            <StyledParagrah>{movie.genres[0].name}</StyledParagrah>
+          </Container>
+          <Container>
+            <Label>Bewertung</Label>
+            <StyledParagrah>
+              {movie.vote_average.toFixed(1)} / 10
+            </StyledParagrah>
+          </Container>
+        </Wrapper>
+      </Box>
+      <Heading>{movie.title}</Heading>
+      <Describtion>
+        {movie.overview ? movie.overview : "keine Filmbeschreibung vorhanden"}
+      </Describtion>
+    </StyledSection>
+  );
 }
 const StyledParagrah = styled.p`
   margin-top: 0;

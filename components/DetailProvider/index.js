@@ -25,11 +25,11 @@ export default function DetailProvider({ id }) {
         <>
           <Heading>Im Abo enthalten</Heading>
           <StyledList>
-            {providerData.flatrate.map((prov) => (
-              <StyledListitem key={prov.provider_id}>
+            {providerData.flatrate.map((provider) => (
+              <StyledListitem key={provider.provider_id}>
                 <StyledImage
-                  src={`https://image.tmdb.org/t/p/w500${prov.logo_path}`}
-                  alt={prov.provider_name}
+                  src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
+                  alt={provider.provider_name}
                   width={40}
                   height={40}
                   priority
@@ -44,11 +44,11 @@ export default function DetailProvider({ id }) {
         <>
           <Heading>zum Kaufen</Heading>
           <StyledList>
-            {providerData.buy.map((prov) => (
-              <StyledListitem key={prov.provider_id}>
+            {providerData.buy.map((provider) => (
+              <StyledListitem key={provider.provider_id}>
                 <StyledImage
-                  src={`https://image.tmdb.org/t/p/w500${prov.logo_path}`}
-                  alt={prov.provider_name}
+                  src={`https://image.tmdb.org/t/p/w500${provider.logo_path}`}
+                  alt={provider.provider_name}
                   width={40}
                   height={40}
                   priority
