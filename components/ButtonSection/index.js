@@ -3,22 +3,14 @@ import { styled } from "styled-components";
 export default function ButtonSection({
   id,
   bookmarkedMovies,
-  setBookmarkedMovies,
+  handleBookmarkToggle,
 }) {
-  function handleBookmark() {
-    setBookmarkedMovies((prevBookmarkedMovies) => ({
-      ...prevBookmarkedMovies,
-      [id]: !prevBookmarkedMovies[id],
-    }));
-  }
+  const isBookmarked = (bookmarkedMovies && bookmarkedMovies[id]) || false;
 
-  const isBookmarked = bookmarkedMovies[id] || false;
-
-  console.log("bookmarkedMovies", bookmarkedMovies);
   return (
     <Container>
       <div>
-        <StyledButton onClick={handleBookmark}>
+        <StyledButton onClick={() => handleBookmarkToggle(id)}>
           {isBookmarked ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"

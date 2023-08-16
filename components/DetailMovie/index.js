@@ -5,13 +5,12 @@ import ButtonSection from "../ButtonSection";
 export default function DetailGrid({
   movie,
   bookmarkedMovies,
-  setBookmarkedMovies,
+  handleBookmarkToggle,
 }) {
-  console.log(movie);
   return (
     <StyledSection>
       <Box>
-        {movie.poster_path && movie.poster_path !== null ? (
+        {movie.poster_path !== null ? (
           <StyledImage
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
@@ -60,7 +59,7 @@ export default function DetailGrid({
       <ButtonSection
         id={movie.id}
         bookmarkedMovies={bookmarkedMovies}
-        setBookmarkedMovies={setBookmarkedMovies}
+        handleBookmarkToggle={handleBookmarkToggle}
       />
       <Describtion>
         {movie.overview ? movie.overview : "keine Filmbeschreibung vorhanden"}

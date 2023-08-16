@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { styled } from "styled-components";
 
-export default function Detailpage({ bookmarkedMovies, setBookmarkedMovies }) {
+export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -34,7 +34,7 @@ export default function Detailpage({ bookmarkedMovies, setBookmarkedMovies }) {
         <DetailMovie
           movie={movie}
           bookmarkedMovies={bookmarkedMovies}
-          setBookmarkedMovies={setBookmarkedMovies}
+          handleBookmarkToggle={handleBookmarkToggle}
         />
         <DetailProvider id={movie.id} />
       </Wrapper>

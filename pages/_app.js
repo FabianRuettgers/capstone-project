@@ -12,6 +12,13 @@ export default function App({ Component, pageProps }) {
     { defaultValue: {} }
   );
 
+  function handleBookmarkToggle(id) {
+    setBookmarkedMovies((prevBookmarkedMovies) => ({
+      ...prevBookmarkedMovies,
+      [id]: !prevBookmarkedMovies[id],
+    }));
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -21,7 +28,7 @@ export default function App({ Component, pageProps }) {
           query={query}
           setQuery={setQuery}
           bookmarkedMovies={bookmarkedMovies}
-          setBookmarkedMovies={setBookmarkedMovies}
+          handleBookmarkToggle={handleBookmarkToggle}
         />
       </SWRConfig>
     </>
