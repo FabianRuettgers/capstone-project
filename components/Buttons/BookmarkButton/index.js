@@ -33,13 +33,10 @@ export default function BookmarkButton({
 }
 
 const StyledButton = styled.button`
-  margin: 0;
-  padding: 0.5rem;
-  border: none;
   background-color: var(--highlight-color);
   fill: var(--text-color-dark);
   border-radius: 50%;
-  color: #3a3b3c;
+  padding: var(--padding-x-small);
   &:active {
     transform: scale(0.85);
   }
