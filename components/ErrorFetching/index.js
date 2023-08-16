@@ -43,7 +43,7 @@ const Container = styled.div`
   align-items: center;
   margin: 2rem;
   box-shadow: 0 0 12px var(--shadow-color-dark);
-  background-color: var(--background-color-light);
+  background-color: var(--lowlight-dark);
   border-radius: 2rem;
 `;
 
@@ -60,6 +60,8 @@ const SvgWrapper = styled.div`
 `;
 
 const TextWrapper = styled.div`
+  color: var(--text-color-light);
+  text-align: center;
   padding-left: 2rem;
   padding-right: 2rem;
   display: grid;

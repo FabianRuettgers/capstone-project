@@ -1,8 +1,8 @@
 import ErrorFetching from "@/components/ErrorFetching";
+import ErrorInput from "@/components/ErrorInput";
 import HeaderMenu from "@/components/HeaderMenu";
 import LoadFetching from "@/components/LoadFetching";
 import SearchMovie from "@/components/SearchMovie";
-import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import useSWR from "swr";
 
@@ -23,7 +23,7 @@ export default function Search({ query, setQuery }) {
       </>
     );
   }
-
+  console.log(data);
   return (
     <>
       <HeaderMenu title={"Film suchen"} />
@@ -35,7 +35,8 @@ export default function Search({ query, setQuery }) {
               <LoadFetching />
             </FetchWrapper>
           ) : null}
-          {!data ? null : null}
+          {data && data.results.length === 0 ? <ErrorInput /> : null}
+
           {data ? (
             <>
               <SearchMovie movie={data.results} />
@@ -51,6 +52,7 @@ const Container = styled.div`
   color: var(--text-color-light);
   fill: var(--text-color-light);
   padding: 2rem;
+  height: 76vh;
   margin-top: 12vh;
   margin-bottom: 12vh;
 `;
@@ -69,15 +71,8 @@ const Wrapper = styled.main`
   margin-right: auto;
 `;
 
-const FetchWrapper = styled.main`
-  max-width: 420px;
-  display: grid;
-  margin-left: auto;
-  margin-right: auto;
-  height: 76vh;
-  width: 100%;
-  margin-top: 12vh;
-  margin-bottom: 12vh;
+const FetchWrapper = styled.div`
+  height: 100%;
   display: grid;
   justify-items: center;
   align-items: center;
