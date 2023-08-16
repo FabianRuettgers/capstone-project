@@ -1,27 +1,31 @@
 import Image from "next/image";
 import { styled } from "styled-components";
+import ButtonSection from "../ButtonSection";
 
-export default function DetailGrid({ movie }) {
-  console.log(movie);
+export default function DetailGrid({
+  movie,
+  bookmarkedMovies,
+  handleBookmarkToggle,
+}) {
   return (
     <StyledSection>
       <Box>
-        {movie.poster_path || movie.poster_path === null ? (
+        {movie.poster_path !== null ? (
           <StyledImage
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
             layout="responsive"
-            object-fit="contain"
+            objectFit="contain"
             height={750}
             width={500}
             priority
           />
         ) : (
           <StyledImage
-            src={`/Backup.jpg`}
+            src={`/backup.jpg`}
             alt={movie.title}
             layout="responsive"
-            object-fit="contain"
+            objectFit="contain"
             height={750}
             width={500}
             priority
@@ -38,7 +42,7 @@ export default function DetailGrid({ movie }) {
           <Container>
             <Label>Genre</Label>
             <StyledParagrah>
-              {movie.genres.lenght !== 0 ? movie.genres[0].name : "unbekannt"}
+              {movie.genres.length !== 0 ? movie.genres[0].name : "unbekannt"}
             </StyledParagrah>
           </Container>
           <Container>
@@ -52,6 +56,11 @@ export default function DetailGrid({ movie }) {
         </Wrapper>
       </Box>
       <Heading>{movie.title}</Heading>
+      <ButtonSection
+        id={movie.id}
+        bookmarkedMovies={bookmarkedMovies}
+        handleBookmarkToggle={handleBookmarkToggle}
+      />
       <Describtion>
         {movie.overview ? movie.overview : "keine Filmbeschreibung vorhanden"}
       </Describtion>
@@ -80,7 +89,7 @@ const Heading = styled.h1`
   margin-top: 3rem;
   margin-bottom: 2rem;
   border-bottom: 2px solid var(--highlight-color);
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   color: var(--text-color-light);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -89,6 +98,7 @@ const Heading = styled.h1`
 const StyledImage = styled(Image)`
   border-radius: 2rem;
   box-shadow: 0 0 12px var(--shadow-color-dark);
+  background-color: var(--highlight-color);
 `;
 
 const Box = styled.div`

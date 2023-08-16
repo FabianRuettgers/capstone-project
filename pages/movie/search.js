@@ -23,7 +23,7 @@ export default function Search({ query, setQuery }) {
       </>
     );
   }
-  console.log(data);
+
   return (
     <>
       <HeaderMenu title={"Film suchen"} />
