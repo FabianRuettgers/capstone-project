@@ -46,12 +46,16 @@ export default function DetailGrid({
             </StyledParagrah>
           </Container>
           <Container>
-            <Label>Bewertung</Label>
+            <Label>Rating</Label>
             <StyledParagrah>
               {movie.vote_average
                 ? `${movie.vote_average.toFixed(1)} / 10`
                 : "unbekannt"}
             </StyledParagrah>
+          </Container>
+          <Container>
+            <Label>Dein Rating</Label>
+            <StyledParagrah>rating</StyledParagrah>
           </Container>
         </Wrapper>
       </Box>
