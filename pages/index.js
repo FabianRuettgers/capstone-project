@@ -1,5 +1,6 @@
 import ErrorFetching from "@/components/ErrorFetching";
 import HeaderNav from "@/components/HeaderNav";
+import LoadFetching from "@/components/LoadFetching";
 import RandomMovie from "@/components/RandomMovie";
 import { styled } from "styled-components";
 import useSWR from "swr";
@@ -8,6 +9,7 @@ const API_KEY = process.env.API_KEY;
 
 export default function HomePage() {
   const { data, error, isLoading } = useSWR(`/api/movies`);
+
   if (isLoading) {
     return null;
   }

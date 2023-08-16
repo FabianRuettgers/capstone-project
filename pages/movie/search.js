@@ -1,20 +1,30 @@
+import ErrorFetching from "@/components/ErrorFetching";
 import HeaderMenu from "@/components/HeaderMenu";
+import LoadFetching from "@/components/LoadFetching";
 import SearchMovie from "@/components/SearchMovie";
 import { styled } from "styled-components";
 import useSWR from "swr";
-import useLocalStorageState from "use-local-storage-state";
 
-export default function Search() {
-  const [query, setQuery] = useLocalStorageState("input", "");
-
-  const { data, error } = useSWR(query ? `/api/movie/search/${query}` : null);
+export default function Search({ query, setQuery }) {
+  const { data, error, isLoading } = useSWR(
+    query ? `/api/movie/search/${query}` : null
+  );
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
   };
 
+  if (isLoading) {
+    return null;
+  }
+
   if (error) {
-    return <div>Error loading data</div>;
+    return (
+      <>
+        <HeaderMenu title={"Film suchen"} />
+        <ErrorFetching />
+      </>
+    );
   }
 
   if (!data) {
