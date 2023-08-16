@@ -8,8 +8,8 @@ export default function App({ Component, pageProps }) {
   const [query, setQuery] = useState("");
   return (
     <>
+      <GlobalStyle />
       <SWRConfig value={{ fetcher }}>
-        <GlobalStyle />
         <Component {...pageProps} query={query} setQuery={setQuery} />
       </SWRConfig>
     </>
