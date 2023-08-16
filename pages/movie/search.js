@@ -7,13 +7,13 @@ import { styled } from "styled-components";
 import useSWR from "swr";
 
 export default function Search({ query, setQuery }) {
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
-  };
-
   const { data, error, isLoading } = useSWR(
     query ? `/api/movie/search/${query}` : null
   );
+
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+  };
 
   if (error) {
     return (
@@ -30,6 +30,7 @@ export default function Search({ query, setQuery }) {
       <Wrapper>
         <Container>
           <StyledInput type="text" value={query} onChange={handleInputChange} />
+          {query === "" ? "Tippe um einen Film zu suchen" : null}
           {isLoading ? (
             <FetchWrapper>
               <LoadFetching />

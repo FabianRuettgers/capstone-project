@@ -70,7 +70,7 @@ const ImageContainer = styled.div`
 const StyledImage = styled(Image)`
   border-radius: 1rem;
   object-fit: contain;
-  background-color: white;
+  background-color: var(--highlight-color);
   box-shadow: 0 0 12px var(--shadow-color-dark);
 `;
 const StyledSpacer = styled.div`
