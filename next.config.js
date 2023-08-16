@@ -4,7 +4,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["image.tmdb.org"],
+    domains: ["image.tmdb.org", "images.unsplash.com"],
   },
   reactStrictMode: true,
   webpack(config) {
