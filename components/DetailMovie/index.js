@@ -6,22 +6,22 @@ export default function DetailGrid({ movie }) {
   return (
     <StyledSection>
       <Box>
-        {movie.poster_path || movie.poster_path === null ? (
+        {movie.poster_path && movie.poster_path !== null ? (
           <StyledImage
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
             layout="responsive"
-            object-fit="contain"
+            objectFit="contain"
             height={750}
             width={500}
             priority
           />
         ) : (
           <StyledImage
-            src={`/Backup.jpg`}
+            src={`/backup.jpg`}
             alt={movie.title}
             layout="responsive"
-            object-fit="contain"
+            objectFit="contain"
             height={750}
             width={500}
             priority
@@ -89,6 +89,7 @@ const Heading = styled.h1`
 const StyledImage = styled(Image)`
   border-radius: 2rem;
   box-shadow: 0 0 12px var(--shadow-color-dark);
+  background-color: var(--highlight-color);
 `;
 
 const Box = styled.div`
