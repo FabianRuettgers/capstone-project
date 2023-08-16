@@ -6,7 +6,7 @@ export default function DetailGrid({ movie }) {
   return (
     <StyledSection>
       <Box>
-        {movie.poster_path ? (
+        {movie.poster_path || movie.poster_path === null ? (
           <StyledImage
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}
