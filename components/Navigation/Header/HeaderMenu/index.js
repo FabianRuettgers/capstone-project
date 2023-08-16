@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { styled } from "styled-components";
 
-export default function Header({ title }) {
+export default function HeaderMenu({ title }) {
   const router = useRouter();
   function handleGoBack() {
     router.back();
@@ -24,28 +24,26 @@ export default function Header({ title }) {
 }
 
 const StyledHeader = styled.header`
-  position: relative;
-  color: var(--text-color-light);
-  fill: var(--text-color-light);
+  color: var(--text-color-light-heading);
+  fill: var(--text-color-light-heading);
   background-color: var(--background-color);
+  box-shadow: 0 0 28px var(--shadow-color-dark);
   width: 100%;
   height: 12vh;
-  top: 0;
-  position: fixed;
   display: flex;
-  gap: 1rem;
-  align-items: center;
   justify-content: center;
-  box-shadow: 0 0 28px var(--shadow-color-dark);
+  align-items: center;
+  position: fixed;
+  position: relative;
+  top: 0;
+  gap: var(--gap-small);
   z-index: 1000;
 `;
 
 const StyledButton = styled.button`
-  margin: 0;
-  padding: 0.25rem;
-  margin-left: 1rem;
-  border: none;
   background: none;
+  padding: var(--padding-xx-small);
+  margin-left: var(--margin-small);
   position: absolute;
   left: 0;
   &:active {

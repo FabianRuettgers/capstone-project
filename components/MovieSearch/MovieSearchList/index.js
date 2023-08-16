@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { styled } from "styled-components";
 
-export default function SearchMovie({ movie }) {
+export default function MovieSearchList({ movie }) {
   return (
-    <List>
+    <ul>
       {movie.map((movie) => (
         <StyledListitem key={movie.id}>
           <StyledLink href={`/movie/${movie.id}`}>
@@ -50,83 +50,62 @@ export default function SearchMovie({ movie }) {
           </StyledLink>
         </StyledListitem>
       ))}
-    </List>
+    </ul>
   );
 }
-const SvgContainer = styled.div`
-  grid-area: 1 / 3 / 3 / 4;
-  scale: 0.7;
+
+const StyledListitem = styled.li`
+  background-color: var(--lowlight-dark);
+  box-shadow: 0 0 12px var(--shadow-color-dark);
+  margin-bottom: var(--margin-small);
+  border-radius: var(--border-radius-small);
+
+  &:last-child {
+    margin-bottom: var(--margin-large);
+  }
+`;
+
+const StyledLink = styled(Link)`
+  display: grid;
+  grid-template-columns: 24% 1fr 15%;
+  grid-column-gap: var(--gap-small);
+  justify-items: left;
+  align-items: center;
+
+  padding: var(--padding-small);
 `;
 
 const ImageContainer = styled.div`
   grid-area: 1 / 1 / 3 / 2;
-  width: 100%;
-  height: 100%;
   display: grid;
   align-items: center;
   justify-items: center;
 `;
 
 const StyledImage = styled(Image)`
-  border-radius: 1rem;
-  object-fit: contain;
   background-color: var(--highlight-color);
   box-shadow: 0 0 12px var(--shadow-color-dark);
-`;
-const StyledSpacer = styled.div`
-  border-radius: 1rem;
+  border-radius: var(--border-radius-small);
   object-fit: contain;
-  background-color: var(--highlight-color);
-  height: 100%;
-  width: 100%;
-`;
-
-const StyledListitem = styled.li`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-
-  margin-bottom: 1.5rem;
-  border-radius: 1rem;
-  background-color: var(--lowlight-dark);
-  box-shadow: 0 0 12px var(--shadow-color-dark);
-`;
-
-const List = styled.ul`
-  margin: 0;
-  padding: 0;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  padding: 1rem;
-  margin: 0;
-  color: var(--text-color-light);
-  fill: var(--text-color-light);
-  display: grid;
-  grid-template-columns: 24% 1fr 15%;
-
-  grid-column-gap: 1rem;
-  justify-items: left;
-  align-items: center;
 `;
 
 const Heading = styled.h2`
-  padding: 0;
-  margin: 0;
-  font-size: 1rem;
-  padding-bottom: 1rem;
-  grid-area: 1 / 2 / 2 / 3;
-
+  color: var(--text-color-light-heading);
+  font-size: medium;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  grid-area: 1 / 2 / 2 / 3;
+  padding-bottom: var(--padding-small);
 `;
 
 const StyledParagraph = styled.p`
-  font-size: 1rem;
-  padding: 0;
-  margin: 0;
+  color: var(--text-color-light-heading);
+  font-size: medium;
   grid-area: 2 / 2 / 3 / 3;
+`;
+const SvgContainer = styled.div`
+  fill: var(--text-color-light-heading);
+  grid-area: 1 / 3 / 3 / 4;
+  scale: 0.7;
 `;

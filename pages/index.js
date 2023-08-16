@@ -1,7 +1,7 @@
-import ErrorFetching from "@/components/ErrorFetching";
-import HeaderNav from "@/components/HeaderNav";
-import LoadFetching from "@/components/LoadFetching";
-import RandomMovie from "@/components/RandomMovie";
+import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
+import LoadFetching from "@/components/LoadingHandling/LoadFetching";
+import MovieRandom from "@/components/MovieRandom";
+import HeaderNav from "@/components/Navigation/Header/HeaderNav";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import useSWR from "swr";
@@ -24,9 +24,9 @@ export default function HomePage() {
     return (
       <>
         <HeaderNav />
-        <FetchWrapper>
+        <MobileViewWrapper>
           <LoadFetching />
-        </FetchWrapper>
+        </MobileViewWrapper>
       </>
     );
   }
@@ -35,40 +35,32 @@ export default function HomePage() {
     return (
       <>
         <HeaderNav />
-        <ErrorFetching />
+        <MobileViewWrapper>
+          <ErrorFetching />
+        </MobileViewWrapper>
       </>
     );
   }
 
-  const randomMovie =
-    data.results[Math.floor(Math.random() * data.results.length)];
   return (
     <>
       <HeaderNav />
-      <Wrapper>
-        {showRandomMovie && <RandomMovie randomMovie={randomMovie} />}
-      </Wrapper>
+      <MobileViewWrapper>
+        {showRandomMovie && (
+          <MovieRandom
+            randomMovie={
+              data.results[Math.floor(Math.random() * data.results.length)]
+            }
+          />
+        )}
+      </MobileViewWrapper>
     </>
   );
 }
 
-const Wrapper = styled.main`
+const MobileViewWrapper = styled.div`
   max-width: 420px;
   display: grid;
   margin-left: auto;
   margin-right: auto;
-`;
-
-const FetchWrapper = styled.main`
-  max-width: 420px;
-  display: grid;
-  margin-left: auto;
-  margin-right: auto;
-  height: 76vh;
-  width: 100%;
-  margin-top: 12vh;
-  margin-bottom: 12vh;
-  display: grid;
-  justify-items: center;
-  align-items: center;
 `;

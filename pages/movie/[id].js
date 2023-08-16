@@ -1,10 +1,10 @@
-import DetailMovie from "@/components/DetailMovie";
-import HeaderMenu from "@/components/HeaderMenu";
-import DetailProvider from "@/components/DetailProvider";
-import ErrorFetching from "@/components/ErrorFetching";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { styled } from "styled-components";
+import HeaderMenu from "@/components/Navigation/Header/HeaderMenu";
+import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
+import MovieDetailPage from "@/components/MovieDetailPage";
+import LoadFetching from "@/components/LoadingHandling/LoadFetching";
 
 export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
   const router = useRouter();
@@ -13,36 +13,42 @@ export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
   const { data, error, isLoading } = useSWR(`/api/movie/${id}`);
 
   if (isLoading) {
-    return null;
+    return (
+      <>
+        <HeaderMenu title={"Film Details"} />
+        <MobileViewWrapper>
+          <LoadFetching />
+        </MobileViewWrapper>
+      </>
+    );
   }
 
   if (error || !data || data.result.success === false) {
     return (
       <>
         <HeaderMenu title={"Film Details"} />
-        <ErrorFetching />
+        <MobileViewWrapper>
+          <ErrorFetching />
+        </MobileViewWrapper>
       </>
     );
   }
 
-  const movie = data.result;
-
   return (
     <>
       <HeaderMenu title={"Film Details"} />
-      <Wrapper>
-        <DetailMovie
-          movie={movie}
+      <MobileViewWrapper>
+        <MovieDetailPage
+          movie={data.result}
           bookmarkedMovies={bookmarkedMovies}
           handleBookmarkToggle={handleBookmarkToggle}
         />
-        <DetailProvider id={movie.id} />
-      </Wrapper>
+      </MobileViewWrapper>
     </>
   );
 }
 
-const Wrapper = styled.main`
+const MobileViewWrapper = styled.div`
   max-width: 420px;
   display: grid;
   margin-left: auto;

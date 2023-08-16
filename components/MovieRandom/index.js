@@ -1,13 +1,13 @@
 import { styled } from "styled-components";
-import ReloadFetchButton from "../RelaodFetchButton";
+import ReloadFetchButton from "../Buttons/RelaodFetchButton";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function RandomMovie({ randomMovie }) {
+export default function MovieRandom({ randomMovie }) {
   return (
     <StyledMain>
-      <ImageContainer>
-        <StyledLink href={`/movie/${randomMovie.id}`}>
+      <StyledSection>
+        <Link href={`/movie/${randomMovie.id}`}>
           <StyledImage
             src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
             alt={randomMovie.title}
@@ -15,21 +15,15 @@ export default function RandomMovie({ randomMovie }) {
             width={500}
             priority
           />
-        </StyledLink>
+        </Link>
         <Rating>{randomMovie.vote_average} / 10</Rating>
         <ButtonWrapper>
           <ReloadFetchButton />
         </ButtonWrapper>
-      </ImageContainer>
+      </StyledSection>
     </StyledMain>
   );
 }
-
-const StyledLink = styled(Link)`
-  width: 100%;
-  height: 100%;
-`;
-
 const StyledMain = styled.main`
   height: 76vh;
   width: 100%;
@@ -39,9 +33,9 @@ const StyledMain = styled.main`
   justify-content: center;
 `;
 
-const ImageContainer = styled.div`
+const StyledSection = styled.section`
   position: relative;
-  margin: 2rem;
+  margin: var(--margin-medium);
 `;
 
 const StyledImage = styled(Image)`
@@ -49,20 +43,19 @@ const StyledImage = styled(Image)`
   height: 100%;
   object-fit: cover;
   box-shadow: 0 0 12px var(--shadow-color-dark);
-  border-radius: 2rem;
+  border-radius: var(--border-radius-medium);
   position: relative;
 `;
 
 const Rating = styled.p`
-  margin: 0;
-  padding: 0.5rem;
-  border-radius: 2rem;
+  color: var(--text-color-dark-heading);
+  background-color: var(--highlight-color);
+  font-weight: 800;
   position: absolute;
+  border-radius: var(--border-radius-medium);
+  padding: var(--padding-x-small);
   bottom: 1rem;
   right: 1rem;
-  background-color: #bf8f54;
-  color: #3a3b3c;
-  font-weight: 800;
 `;
 
 const ButtonWrapper = styled.div`

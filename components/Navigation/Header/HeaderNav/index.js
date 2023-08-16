@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export default function Header() {
+export default function HeaderNav() {
   return (
     <StyledHeader>
       <svg
@@ -17,17 +17,17 @@ export default function Header() {
 }
 
 const StyledHeader = styled.header`
+  background-color: var(--background-color);
   color: var(--text-color-light);
   fill: var(--text-color-light);
-  background-color: var(--background-color);
-  width: 100%;
+  box-shadow: 0 0 28px var(--shadow-color-dark);
   height: 12vh;
-  top: 0;
-  position: fixed;
+  width: 100%;
   display: flex;
   gap: 1rem;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 28px var(--shadow-color-dark);
+  position: fixed;
+  top: 0;
   z-index: 1000;
 `;
