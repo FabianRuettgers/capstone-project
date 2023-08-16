@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { styled } from "styled-components";
 
-export default function Detailpage() {
+export default function Detailpage({ bookmarkedMovies, setBookmarkedMovies }) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -31,7 +31,11 @@ export default function Detailpage() {
     <>
       <HeaderMenu title={"Film Details"} />
       <Wrapper>
-        <DetailMovie movie={movie} />
+        <DetailMovie
+          movie={movie}
+          bookmarkedMovies={bookmarkedMovies}
+          setBookmarkedMovies={setBookmarkedMovies}
+        />
         <DetailProvider id={movie.id} />
       </Wrapper>
     </>

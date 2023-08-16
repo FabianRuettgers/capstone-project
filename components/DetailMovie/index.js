@@ -1,7 +1,12 @@
 import Image from "next/image";
 import { styled } from "styled-components";
+import ButtonSection from "../ButtonSection";
 
-export default function DetailGrid({ movie }) {
+export default function DetailGrid({
+  movie,
+  bookmarkedMovies,
+  setBookmarkedMovies,
+}) {
   console.log(movie);
   return (
     <StyledSection>
@@ -38,7 +43,7 @@ export default function DetailGrid({ movie }) {
           <Container>
             <Label>Genre</Label>
             <StyledParagrah>
-              {movie.genres.lenght !== 0 ? movie.genres[0].name : "unbekannt"}
+              {movie.genres.length !== 0 ? movie.genres[0].name : "unbekannt"}
             </StyledParagrah>
           </Container>
           <Container>
@@ -52,6 +57,11 @@ export default function DetailGrid({ movie }) {
         </Wrapper>
       </Box>
       <Heading>{movie.title}</Heading>
+      <ButtonSection
+        id={movie.id}
+        bookmarkedMovies={bookmarkedMovies}
+        setBookmarkedMovies={setBookmarkedMovies}
+      />
       <Describtion>
         {movie.overview ? movie.overview : "keine Filmbeschreibung vorhanden"}
       </Describtion>
@@ -80,7 +90,7 @@ const Heading = styled.h1`
   margin-top: 3rem;
   margin-bottom: 2rem;
   border-bottom: 2px solid var(--highlight-color);
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   color: var(--text-color-light);
   overflow: hidden;
   text-overflow: ellipsis;
