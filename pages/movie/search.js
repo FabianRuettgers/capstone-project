@@ -16,6 +16,7 @@ export default function Search({ query, setQuery }) {
   if (error) {
     return (
       <>
+        <title>Error</title>
         <HeaderMenu title={"Film suchen"} />
         <MobileViewWrapper>
           <ErrorFetching />
@@ -26,8 +27,8 @@ export default function Search({ query, setQuery }) {
 
   return (
     <>
+      <title>Movie Search</title>
       <HeaderMenu title={"Film suchen"} />
-
       <MobileViewWrapper>
         <MovieSearch
           query={query}

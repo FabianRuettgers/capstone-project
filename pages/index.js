@@ -23,6 +23,7 @@ export default function HomePage() {
   if (!showRandomMovie) {
     return (
       <>
+        <title>Loading screen</title>
         <HeaderNav />
         <MobileViewWrapper>
           <LoadFetching />
@@ -34,6 +35,7 @@ export default function HomePage() {
   if (error || !data || data.success === false) {
     return (
       <>
+        <title>Error</title>
         <HeaderNav />
         <MobileViewWrapper>
           <ErrorFetching />
@@ -44,6 +46,7 @@ export default function HomePage() {
 
   return (
     <>
+      <title>Random Movie Spotlight-page</title>
       <HeaderNav />
       <MobileViewWrapper>
         {showRandomMovie && (

@@ -15,6 +15,7 @@ export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
   if (isLoading) {
     return (
       <>
+        <title>Loading screen</title>
         <HeaderMenu title={"Film Details"} />
         <MobileViewWrapper>
           <LoadFetching />
@@ -26,6 +27,7 @@ export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
   if (error || !data || data.result.success === false) {
     return (
       <>
+        <title>Error</title>
         <HeaderMenu title={"Film Details"} />
         <MobileViewWrapper>
           <ErrorFetching />
@@ -36,6 +38,7 @@ export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
 
   return (
     <>
+      <title>Movie Detailpage</title>
       <HeaderMenu title={"Film Details"} />
       <MobileViewWrapper>
         <MovieDetailPage
