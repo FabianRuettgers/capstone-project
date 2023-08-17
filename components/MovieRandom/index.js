@@ -13,7 +13,6 @@ export default function MovieRandom({ randomMovie }) {
             alt={randomMovie.title}
             height={750}
             width={500}
-            priority={true}
           />
         </StyledLink>
         <Rating>{randomMovie.vote_average} / 10</Rating>
