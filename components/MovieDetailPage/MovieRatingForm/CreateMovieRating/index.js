@@ -2,28 +2,31 @@ import FormButtom from "@/components/Buttons/FormButton";
 import { useState } from "react";
 import { styled } from "styled-components";
 
-export default function CreateMovieRating({ id, handleRate }) {
-  function handleBack() {}
-
+export default function CreateMovieRating({
+  id,
+  handleRate,
+  handleGoBackRating,
+}) {
   return (
     <Container>
       <Heading>Bewerte den Film</Heading>
       <Form onSubmit={handleRate(id)}>
-        <StyledLabel>bewerte den Film mit bis zu 10 </StyledLabel>
+        <StyledLabel>bewerte den Film von 0 bis 10 </StyledLabel>
         <StyledInput
           type="number"
           min="0"
           max="10"
-          step="0.1"
+          step="0"
           placeholder="rating"
           name="rating"
+          required
         />
         <ButtonWrapper>
           <FormButtom
             title={"zurück"}
             backgroundcolor={"var(--background-color-light)"}
             textcolor={"var( --text-color-dark-content)"}
-            handleClick={handleBack}
+            handleClick={handleGoBackRating}
           />
           <FormButtom
             type={"submit"}
@@ -66,6 +69,7 @@ const ButtonWrapper = styled.div`
 const StyledLabel = styled.label`
   color: var(--text-color-light-heading);
   font-size: x-large;
+  text-align: center;
 `;
 
 const Heading = styled.h2`

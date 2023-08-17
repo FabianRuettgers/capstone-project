@@ -28,4 +28,7 @@ const StyledButton = styled.button`
   width: 40%;
   border-radius: var(--border-radius-medium);
   padding: var(--padding-small);
+  &:active {
+    transform: scale(0.85);
+  }
 `;

@@ -1,14 +1,18 @@
 import { useRouter } from "next/router";
 import { styled } from "styled-components";
 
-export default function HeaderMenu({ title }) {
+export default function HeaderMenu({ title, disable }) {
   const router = useRouter();
-  function handleGoBack() {
+  function handleGoBackRating() {
     router.back();
   }
   return (
     <StyledHeader>
-      <StyledButton onClick={handleGoBack} aria-label="Go back button">
+      <StyledButton
+        onClick={handleGoBackRating}
+        aria-label="Go back button"
+        disabled={disable}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="48"

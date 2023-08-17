@@ -7,16 +7,23 @@ import MovieDetailPage from "@/components/MovieDetailPage";
 import LoadFetching from "@/components/LoadingHandling/LoadFetching";
 import Head from "next/head";
 import CreateMovieRating from "@/components/MovieDetailPage/MovieRatingForm/CreateMovieRating";
+import DeleteMovieRating from "@/components/MovieDetailPage/MovieRatingForm/DeleteMovieRating";
 
 export default function Detailpage({
   userInformation,
   handleBookmarkToggle,
   handleRate,
+  handleRateButtonClick,
+  startRating,
+  handleDelete,
+  handleDeleteButtonClick,
+  startDelete,
 }) {
   const router = useRouter();
   const { id } = router.query;
 
   const { data, error, isLoading } = useSWR(`/api/movie/${id}`);
+  const HeaderDisable = startRating || startDelete;
 
   if (isLoading) {
     return (
@@ -54,15 +61,31 @@ export default function Detailpage({
         <title>Movie Detailpage</title>
         <meta name="description" content="a Movie Detailpage" />
       </Head>
-      <HeaderMenu title={"Film Details"} />
+      <HeaderMenu title={"Film Details"} disable={HeaderDisable} />
       <MobileViewWrapper>
         <MovieDetailPage
           movie={data.result}
           userInformation={userInformation}
           handleBookmarkToggle={handleBookmarkToggle}
+          handleRateButtonClick={handleRateButtonClick}
+          handleDeleteButtonClick={handleDeleteButtonClick}
+          startRating={startRating}
         />
       </MobileViewWrapper>
-      <CreateMovieRating id={data.result.id} handleRate={handleRate} />
+      {startRating ? (
+        <CreateMovieRating
+          id={data.result.id}
+          handleRate={handleRate}
+          handleGoBackRating={handleRateButtonClick}
+        />
+      ) : null}
+      {startDelete ? (
+        <DeleteMovieRating
+          id={data.result.id}
+          handleDelete={handleDelete}
+          handleGoBackDelete={handleDeleteButtonClick}
+        />
+      ) : null}
     </>
   );
 }

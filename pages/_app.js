@@ -11,6 +11,22 @@ export default function App({ Component, pageProps }) {
     { defaultValue: [] }
   );
   const [query, setQuery] = useState("");
+  const [startRating, setStartRating] = useState(false);
+  function handleRateButtonClick() {
+    setStartRating((prevStartRating) => !prevStartRating);
+  }
+  const [startDelete, setStartDelete] = useState(false);
+  function handleDeleteButtonClick() {
+    setStartDelete((prevStartDelete) => !prevStartDelete);
+  }
+
+  function handleDelete(id) {
+    setUserInformation((currentMovies) => {
+      const updatedMovies = currentMovies.filter((movie) => movie.id !== id);
+      return updatedMovies;
+    });
+    handleDeleteButtonClick();
+  }
 
   function handleRate(id) {
     return function (event) {
@@ -34,6 +50,8 @@ export default function App({ Component, pageProps }) {
           },
         ];
       });
+      event.target.reset();
+      handleRateButtonClick();
     };
   }
 
@@ -72,6 +90,11 @@ export default function App({ Component, pageProps }) {
           userInformation={userInformation}
           handleBookmarkToggle={handleBookmarkToggle}
           handleRate={handleRate}
+          handleRateButtonClick={handleRateButtonClick}
+          startRating={startRating}
+          handleDelete={handleDelete}
+          handleDeleteButtonClick={handleDeleteButtonClick}
+          startDelete={startDelete}
         />
       </SWRConfig>
     </>

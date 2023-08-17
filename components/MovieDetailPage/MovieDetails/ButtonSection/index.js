@@ -1,22 +1,38 @@
 import { styled } from "styled-components";
 import BookmarkButton from "../../../Buttons/BookmarkButton";
+import RateButton from "@/components/Buttons/RateButton";
+import DeleteButton from "@/components/Buttons/Delete Button";
 
 export default function ButtonSection({
   id,
   userInformation,
   handleBookmarkToggle,
+  handleRateButtonClick,
+  handleDeleteButtonClick,
+  startRating,
 }) {
   const selectedItem = userInformation.find((item) => item.id === id);
-
   const isBookmarked = selectedItem ? selectedItem.isBookmarked : false;
-
+  const israted = selectedItem ? selectedItem.rating : false;
   return (
     <SectionContainer>
-      <BookmarkButton
-        isBookmarked={isBookmarked}
-        handleBookmarkToggle={handleBookmarkToggle}
-        id={id}
-      />
+      {israted ? null : (
+        <BookmarkButton
+          isBookmarked={isBookmarked}
+          handleBookmarkToggle={handleBookmarkToggle}
+          id={id}
+          startRating={startRating}
+        />
+      )}
+      {israted ? null : (
+        <RateButton
+          handleRateButtonClick={handleRateButtonClick}
+          startRating={startRating}
+        />
+      )}
+      {israted ? (
+        <DeleteButton handleDeleteButtonClick={handleDeleteButtonClick} />
+      ) : null}
     </SectionContainer>
   );
 }
