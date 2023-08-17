@@ -8,7 +8,7 @@ export default function HeaderMenu({ title }) {
   }
   return (
     <StyledHeader>
-      <StyledButton onClick={handleGoBack}>
+      <StyledButton onClick={handleGoBack} aria-label="Go back button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="48"
