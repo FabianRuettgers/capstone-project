@@ -5,6 +5,7 @@ import HeaderMenu from "@/components/Navigation/Header/HeaderMenu";
 import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
 import MovieDetailPage from "@/components/MovieDetailPage";
 import LoadFetching from "@/components/LoadingHandling/LoadFetching";
+import Head from "next/head";
 
 export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
   const router = useRouter();
@@ -15,7 +16,10 @@ export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
   if (isLoading) {
     return (
       <>
-        <title>Loading screen</title>
+        <Head>
+          <title>Loading screen</title>
+          <meta name="description" content="a Loading-screen" />
+        </Head>
         <HeaderMenu title={"Film Details"} />
         <MobileViewWrapper>
           <LoadFetching />
@@ -27,7 +31,10 @@ export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
   if (error || !data || data.result.success === false) {
     return (
       <>
-        <title>Error</title>
+        <Head>
+          <title>Error</title>
+          <meta name="description" content="a error-screen" />
+        </Head>
         <HeaderMenu title={"Film Details"} />
         <MobileViewWrapper>
           <ErrorFetching />
@@ -38,7 +45,10 @@ export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
 
   return (
     <>
-      <title>Movie Detailpage</title>
+      <Head>
+        <title>Movie Detailpage</title>
+        <meta name="description" content="a Movie Detailpage" />
+      </Head>
       <HeaderMenu title={"Film Details"} />
       <MobileViewWrapper>
         <MovieDetailPage
