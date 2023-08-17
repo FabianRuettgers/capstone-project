@@ -37,16 +37,18 @@ export default function App({ Component, pageProps }) {
         if (info) {
           return userInformation.map((movie) =>
             movie.id === id
-              ? { ...info, rating: newRating, isBookmarked: false }
-              : info
+              ? { ...movie, isBookmarked: false, rating: newRating }
+              : movie
           );
         }
         return [
           ...userInformation,
           {
             id: id,
-            rating: newRating,
+
             isBookmarked: false,
+            isBookmarked: false,
+            rating: newRating,
           },
         ];
       });
