@@ -6,8 +6,13 @@ import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
 import MovieDetailPage from "@/components/MovieDetailPage";
 import LoadFetching from "@/components/LoadingHandling/LoadFetching";
 import Head from "next/head";
+import CreateMovieRating from "@/components/MovieDetailPage/MovieRatingForm/CreateMovieRating";
 
-export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
+export default function Detailpage({
+  userInformation,
+  handleBookmarkToggle,
+  handleRate,
+}) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -53,10 +58,11 @@ export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
       <MobileViewWrapper>
         <MovieDetailPage
           movie={data.result}
-          bookmarkedMovies={bookmarkedMovies}
+          userInformation={userInformation}
           handleBookmarkToggle={handleBookmarkToggle}
         />
       </MobileViewWrapper>
+      <CreateMovieRating id={data.result.id} handleRate={handleRate} />
     </>
   );
 }

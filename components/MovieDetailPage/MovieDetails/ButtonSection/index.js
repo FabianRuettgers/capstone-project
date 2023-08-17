@@ -3,10 +3,12 @@ import BookmarkButton from "../../../Buttons/BookmarkButton";
 
 export default function ButtonSection({
   id,
-  bookmarkedMovies,
+  userInformation,
   handleBookmarkToggle,
 }) {
-  const isBookmarked = (bookmarkedMovies && bookmarkedMovies[id]) || false;
+  const selectedItem = userInformation.find((item) => item.id === id);
+
+  const isBookmarked = selectedItem ? selectedItem.isBookmarked : false;
 
   return (
     <SectionContainer>

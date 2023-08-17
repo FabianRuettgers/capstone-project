@@ -31,6 +31,8 @@ export default createGlobalStyle`
 
   --text-color-dark-heading: #404040; // dunkel grau
   --text-color-dark-content: #404040; // dunkel grau
+  --text-color-light-heading: #ffffff; // weiß
+  --text-color-light-content: #ffffff; // weiß
 
 --gap-small:1rem;
 --gap-medium:2rem;

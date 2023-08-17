@@ -6,17 +6,59 @@ import useLocalStorageState from "use-local-storage-state";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
-  const [query, setQuery] = useState("");
-  const [bookmarkedMovies, setBookmarkedMovies] = useLocalStorageState(
-    "Bookmarked",
-    { defaultValue: {} }
+  const [userInformation, setUserInformation] = useLocalStorageState(
+    "UserInformation",
+    { defaultValue: [] }
   );
+  const [query, setQuery] = useState("");
+
+  function handleRate(id) {
+    return function (event) {
+      event.preventDefault();
+      const newRating = event.target.elements.rating.value;
+      setUserInformation((movie) => {
+        const info = userInformation.find((movie) => movie.id === id);
+        if (info) {
+          return userInformation.map((movie) =>
+            movie.id === id
+              ? { ...info, rating: newRating, isBookmarked: false }
+              : info
+          );
+        }
+        return [
+          ...userInformation,
+          {
+            id: id,
+            rating: newRating,
+            isBookmarked: false,
+          },
+        ];
+      });
+    };
+  }
 
   function handleBookmarkToggle(id) {
-    setBookmarkedMovies((prevBookmarkedMovies) => ({
-      ...prevBookmarkedMovies,
-      [id]: !prevBookmarkedMovies[id],
-    }));
+    setUserInformation((currentMovies) => {
+      const existingMovie = currentMovies.find(
+        (movieItem) => movieItem.id === id
+      );
+
+      if (existingMovie) {
+        return currentMovies.map((movieItem) =>
+          movieItem.id === id
+            ? { ...movieItem, isBookmarked: !movieItem.isBookmarked }
+            : movieItem
+        );
+      } else {
+        return [
+          ...currentMovies,
+          {
+            id: id,
+            isBookmarked: true,
+          },
+        ];
+      }
+    });
   }
 
   return (
@@ -27,8 +69,9 @@ export default function App({ Component, pageProps }) {
           {...pageProps}
           query={query}
           setQuery={setQuery}
-          bookmarkedMovies={bookmarkedMovies}
+          userInformation={userInformation}
           handleBookmarkToggle={handleBookmarkToggle}
+          handleRate={handleRate}
         />
       </SWRConfig>
     </>

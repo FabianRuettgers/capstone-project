@@ -8,7 +8,7 @@ import MovieProvider from "./MovieDetails/MovieProvider";
 
 export default function MovieDetailPage({
   movie,
-  bookmarkedMovies,
+  userInformation,
   handleBookmarkToggle,
 }) {
   return (
@@ -42,7 +42,7 @@ export default function MovieDetailPage({
       <ButtonContentSection>
         <ButtonSection
           id={movie.id}
-          bookmarkedMovies={bookmarkedMovies}
+          userInformation={userInformation}
           handleBookmarkToggle={handleBookmarkToggle}
         />
       </ButtonContentSection>
