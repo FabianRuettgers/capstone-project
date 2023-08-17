@@ -17,7 +17,7 @@ export default function MovieSearchList({ movie }) {
                   object-fit="contain"
                   height={750}
                   width={500}
-                  priority
+                  priority={true}
                 />
               ) : (
                 <StyledImage
@@ -27,7 +27,7 @@ export default function MovieSearchList({ movie }) {
                   object-fit="contain"
                   height={750}
                   width={500}
-                  priority
+                  priority={true}
                 />
               )}
             </ImageContainer>

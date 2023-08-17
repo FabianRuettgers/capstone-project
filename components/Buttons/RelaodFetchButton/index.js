@@ -9,7 +9,7 @@ export default function ReloadFetchButton() {
   }
 
   return (
-    <StyledButton onClick={handleReload}>
+    <StyledButton onClick={handleReload} aria-label="Reload content button">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="32"

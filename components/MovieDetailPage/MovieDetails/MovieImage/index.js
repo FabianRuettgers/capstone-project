@@ -12,7 +12,7 @@ export default function MovieImage({ movie }) {
           objectFit="contain"
           height={750}
           width={500}
-          priority
+          priority={true}
         />
       ) : (
         <StyledImage
@@ -22,7 +22,7 @@ export default function MovieImage({ movie }) {
           objectFit="contain"
           height={750}
           width={500}
-          priority
+          priority={true}
         />
       )}
     </>

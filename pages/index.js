@@ -16,7 +16,7 @@ export default function HomePage() {
     if (!isLoading) {
       setTimeout(() => {
         setShowRandomMovie(true);
-      }, 800);
+      }, 1000);
     }
   }, [isLoading]);
 
