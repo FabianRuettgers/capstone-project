@@ -10,34 +10,36 @@ export default function App({ Component, pageProps }) {
     "UserInformation",
     { defaultValue: [] }
   );
+
   const [query, setQuery] = useState("");
-  const [startRating, setStartRating] = useState(false);
-  function handleRateButtonClick() {
-    setStartRating((prevStartRating) => !prevStartRating);
-  }
+
   const [startDelete, setStartDelete] = useState(false);
   function handleDeleteButtonClick() {
     setStartDelete((prevStartDelete) => !prevStartDelete);
   }
-
   function handleDelete(id) {
-    setUserInformation((currentMovies) => {
-      const updatedMovies = currentMovies.filter((movie) => movie.id !== id);
-      return updatedMovies;
-    });
+    setUserInformation((currentMovies) =>
+      currentMovies.filter((movie) => movie.id !== id)
+    );
     handleDeleteButtonClick();
   }
 
+  const [startRating, setStartRating] = useState(false);
+  function handleRateButtonClick() {
+    setStartRating((prevStartRating) => !prevStartRating);
+  }
   function handleRate(id) {
     return function (event) {
       event.preventDefault();
-      const newRating = event.target.elements.rating.value;
       setUserInformation((movie) => {
-        const info = userInformation.find((movie) => movie.id === id);
-        if (info) {
+        if (userInformation.find((movie) => movie.id === id)) {
           return userInformation.map((movie) =>
             movie.id === id
-              ? { ...movie, isBookmarked: false, rating: newRating }
+              ? {
+                  ...movie,
+                  isBookmarked: false,
+                  rating: event.target.elements.rating.value,
+                }
               : movie
           );
         }
@@ -45,10 +47,8 @@ export default function App({ Component, pageProps }) {
           ...userInformation,
           {
             id: id,
-
             isBookmarked: false,
-            isBookmarked: false,
-            rating: newRating,
+            rating: event.target.elements.rating.value,
           },
         ];
       });
@@ -59,11 +59,7 @@ export default function App({ Component, pageProps }) {
 
   function handleBookmarkToggle(id) {
     setUserInformation((currentMovies) => {
-      const existingMovie = currentMovies.find(
-        (movieItem) => movieItem.id === id
-      );
-
-      if (existingMovie) {
+      if (currentMovies.find((movieItem) => movieItem.id === id)) {
         return currentMovies.map((movieItem) =>
           movieItem.id === id
             ? { ...movieItem, isBookmarked: !movieItem.isBookmarked }

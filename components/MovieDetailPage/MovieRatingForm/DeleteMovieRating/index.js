@@ -1,4 +1,4 @@
-import FormButtom from "@/components/Buttons/FormButton";
+import FormButton from "@/components/Buttons/FormButton";
 import { styled } from "styled-components";
 
 export default function DeleteMovieRating({
@@ -12,13 +12,13 @@ export default function DeleteMovieRating({
       <GridWrapper>
         <StyledLabel>sicher das du deine Bewertung löschen willst?</StyledLabel>
         <ButtonWrapper>
-          <FormButtom
+          <FormButton
             title={"zurück"}
             backgroundcolor={"var(--background-color-light)"}
             textcolor={"var( --text-color-dark-content)"}
             handleClick={handleGoBackDelete}
           />
-          <FormButtom
+          <FormButton
             title={"löschen"}
             backgroundcolor={"var(--highlight-color)"}
             textcolor={"var( --text-color-dark-content)"}
@@ -46,14 +46,14 @@ const Container = styled.section`
   z-index: 1000;
 `;
 
+const Heading = styled.h2`
+  color: var(--text-color-light-content);
+  font-size: xx-large;
+`;
+
 const GridWrapper = styled.div`
   display: grid;
   gap: var(--gap-medium);
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
 `;
 
 const StyledLabel = styled.h3`
@@ -63,19 +63,7 @@ const StyledLabel = styled.h3`
   text-align: center;
 `;
 
-const Heading = styled.h2`
-  color: var(--text-color-light-content);
-  font-size: xx-large;
-`;
-
-const StyledInput = styled.input`
-  color: var(--text-color-dark-content);
-  font-weight: 600;
-  appearance: none;
-  height: 4rem;
-  width: 40%;
-  border-radius: var(--border-radius-small);
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;

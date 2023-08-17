@@ -24,7 +24,6 @@ export default function RateButton({ handleRateButtonClick, startRating }) {
 const StyledButton = styled.button`
   background-color: var(--highlight-color);
   fill: var(--text-color-dark);
-
   border-radius: 50%;
   padding: var(--padding-x-small);
   &:active {

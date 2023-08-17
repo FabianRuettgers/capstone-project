@@ -22,13 +22,14 @@ export default function DeleteButton({ handleDeleteButtonClick }) {
 }
 
 const StyledButton = styled.button`
-  display: flex;
-  align-items: center;
-  font-size: x-large;
-  background-color: var(--primary-color);
   fill: var(--text-color-dark);
   color: var(--text-color-dark);
+  background-color: var(--primary-color);
+  box-shadow: 0 0 12px var(--shadow-color-dark);
+  font-size: x-large;
   border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
   padding: var(--padding-small);
   &:active {
     transform: scale(0.85);

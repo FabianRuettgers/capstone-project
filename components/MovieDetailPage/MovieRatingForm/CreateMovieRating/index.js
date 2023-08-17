@@ -1,5 +1,4 @@
-import FormButtom from "@/components/Buttons/FormButton";
-import { useState } from "react";
+import FormButton from "@/components/Buttons/FormButton";
 import { styled } from "styled-components";
 
 export default function CreateMovieRating({
@@ -22,13 +21,13 @@ export default function CreateMovieRating({
           required
         />
         <ButtonWrapper>
-          <FormButtom
+          <FormButton
             title={"zurück"}
             backgroundcolor={"var(--background-color-light)"}
             textcolor={"var( --text-color-dark-content)"}
             handleClick={handleGoBackRating}
           />
-          <FormButtom
+          <FormButton
             type={"submit"}
             title={"bewerten"}
             backgroundcolor={"var(--highlight-color)"}
@@ -56,14 +55,14 @@ const Container = styled.section`
   z-index: 1000;
 `;
 
+const Heading = styled.h2`
+  color: var(--text-color-light-content);
+  font-size: xx-large;
+`;
+
 const Form = styled.form`
   display: grid;
   gap: var(--gap-medium);
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
 `;
 
 const StyledLabel = styled.label`
@@ -72,19 +71,18 @@ const StyledLabel = styled.label`
   text-align: center;
 `;
 
-const Heading = styled.h2`
-  color: var(--text-color-light-content);
-  font-size: xx-large;
-`;
-
 const StyledInput = styled.input`
   color: var(--text-color-dark-content);
   font-weight: 600;
-  appearance: none;
+  text-align: center;
   height: 4rem;
   width: 40%;
   border-radius: var(--border-radius-small);
-  text-align: center;
   margin-right: auto;
   margin-left: auto;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;
