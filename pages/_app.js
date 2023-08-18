@@ -13,6 +13,12 @@ export default function App({ Component, pageProps }) {
 
   const [query, setQuery] = useState("");
 
+  const [activeTab, setActiveTab] = useState("saved");
+
+  function handleTabClick(tab) {
+    setActiveTab(tab);
+  }
+
   const [startDelete, setStartDelete] = useState(false);
   function handleDeleteButtonClick() {
     setStartDelete((prevStartDelete) => !prevStartDelete);
@@ -121,6 +127,8 @@ export default function App({ Component, pageProps }) {
           handleDelete={handleDelete}
           handleDeleteButtonClick={handleDeleteButtonClick}
           startDelete={startDelete}
+          activeTab={activeTab}
+          handleTabClick={handleTabClick}
         />
       </SWRConfig>
     </>

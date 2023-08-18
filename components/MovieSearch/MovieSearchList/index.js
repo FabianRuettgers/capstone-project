@@ -40,9 +40,9 @@ export default function MovieSearchList({ movie }) {
             <SvgContainer>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                height="48"
+                height="32"
                 viewBox="0 -960 960 960"
-                width="48"
+                width="32"
               >
                 <path d="m304-82-56-57 343-343-343-343 56-57 400 400L304-82Z" />
               </svg>
@@ -107,5 +107,9 @@ const StyledParagraph = styled.p`
 const SvgContainer = styled.div`
   fill: var(--text-color-light-heading);
   grid-area: 1 / 3 / 3 / 4;
-  scale: 0.7;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-items: center;
 `;

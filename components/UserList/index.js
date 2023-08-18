@@ -1,17 +1,22 @@
 import { styled } from "styled-components";
 import BookmarkedList from "./BookmarkedList";
+import RatedList from "./RatedList";
 
-export default function UserList({ userInformation }) {
+export default function UserList({ userInformation, activeTab }) {
   return (
     <StyledMain>
-      <BookmarkedList userInformation={userInformation} />
+      {activeTab === "saved" ? (
+        <BookmarkedList userInformation={userInformation} />
+      ) : (
+        <RatedList userInformation={userInformation} />
+      )}
     </StyledMain>
   );
 }
 
 const StyledMain = styled.main`
-  display: grid;
-
+  display: flex;
+  flex-direction: column;
   margin-left: var(--margin-medium);
   margin-right: var(--margin-medium);
 

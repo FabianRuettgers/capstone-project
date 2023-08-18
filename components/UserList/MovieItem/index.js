@@ -3,7 +3,7 @@ import Link from "next/link";
 import { styled } from "styled-components";
 import useSWR from "swr";
 
-export default function MovieItem({ id, date }) {
+export default function MovieItem({ id, date, content }) {
   const { data, error } = useSWR(`/api/movie/${id}`);
 
   if (error) {
@@ -15,7 +15,6 @@ export default function MovieItem({ id, date }) {
   }
 
   const movie = data.result;
-  console.log(movie);
 
   return (
     <StyledListitem key={movie.id}>
@@ -33,16 +32,7 @@ export default function MovieItem({ id, date }) {
         </ImageContainer>
         <Heading>{movie.title}</Heading>
         <StyledParagraph>{date}</StyledParagraph>
-        <SvgContainer>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="48"
-            viewBox="0 -960 960 960"
-            width="48"
-          >
-            <path d="m304-82-56-57 343-343-343-343 56-57 400 400L304-82Z" />
-          </svg>
-        </SvgContainer>
+        <ContentContainer>{content}</ContentContainer>
       </StyledLink>
     </StyledListitem>
   );
@@ -95,11 +85,16 @@ const Heading = styled.h2`
 
 const StyledParagraph = styled.p`
   color: var(--text-color-light-heading);
-  font-size: medium;
+  font-size: small;
   grid-area: 2 / 2 / 3 / 3;
 `;
-const SvgContainer = styled.div`
+const ContentContainer = styled.div`
   fill: var(--text-color-light-heading);
   grid-area: 1 / 3 / 3 / 4;
-  scale: 0.7;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
 `;
