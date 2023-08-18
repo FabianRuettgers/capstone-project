@@ -8,9 +8,15 @@ import MovieProvider from "./MovieDetails/MovieProvider";
 
 export default function MovieDetailPage({
   movie,
-  bookmarkedMovies,
+  userInformation,
   handleBookmarkToggle,
+  handleRateButtonClick,
+  startRating,
+  handleDeleteButtonClick,
 }) {
+  const userItem = userInformation.find((item) => item.id === movie.id);
+  const userRating = userItem ? userItem.rating : null;
+
   return (
     <StyledMain>
       <DetailsContentSection>
@@ -34,6 +40,12 @@ export default function MovieDetailPage({
           ) : (
             <MovieLabel heading={"Rating"} content={`unbekannt`} />
           )}
+          {userRating ? (
+            <MovieLabel
+              heading={"Dein Rating"}
+              content={`${userRating} / 10`}
+            />
+          ) : null}
         </DetailsContentFlexContainer>
       </DetailsContentSection>
       <TitleContentSection>
@@ -42,8 +54,11 @@ export default function MovieDetailPage({
       <ButtonContentSection>
         <ButtonSection
           id={movie.id}
-          bookmarkedMovies={bookmarkedMovies}
+          userInformation={userInformation}
           handleBookmarkToggle={handleBookmarkToggle}
+          handleRateButtonClick={handleRateButtonClick}
+          handleDeleteButtonClick={handleDeleteButtonClick}
+          startRating={startRating}
         />
       </ButtonContentSection>
       <DescribtionContentSection>

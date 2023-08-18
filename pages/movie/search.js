@@ -3,6 +3,7 @@ import HeaderMenu from "@/components/Navigation/Header/HeaderMenu";
 import { styled } from "styled-components";
 import useSWR from "swr";
 import MovieSearch from "@/components/MovieSearch";
+import Head from "next/head";
 
 export default function Search({ query, setQuery }) {
   const { data, error, isLoading } = useSWR(
@@ -16,6 +17,10 @@ export default function Search({ query, setQuery }) {
   if (error) {
     return (
       <>
+        <Head>
+          <title>Error</title>
+          <meta name="description" content="a error-screen" />
+        </Head>
         <HeaderMenu title={"Film suchen"} />
         <MobileViewWrapper>
           <ErrorFetching />
@@ -26,8 +31,11 @@ export default function Search({ query, setQuery }) {
 
   return (
     <>
+      <Head>
+        <title>Movie Search</title>
+        <meta name="description" content="a movie search form" />
+      </Head>
       <HeaderMenu title={"Film suchen"} />
-
       <MobileViewWrapper>
         <MovieSearch
           query={query}

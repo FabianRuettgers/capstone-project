@@ -7,15 +7,14 @@ export default function MovieRandom({ randomMovie }) {
   return (
     <StyledMain>
       <StyledSection>
-        <Link href={`/movie/${randomMovie.id}`}>
+        <StyledLink href={`/movie/${randomMovie.id}`}>
           <StyledImage
             src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
             alt={randomMovie.title}
             height={750}
             width={500}
-            priority
           />
-        </Link>
+        </StyledLink>
         <Rating>{randomMovie.vote_average} / 10</Rating>
         <ButtonWrapper>
           <ReloadFetchButton />
@@ -36,6 +35,10 @@ const StyledMain = styled.main`
 const StyledSection = styled.section`
   position: relative;
   margin: var(--margin-medium);
+`;
+
+const StyledLink = styled(Link)`
+  height: max-content;
 `;
 
 const StyledImage = styled(Image)`

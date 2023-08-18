@@ -5,16 +5,33 @@ import HeaderMenu from "@/components/Navigation/Header/HeaderMenu";
 import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
 import MovieDetailPage from "@/components/MovieDetailPage";
 import LoadFetching from "@/components/LoadingHandling/LoadFetching";
+import Head from "next/head";
+import CreateMovieRating from "@/components/MovieDetailPage/MovieRatingForm/CreateMovieRating";
+import DeleteMovieRating from "@/components/MovieDetailPage/MovieRatingForm/DeleteMovieRating";
 
-export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
+export default function Detailpage({
+  userInformation,
+  handleBookmarkToggle,
+  handleRate,
+  handleRateButtonClick,
+  startRating,
+  handleDelete,
+  handleDeleteButtonClick,
+  startDelete,
+}) {
   const router = useRouter();
   const { id } = router.query;
 
   const { data, error, isLoading } = useSWR(`/api/movie/${id}`);
+  const HeaderDisable = startRating || startDelete;
 
   if (isLoading) {
     return (
       <>
+        <Head>
+          <title>Loading screen</title>
+          <meta name="description" content="a Loading-screen" />
+        </Head>
         <HeaderMenu title={"Film Details"} />
         <MobileViewWrapper>
           <LoadFetching />
@@ -26,6 +43,10 @@ export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
   if (error || !data || data.result.success === false) {
     return (
       <>
+        <Head>
+          <title>Error</title>
+          <meta name="description" content="a error-screen" />
+        </Head>
         <HeaderMenu title={"Film Details"} />
         <MobileViewWrapper>
           <ErrorFetching />
@@ -36,14 +57,35 @@ export default function Detailpage({ bookmarkedMovies, handleBookmarkToggle }) {
 
   return (
     <>
-      <HeaderMenu title={"Film Details"} />
+      <Head>
+        <title>Movie Detailpage</title>
+        <meta name="description" content="a Movie Detailpage" />
+      </Head>
+      <HeaderMenu title={"Film Details"} disable={HeaderDisable} />
       <MobileViewWrapper>
         <MovieDetailPage
           movie={data.result}
-          bookmarkedMovies={bookmarkedMovies}
+          userInformation={userInformation}
           handleBookmarkToggle={handleBookmarkToggle}
+          handleRateButtonClick={handleRateButtonClick}
+          handleDeleteButtonClick={handleDeleteButtonClick}
+          startRating={startRating}
         />
       </MobileViewWrapper>
+      {startRating ? (
+        <CreateMovieRating
+          id={data.result.id}
+          handleRate={handleRate}
+          handleGoBackRating={handleRateButtonClick}
+        />
+      ) : null}
+      {startDelete ? (
+        <DeleteMovieRating
+          id={data.result.id}
+          handleDelete={handleDelete}
+          handleGoBackDelete={handleDeleteButtonClick}
+        />
+      ) : null}
     </>
   );
 }

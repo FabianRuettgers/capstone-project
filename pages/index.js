@@ -2,6 +2,7 @@ import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
 import LoadFetching from "@/components/LoadingHandling/LoadFetching";
 import MovieRandom from "@/components/MovieRandom";
 import HeaderNav from "@/components/Navigation/Header/HeaderNav";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import useSWR from "swr";
@@ -23,6 +24,10 @@ export default function HomePage() {
   if (!showRandomMovie) {
     return (
       <>
+        <Head>
+          <title>Loading screen</title>
+          <meta name="description" content="a Loading-screen" />
+        </Head>
         <HeaderNav />
         <MobileViewWrapper>
           <LoadFetching />
@@ -34,6 +39,10 @@ export default function HomePage() {
   if (error || !data || data.success === false) {
     return (
       <>
+        <Head>
+          <title>Error</title>
+          <meta name="description" content="a error-screen" />
+        </Head>
         <HeaderNav />
         <MobileViewWrapper>
           <ErrorFetching />
@@ -44,6 +53,10 @@ export default function HomePage() {
 
   return (
     <>
+      <Head>
+        <title>Random Movie Spotlight-page</title>
+        <meta name="description" content="a random Movie spotlightpage" />
+      </Head>
       <HeaderNav />
       <MobileViewWrapper>
         {showRandomMovie && (
