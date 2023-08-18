@@ -1,6 +1,7 @@
 import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
 import LoadFetching from "@/components/LoadingHandling/LoadFetching";
 import MovieRandom from "@/components/MovieRandom";
+import FooterNav from "@/components/Navigation/Footer/FooterNav";
 import HeaderNav from "@/components/Navigation/Header/HeaderNav";
 import Head from "next/head";
 import { useEffect, useState } from "react";
@@ -32,6 +33,7 @@ export default function HomePage() {
         <MobileViewWrapper>
           <LoadFetching />
         </MobileViewWrapper>
+        <FooterNav />
       </>
     );
   }
@@ -67,6 +69,7 @@ export default function HomePage() {
           />
         )}
       </MobileViewWrapper>
+      <FooterNav />
     </>
   );
 }
