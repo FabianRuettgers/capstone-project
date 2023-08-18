@@ -1,9 +1,15 @@
+import SearchFormButton from "@/components/Buttons/SearchFormButton";
 import FooterNav from "@/components/Navigation/Footer/FooterNav";
 import HeaderNav from "@/components/Navigation/Header/HeaderNav";
 import HeaderUserPage from "@/components/Navigation/Header/HeaderUserPage";
 import UserList from "@/components/UserList";
 import Head from "next/head";
+import { useState } from "react";
 import { styled } from "styled-components";
+
+function UseError() {
+  const [isError, setIsError] = useState(false);
+}
 
 export default function userList({
   userInformation,
@@ -21,7 +27,8 @@ export default function userList({
       <MobileViewWrapper>
         <UserList userInformation={userInformation} activeTab={activeTab} />
       </MobileViewWrapper>
-      <FooterNav></FooterNav>
+      <SearchFormButton />
+      <FooterNav />
     </>
   );
 }

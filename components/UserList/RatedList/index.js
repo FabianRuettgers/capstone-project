@@ -33,7 +33,7 @@ const List = styled.ul`
 
 const GridWrapper = styled.div`
   background-color: var(--highlight-color);
-  padding: 1rem;
+  padding: var(--padding-small);
   width: 100%;
   border-radius: 50%;
   display: flex;
