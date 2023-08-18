@@ -38,7 +38,15 @@ export default function App({ Component, pageProps }) {
               ? {
                   ...movie,
                   isBookmarked: false,
+                  bookmarkDate: undefined,
                   rating: event.target.elements.rating.value,
+                  ratingDate: movie.rating
+                    ? undefined
+                    : new Date().toLocaleDateString("de-DE", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                      }),
                 }
               : movie
           );
@@ -49,6 +57,11 @@ export default function App({ Component, pageProps }) {
             id: id,
             isBookmarked: false,
             rating: event.target.elements.rating.value,
+            ratingDate: new Date().toLocaleDateString("de-DE", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+            }),
           },
         ];
       });
@@ -59,11 +72,21 @@ export default function App({ Component, pageProps }) {
 
   function handleBookmarkToggle(id) {
     setUserInformation((currentMovies) => {
-      if (currentMovies.find((movieItem) => movieItem.id === id)) {
-        return currentMovies.map((movieItem) =>
-          movieItem.id === id
-            ? { ...movieItem, isBookmarked: !movieItem.isBookmarked }
-            : movieItem
+      if (currentMovies.find((movie) => movie.id === id)) {
+        return currentMovies.map((movie) =>
+          movie.id === id
+            ? {
+                ...movie,
+                isBookmarked: !movie.isBookmarked,
+                bookmarkDate: movie.isBookmarked
+                  ? undefined
+                  : new Date().toLocaleDateString("de-DE", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    }),
+              }
+            : movie
         );
       } else {
         return [
@@ -71,6 +94,11 @@ export default function App({ Component, pageProps }) {
           {
             id: id,
             isBookmarked: true,
+            bookmarkDate: new Date().toLocaleDateString("de-DE", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+            }),
           },
         ];
       }

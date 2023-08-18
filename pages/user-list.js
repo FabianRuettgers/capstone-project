@@ -1,9 +1,11 @@
 import FooterNav from "@/components/Navigation/Footer/FooterNav";
 import HeaderNav from "@/components/Navigation/Header/HeaderNav";
+import UserList from "@/components/UserList";
 import Head from "next/head";
 import { styled } from "styled-components";
 
-export default function userList() {
+export default function userList({ userInformation }) {
+  const bookmarkedMovies = userInformation.filter((item) => item.isBookmarked);
   return (
     <>
       <Head>
@@ -11,7 +13,9 @@ export default function userList() {
         <meta name="description" content="a random Movie spotlightpage" />
       </Head>
       <HeaderNav />
-      <MobileViewWrapper></MobileViewWrapper>
+      <MobileViewWrapper>
+        <UserList userInformation={userInformation} />
+      </MobileViewWrapper>
       <FooterNav></FooterNav>
     </>
   );
