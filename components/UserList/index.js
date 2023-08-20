@@ -2,13 +2,23 @@ import { styled } from "styled-components";
 import BookmarkedList from "./BookmarkedList";
 import RatedList from "./RatedList";
 
-export default function UserList({ userInformation, activeTab }) {
+export default function UserList({
+  userInformation,
+  activeTab,
+  startFetchLoading,
+}) {
   return (
     <StyledMain>
       {activeTab === "saved" ? (
-        <BookmarkedList userInformation={userInformation} />
+        <BookmarkedList
+          userInformation={userInformation}
+          startFetchLoading={startFetchLoading}
+        />
       ) : (
-        <RatedList userInformation={userInformation} />
+        <RatedList
+          userInformation={userInformation}
+          startFetchLoading={startFetchLoading}
+        />
       )}
     </StyledMain>
   );

@@ -2,6 +2,7 @@ import { SWRConfig } from "swr";
 import GlobalStyle from "../styles";
 import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
+import { useLoading } from "@/components/LoadingHandling/LoadingHook";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -111,6 +112,14 @@ export default function App({ Component, pageProps }) {
     });
   }
 
+  const { isFetchLoading, setFetchLoading, clearFetchLoading } = useLoading();
+  function startFetchLoading() {
+    setFetchLoading();
+    setTimeout(() => {
+      clearFetchLoading();
+    }, 2000);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -129,6 +138,8 @@ export default function App({ Component, pageProps }) {
           startDelete={startDelete}
           activeTab={activeTab}
           handleTabClick={handleTabClick}
+          isFetchLoading={isFetchLoading}
+          startFetchLoading={startFetchLoading}
         />
       </SWRConfig>
     </>

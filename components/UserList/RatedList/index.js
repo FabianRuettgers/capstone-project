@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import MovieItem from "../MovieItem";
 
-export default function RatedList({ userInformation }) {
+export default function RatedList({ userInformation, startFetchLoading }) {
   const ratedMovies = userInformation.filter((item) => item.rating);
   const sortedMoviesHightoLow = ratedMovies.sort((a, b) => b.rating - a.rating);
 
@@ -16,12 +16,29 @@ export default function RatedList({ userInformation }) {
               date={`bewertet am ${movie.ratingDate}`}
               content={
                 <GridWrapper>
-                  <P>{movie.rating}</P>
+                  <styledParagraph>{movie.rating}</styledParagraph>
                 </GridWrapper>
               }
+              startFetchLoading={startFetchLoading}
             />
           ))}
         </List>
+      ) : null}
+      {ratedMovies.length === 0 ? (
+        <StyledFigure>
+          <StyledSvg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            viewBox="0 -960 960 960"
+            width="48"
+          >
+            <path d="M626-533q22.5 0 38.25-15.75T680-587q0-22.5-15.75-38.25T626-641q-22.5 0-38.25 15.75T572-587q0 22.5 15.75 38.25T626-533Zm-292 0q22.5 0 38.25-15.75T388-587q0-22.5-15.75-38.25T334-641q-22.5 0-38.25 15.75T280-587q0 22.5 15.75 38.25T334-533Zm146.174 116Q413-417 358.5-379.5T278-280h53q22-42 62.173-65t87.5-23Q528-368 567.5-344.5T630-280h52q-25-63-79.826-100-54.826-37-122-37ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 340q142.375 0 241.188-98.812Q820-337.625 820-480t-98.812-241.188Q622.375-820 480-820t-241.188 98.812Q140-622.375 140-480t98.812 241.188Q337.625-140 480-140Z" />
+          </StyledSvg>
+          <Caption>Keinen Film gefunden</Caption>
+          <StyledErrorParagraph>
+            bewerte Filme um die Liste zu Füllen
+          </StyledErrorParagraph>
+        </StyledFigure>
       ) : null}
     </>
   );
@@ -40,7 +57,33 @@ const GridWrapper = styled.div`
   justify-content: center;
 `;
 
-const P = styled.p`
+const styledParagraph = styled.p`
   color: var(--text-color-dark-heading);
   font-size: 1rem;
+`;
+
+const StyledFigure = styled.figure`
+  display: grid;
+  margin-top: var(--margin-medium);
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+`;
+
+const StyledSvg = styled.svg`
+  fill: var(--text-color-light-heading);
+`;
+
+const Caption = styled.figcaption`
+  color: var(--text-color-light-heading);
+  font-weight: 600;
+  font-size: large;
+  margin-top: 1rem;
+`;
+
+const StyledErrorParagraph = styled.p`
+  color: var(--text-color-light-content);
+  font-weight: 400;
+  font-size: medium;
+  margin-top: var(--margin-x-small);
 `;

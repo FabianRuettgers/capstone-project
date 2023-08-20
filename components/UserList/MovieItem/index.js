@@ -3,26 +3,24 @@ import Link from "next/link";
 import { styled } from "styled-components";
 import useSWR from "swr";
 
-export default function MovieItem({ id, date, content }) {
-  const { data, error } = useSWR(`/api/movie/${id}`);
+export default function MovieItem({ id, date, content, startFetchLoading }) {
+  const { data, error, isLoading } = useSWR(`/api/movie/${id}`);
 
   if (error) {
-    return <p>Error: {error.message}</p>;
+    return <h2>error</h2>;
   }
 
-  if (!data) {
-    return <p>Loading...</p>;
+  if (isLoading) {
+    return startFetchLoading();
   }
-
-  const movie = data.result;
 
   return (
-    <StyledListitem key={movie.id}>
-      <StyledLink href={`/movie/${movie.id}`}>
+    <StyledListitem key={data.result.id}>
+      <StyledLink href={`/movie/${data.result.id}`}>
         <ImageContainer>
           <StyledImage
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
+            src={`https://image.tmdb.org/t/p/w500${data.result.poster_path}`}
+            alt={data.result.title}
             layout="responsive"
             object-fit="contain"
             height={750}
@@ -30,7 +28,7 @@ export default function MovieItem({ id, date, content }) {
             priority={true}
           />
         </ImageContainer>
-        <Heading>{movie.title}</Heading>
+        <Heading>{data.result.title}</Heading>
         <StyledParagraph>{date}</StyledParagraph>
         <ContentContainer>{content}</ContentContainer>
       </StyledLink>
