@@ -15,12 +15,12 @@ export default function MovieItem({ id, date, content, startFetchLoading }) {
   }
 
   return (
-    <StyledListitem key={data.result.id}>
-      <StyledLink href={`/movie/${data.result.id}`}>
+    <StyledListitem key={data.data.id}>
+      <StyledLink href={`/movie/${data.data.id}`}>
         <ImageContainer>
           <StyledImage
-            src={`https://image.tmdb.org/t/p/w500${data.result.poster_path}`}
-            alt={data.result.title}
+            src={`https://image.tmdb.org/t/p/w500${data.data.poster_path}`}
+            alt={data.data.title}
             layout="responsive"
             object-fit="contain"
             height={750}
@@ -28,7 +28,7 @@ export default function MovieItem({ id, date, content, startFetchLoading }) {
             priority={true}
           />
         </ImageContainer>
-        <Heading>{data.result.title}</Heading>
+        <Heading>{data.data.title}</Heading>
         <StyledParagraph>{date}</StyledParagraph>
         <ContentContainer>{content}</ContentContainer>
       </StyledLink>

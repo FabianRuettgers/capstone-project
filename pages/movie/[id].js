@@ -42,7 +42,7 @@ export default function Detailpage({
     );
   }
 
-  if (error || !data || data.result.success === false) {
+  if (error || !data) {
     return (
       <>
         <Head>
@@ -66,7 +66,7 @@ export default function Detailpage({
       <HeaderMenu title={"Film Details"} disable={HeaderDisable} />
       <MobileViewWrapper>
         <MovieDetailPage
-          movie={data.result}
+          movie={data}
           userInformation={userInformation}
           handleBookmarkToggle={handleBookmarkToggle}
           handleRateButtonClick={handleRateButtonClick}
@@ -76,14 +76,14 @@ export default function Detailpage({
       </MobileViewWrapper>
       {startRating ? (
         <CreateMovieRating
-          id={data.result.id}
+          id={data.movie.id}
           handleRate={handleRate}
           handleGoBackRating={handleRateButtonClick}
         />
       ) : null}
       {startDelete ? (
         <DeleteMovieRating
-          id={data.result.id}
+          id={data.movie.id}
           handleDelete={handleDelete}
           handleGoBackDelete={handleDeleteButtonClick}
         />

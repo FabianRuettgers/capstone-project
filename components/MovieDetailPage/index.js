@@ -14,28 +14,31 @@ export default function MovieDetailPage({
   startRating,
   handleDeleteButtonClick,
 }) {
-  const userItem = userInformation.find((item) => item.id === movie.id);
+  const userItem = userInformation.find((item) => item.id === movie.data.id);
   const userRating = userItem ? userItem.rating : null;
 
   return (
     <StyledMain>
       <DetailsContentSection>
-        <MovieImage movie={movie} />
+        <MovieImage movie={movie.data} />
         <DetailsContentFlexContainer>
-          {movie.runtime ? (
-            <MovieLabel heading={"Länge"} content={`${movie.runtime} min`} />
+          {movie.data.runtime ? (
+            <MovieLabel
+              heading={"Länge"}
+              content={`${movie.data.runtime} min`}
+            />
           ) : (
             <MovieLabel heading={"Länge"} content={`unbekannt`} />
           )}
-          {movie.genres.length !== 0 ? (
-            <MovieLabel heading={"Genre"} content={movie.genres[0].name} />
+          {movie.data.genres.length !== 0 ? (
+            <MovieLabel heading={"Genre"} content={movie.data.genres[0].name} />
           ) : (
             <MovieLabel heading={"Genre"} content={`unbekannt`} />
           )}
-          {movie.vote_average ? (
+          {movie.data.vote_average ? (
             <MovieLabel
               heading={"Rating"}
-              content={`${movie.vote_average.toFixed(1)} / 10`}
+              content={`${movie.data.vote_average.toFixed(1)} / 10`}
             />
           ) : (
             <MovieLabel heading={"Rating"} content={`unbekannt`} />
@@ -49,11 +52,11 @@ export default function MovieDetailPage({
         </DetailsContentFlexContainer>
       </DetailsContentSection>
       <TitleContentSection>
-        <MovieTitle movie={movie} />
+        <MovieTitle movie={movie.data} />
       </TitleContentSection>
       <ButtonContentSection>
         <ButtonSection
-          id={movie.id}
+          id={movie.data.id}
           userInformation={userInformation}
           handleBookmarkToggle={handleBookmarkToggle}
           handleRateButtonClick={handleRateButtonClick}
@@ -62,11 +65,12 @@ export default function MovieDetailPage({
         />
       </ButtonContentSection>
       <DescribtionContentSection>
-        <MovieDescribtion movie={movie} />
+        <MovieDescribtion movie={movie.data} />
       </DescribtionContentSection>
       <ProviderContentSection>
-        <MovieProvider id={movie.id} />
+        <MovieProvider id={movie.data.id} />
       </ProviderContentSection>
+      <CommentContentSection></CommentContentSection>
     </StyledMain>
   );
 }
@@ -111,6 +115,10 @@ const DescribtionContentSection = styled.section`
   margin-bottom: var(--margin-small);
 `;
 const ProviderContentSection = styled.section`
+  margin-top: var(--margin-small);
+  margin-bottom: var(--margin-medium);
+`;
+const CommentContentSection = styled.section`
   margin-top: var(--margin-small);
   margin-bottom: var(--margin-medium);
 `;
