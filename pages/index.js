@@ -1,6 +1,7 @@
 import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
 import LoadFetching from "@/components/LoadingHandling/LoadFetching";
 import MovieRandom from "@/components/MovieRandom";
+import FooterNav from "@/components/Navigation/Footer/FooterNav";
 import HeaderNav from "@/components/Navigation/Header/HeaderNav";
 import Head from "next/head";
 import { useEffect, useState } from "react";
@@ -9,19 +10,20 @@ import useSWR from "swr";
 
 const API_KEY = process.env.API_KEY;
 
-export default function HomePage() {
+export default function HomePage({
+  isFetchError,
+  isFetchLoading,
+  startFetchLoading,
+}) {
   const { data, error, isLoading } = useSWR(`/api/movies`);
-  const [showRandomMovie, setShowRandomMovie] = useState(false);
 
   useEffect(() => {
-    if (!isLoading) {
-      setTimeout(() => {
-        setShowRandomMovie(true);
-      }, 800);
+    if (isLoading) {
+      startFetchLoading();
     }
-  }, [isLoading]);
+  }, [isLoading, startFetchLoading]);
 
-  if (!showRandomMovie) {
+  if (isFetchLoading) {
     return (
       <>
         <Head>
@@ -32,6 +34,7 @@ export default function HomePage() {
         <MobileViewWrapper>
           <LoadFetching />
         </MobileViewWrapper>
+        <FooterNav />
       </>
     );
   }
@@ -59,14 +62,13 @@ export default function HomePage() {
       </Head>
       <HeaderNav />
       <MobileViewWrapper>
-        {showRandomMovie && (
-          <MovieRandom
-            randomMovie={
-              data.results[Math.floor(Math.random() * data.results.length)]
-            }
-          />
-        )}
+        <MovieRandom
+          randomMovie={
+            data.results[Math.floor(Math.random() * data.results.length)]
+          }
+        />
       </MobileViewWrapper>
+      <FooterNav />
     </>
   );
 }

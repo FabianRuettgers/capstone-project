@@ -18,11 +18,13 @@ export default function Detailpage({
   handleDelete,
   handleDeleteButtonClick,
   startDelete,
+  isFetchLoading,
+  startFetchLoading,
 }) {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data, error, isLoading } = useSWR(`/api/movie/${id}`);
+  const { data, isLoading, error } = useSWR(`/api/movie/${id}`);
   const HeaderDisable = startRating || startDelete;
 
   if (isLoading) {

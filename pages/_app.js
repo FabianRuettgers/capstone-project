@@ -2,6 +2,7 @@ import { SWRConfig } from "swr";
 import GlobalStyle from "../styles";
 import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
+import { useLoading } from "@/components/LoadingHandling/LoadingHook";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -12,6 +13,12 @@ export default function App({ Component, pageProps }) {
   );
 
   const [query, setQuery] = useState("");
+
+  const [activeTab, setActiveTab] = useState("saved");
+
+  function handleTabClick(tab) {
+    setActiveTab(tab);
+  }
 
   const [startDelete, setStartDelete] = useState(false);
   function handleDeleteButtonClick() {
@@ -38,7 +45,15 @@ export default function App({ Component, pageProps }) {
               ? {
                   ...movie,
                   isBookmarked: false,
+                  bookmarkDate: undefined,
                   rating: event.target.elements.rating.value,
+                  ratingDate: movie.rating
+                    ? undefined
+                    : new Date().toLocaleDateString("de-DE", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                      }),
                 }
               : movie
           );
@@ -49,6 +64,11 @@ export default function App({ Component, pageProps }) {
             id: id,
             isBookmarked: false,
             rating: event.target.elements.rating.value,
+            ratingDate: new Date().toLocaleDateString("de-DE", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+            }),
           },
         ];
       });
@@ -59,11 +79,21 @@ export default function App({ Component, pageProps }) {
 
   function handleBookmarkToggle(id) {
     setUserInformation((currentMovies) => {
-      if (currentMovies.find((movieItem) => movieItem.id === id)) {
-        return currentMovies.map((movieItem) =>
-          movieItem.id === id
-            ? { ...movieItem, isBookmarked: !movieItem.isBookmarked }
-            : movieItem
+      if (currentMovies.find((movie) => movie.id === id)) {
+        return currentMovies.map((movie) =>
+          movie.id === id
+            ? {
+                ...movie,
+                isBookmarked: !movie.isBookmarked,
+                bookmarkDate: movie.isBookmarked
+                  ? undefined
+                  : new Date().toLocaleDateString("de-DE", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    }),
+              }
+            : movie
         );
       } else {
         return [
@@ -71,10 +101,23 @@ export default function App({ Component, pageProps }) {
           {
             id: id,
             isBookmarked: true,
+            bookmarkDate: new Date().toLocaleDateString("de-DE", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+            }),
           },
         ];
       }
     });
+  }
+
+  const { isFetchLoading, setFetchLoading, clearFetchLoading } = useLoading();
+  function startFetchLoading() {
+    setFetchLoading();
+    setTimeout(() => {
+      clearFetchLoading();
+    }, 2000);
   }
 
   return (
@@ -93,6 +136,10 @@ export default function App({ Component, pageProps }) {
           handleDelete={handleDelete}
           handleDeleteButtonClick={handleDeleteButtonClick}
           startDelete={startDelete}
+          activeTab={activeTab}
+          handleTabClick={handleTabClick}
+          isFetchLoading={isFetchLoading}
+          startFetchLoading={startFetchLoading}
         />
       </SWRConfig>
     </>
