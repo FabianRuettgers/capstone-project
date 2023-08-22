@@ -1,4 +1,3 @@
-import BookmarkButton from "@/components/Buttons/BookmarkButton";
 import { useRouter } from "next/router";
 import { styled } from "styled-components";
 
@@ -28,8 +27,8 @@ export default function HeaderDetailsPage({ disable }) {
 }
 
 const StyledHeader = styled.header`
-  color: var(--text-color-light-heading);
-  fill: var(--text-color-light-heading);
+  color: var(--text-color-light-button);
+  fill: var(--text-color-light-button);
   background-color: transparent;
 
   height: 12vh;

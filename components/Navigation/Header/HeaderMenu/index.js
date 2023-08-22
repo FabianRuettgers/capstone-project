@@ -30,8 +30,9 @@ export default function HeaderMenu({ title, disable }) {
 const StyledHeader = styled.header`
   color: var(--text-color-light-heading);
   fill: var(--text-color-light-heading);
-  background-color: var(--background-color);
+  background-color: var(--background-color-dark-content);
   box-shadow: 0 0 28px var(--shadow-color-dark);
+  font-size: var(--header-h3);
   width: 100%;
   height: 12vh;
   display: flex;

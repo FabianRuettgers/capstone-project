@@ -50,8 +50,8 @@ const MobileViewWrapper = styled.div`
 `;
 
 const StyledFooter = styled.footer`
-  background-color: var(--background-color);
-  fill: var(--text-color-light);
+  background-color: var(--background-color-dark-content);
+  fill: var(--text-color-light-button);
   box-shadow: 0 0 28px var(--shadow-color-dark);
   height: 12vh;
   width: 100%;
@@ -64,10 +64,10 @@ const StyledFooter = styled.footer`
 const StyledSvg = styled.svg`
   fill: ${(props) =>
     props.isActivated
-      ? "var(--text-color-dark-heading)"
-      : "var(--text-color-light)"};
+      ? "var(--text-color-dark-button)"
+      : "var(--text-color-light-button)"};
   background-color: ${(props) =>
-    props.isActivated ? "var(--highlight-color)" : "inherit"};
+    props.isActivated ? "var(--background-color-highlight-button)" : "inherit"};
   padding: var(--padding-x-small);
   border-radius: 50%;
 `;
