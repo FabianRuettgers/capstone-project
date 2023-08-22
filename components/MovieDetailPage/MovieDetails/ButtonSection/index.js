@@ -52,9 +52,9 @@ export default function ButtonSection({
 const SectionContainer = styled.section`
   border-top: 2px solid var(--highlight-color);
   border-bottom: 2px solid var(--highlight-color);
-  margin-top: 2rem;
+  margin-top: var(--margin-medium);
 
-  margin-inline: 2rem;
+  margin-inline: var(--margin-medium);
   display: flex;
   justify-content: space-around;
   align-items: center;

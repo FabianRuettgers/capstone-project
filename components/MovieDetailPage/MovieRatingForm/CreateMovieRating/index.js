@@ -42,7 +42,7 @@ export default function CreateMovieRating({
 const Container = styled.section`
   color: var(--text-color-light-heading);
   fill: var(--text-color-light-heading);
-  background-color: var(--background-color);
+  background-color: var(--background-color-dark-content);
   box-shadow: 0 0 28px var(--shadow-color-dark);
   width: 100%;
   position: fixed;
@@ -57,7 +57,7 @@ const Container = styled.section`
 
 const Heading = styled.h2`
   color: var(--text-color-light-content);
-  font-size: xx-large;
+  font-size: var(--header-h1);
 `;
 
 const Form = styled.form`
@@ -67,13 +67,12 @@ const Form = styled.form`
 
 const StyledLabel = styled.label`
   color: var(--text-color-light-heading);
-  font-size: x-large;
+  font-size: var(--header-h2);
   text-align: center;
 `;
 
 const StyledInput = styled.input`
   color: var(--text-color-dark-content);
-  font-weight: 600;
   text-align: center;
   height: 4rem;
   width: 40%;

@@ -14,7 +14,7 @@ export default function MovieGenre({ movie }) {
 
 const GenreContainer = styled.section`
   display: flex;
-  gap: 0.5rem;
-  margin-top: 2rem;
-  margin-inline: 2rem;
+  gap: var(--gap-x-small);
+  margin-top: var(--margin-medium);
+  margin-inline: var(--margin-medium);
 `;

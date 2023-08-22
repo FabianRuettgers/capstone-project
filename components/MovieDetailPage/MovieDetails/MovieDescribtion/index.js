@@ -12,9 +12,7 @@ export default function MovieDescribtion({ movie }) {
 
 const Content = styled.p`
   color: var(--text-color-light-content);
-  font-weight: 400;
-  font-size: 13px;
-
+  font-size: var(--big-text);
   text-align: justify;
   margin-top: var(--margin-medium);
   margin-inline: var(--margin-medium);

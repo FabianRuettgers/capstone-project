@@ -20,7 +20,7 @@ export default function MovieDetailPage({
 }) {
   const userItem = userInformation.find((item) => item.id === movie.data.id);
   const userRating = userItem ? userItem.rating : null;
-  console.log(userItem);
+
   return (
     <StyledMain>
       <MovieImage movie={movie} />
@@ -42,4 +42,6 @@ export default function MovieDetailPage({
     </StyledMain>
   );
 }
-const StyledMain = styled.main``;
+const StyledMain = styled.main`
+  margin-bottom: var(--margin-medium);
+`;

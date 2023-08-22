@@ -40,13 +40,12 @@ export default function MovieProvider({ id }) {
 
 const StyledSection = styled.section`
   display: grid;
-  gap: 2rem;
-  margin: 2rem;
-  padding-inline: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  background-color: var(--background-color);
-  box-shadow: 0 0 24px var(--shadow-color-dark);
-
-  border-radius: 2rem;
+  gap: var(--gap-medium);
+  margin: var(--margin-medium);
+  padding-inline: var(--padding-small);
+  padding-top: var(--padding-medium);
+  padding-bottom: var(--padding-medium);
+  background-color: var(--background-color-dark-content);
+  box-shadow: 0 0 12px var(--shadow-color-dark);
+  border-radius: var(--border-radius-medium);
 `;

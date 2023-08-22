@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { styled } from "styled-components";
-import HeaderMenu from "@/components/Navigation/Header/HeaderMenu";
 import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
 import MovieDetailPage from "@/components/MovieDetailPage";
 import LoadFetching from "@/components/LoadingHandling/LoadFetching";
@@ -19,8 +18,6 @@ export default function Detailpage({
   handleDelete,
   handleDeleteButtonClick,
   startDelete,
-  isFetchLoading,
-  startFetchLoading,
 }) {
   const router = useRouter();
   const { id } = router.query;
@@ -35,9 +32,10 @@ export default function Detailpage({
           <title>Loading screen</title>
           <meta name="description" content="a Loading-screen" />
         </Head>
-        <HeaderMenu />
         <MobileViewWrapper>
-          <LoadFetching />
+          <LoadingSection>
+            <LoadFetching />
+          </LoadingSection>
         </MobileViewWrapper>
       </>
     );
@@ -50,7 +48,6 @@ export default function Detailpage({
           <title>Error</title>
           <meta name="description" content="a error-screen" />
         </Head>
-        <HeaderMenu />
         <MobileViewWrapper>
           <ErrorFetching />
         </MobileViewWrapper>
@@ -98,4 +95,8 @@ const MobileViewWrapper = styled.div`
   display: grid;
   margin-left: auto;
   margin-right: auto;
+`;
+
+const LoadingSection = styled.section`
+  height: 100vh;
 `;

@@ -26,15 +26,15 @@ export default function ProviderList({ heading, providerData }) {
 const Heading = styled.h2`
   text-align: center;
   color: var(--text-color-light-heading);
-  font-size: 15px;
+  font-size: var(--header-h3);
 `;
 
 const StyledList = styled.ul`
   display: grid;
   grid-template-columns: ${(props) => props.gridColumns};
-  grid-row-gap: 1rem;
+  grid-row-gap: var(--gap-small);
   justify-items: center;
-  margin-top: 1rem;
+  margin-top: var(--margin-small);
 `;
 
 const StyledListitem = styled.li`

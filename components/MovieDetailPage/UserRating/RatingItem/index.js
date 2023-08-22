@@ -153,14 +153,15 @@ export default function RatingItem({ movieRating }) {
 }
 
 const StyledFigure = styled.div`
-  fill: var(--highlight-color);
-  margin-top: 2rem;
+  fill: var(--text-color-highlight-content);
+  margin-top: var(--margin-medium);
 `;
 
 const Content = styled.figcaption`
   color: var(--text-color-light-content);
-  padding-left: 0.25rem;
-  margin-top: 0.25rem;
+  padding-left: var(--padding-xx-small);
+  margin-top: var(--margin-xx-small);
+  font-size: var(--header-h3);
 `;
 
 const StyledSvg = styled.svg`

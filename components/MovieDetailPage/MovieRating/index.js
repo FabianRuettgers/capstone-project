@@ -10,6 +10,6 @@ export default function MovieRating({ movie }) {
 }
 
 const StyledSection = styled.section`
-  margin-top: 1rem;
+  margin-top: var(--margin-small);
   margin-inline: var(--margin-medium);
 `;

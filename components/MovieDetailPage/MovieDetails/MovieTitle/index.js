@@ -13,21 +13,19 @@ const StyledSection = styled.section`
   margin-left: var(--margin-medium);
 `;
 
-const Heading = styled.h2`
+const Heading = styled.h1`
   color: var(--text-color-light-heading);
-  font-size: 20px;
-  font-weight: 400;
+  font-size: var(--header-h2);
   overflow: hidden;
   text-overflow: ellipsis;
   margin-top: var(--margin-medium);
 `;
 
-const Tagline = styled.h3`
+const Tagline = styled.h2`
   color: var(--text-color-light-heading);
-  font-size: 15px;
-  font-weight: 400;
+  font-size: var(--header-h3);
   opacity: 0.7;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 0.5rem;
+  margin-top: var(--margin-x-small);
 `;

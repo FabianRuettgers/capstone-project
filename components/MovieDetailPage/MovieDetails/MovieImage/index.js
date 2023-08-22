@@ -6,7 +6,7 @@ export default function MovieImage({ movie }) {
     `https://image.tmdb.org/t/p/w500${movie.data.poster_path}` || `/backup.jpg`;
   return (
     <ImageContainer>
-      <StyledImage
+      <Image
         src={movieImage}
         alt={movie.title}
         layout="fill"
@@ -18,10 +18,8 @@ export default function MovieImage({ movie }) {
   );
 }
 
-const StyledImage = styled(Image)``;
-
 const ImageContainer = styled.div`
+  box-shadow: 0 0 24px var(--shadow-color-dark);
   height: 100vh;
   max-width: 100vw;
-  box-shadow: 0 0 24px var(--shadow-color-dark);
 `;

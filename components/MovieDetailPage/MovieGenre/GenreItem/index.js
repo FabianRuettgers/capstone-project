@@ -9,15 +9,13 @@ export default function GenreItem({ content }) {
 }
 
 const StyledFigure = styled.div`
-  background-color: var(--highlight-color);
+  background-color: var(--background-color-highlight-content);
   text-align: center;
   padding: var(--padding-x-small);
   border-radius: var(--border-radius-medium);
-  z-index: 10;
 `;
 
 const Content = styled.figcaption`
   color: var(--text-color-light-content);
-  font-size: medium;
-  font-weight: 400;
+  font-size: var(--header-h3);
 `;
