@@ -37,7 +37,7 @@ const StyledMain = styled.main`
 `;
 
 const Container = styled.section`
-  background-color: var(--lowlight-dark);
+  background-color: var(--background-color-dark-content);
   box-shadow: 0 0 12px var(--shadow-color-dark);
   display: grid;
   align-items: center;
@@ -46,7 +46,7 @@ const Container = styled.section`
 `;
 
 const SvgWrapper = styled.div`
-  background-color: var(--highlight-color);
+  background-color: var(--background-color-highlight-content);
   fill: var(--text-color-light-heading);
   height: 100%;
   display: grid;
@@ -69,10 +69,9 @@ const StyledFigure = styled.figure`
 
 const Heading = styled.figcaption`
   color: var(--text-color-light-heading);
-  font-size: larger;
-  font-weight: 600;
+  font-size: var(--header-h1);
 `;
 const Content = styled.p`
   color: var(--text-color-light-content);
-  font-weight: 400;
+  font-size: var(--big-text);
 `;

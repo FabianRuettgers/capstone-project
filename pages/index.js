@@ -46,7 +46,6 @@ export default function HomePage({
           <title>Error</title>
           <meta name="description" content="a error-screen" />
         </Head>
-        <HeaderNav />
         <MobileViewWrapper>
           <ErrorFetching />
         </MobileViewWrapper>

@@ -38,7 +38,7 @@ export default function ErrorInput() {
 }
 
 const Container = styled.section`
-  background-color: var(--lowlight-dark);
+  background-color: var(--background-color-dark-content);
   box-shadow: 0 0 12px var(--shadow-color-dark);
   display: grid;
   align-items: center;
@@ -46,8 +46,8 @@ const Container = styled.section`
 `;
 
 const SvgWrapper = styled.div`
-  background-color: var(--highlight-color);
-  fill: var(--text-color-dark);
+  background-color: var(--background-color-highlight-content);
+  fill: var(--text-color-dark-heading);
   height: 100%;
   display: grid;
   justify-content: center;
@@ -60,7 +60,7 @@ const SvgWrapper = styled.div`
 const StyledFigure = styled.figure`
   text-align: center;
   display: grid;
-  gap: 2rem;
+  gap: var(--gap-medium);
   margin-top: var(--margin-medium);
   margin-bottom: var(--margin-medium);
   padding-right: var(--padding-medium);
@@ -68,11 +68,11 @@ const StyledFigure = styled.figure`
 `;
 
 const Button = styled.button`
-  background-color: var(--highlight-color);
-  fill: var(--text-color-dark);
+  background-color: var(--background-color-highlight-button);
+  fill: var(--text-color-dark-button);
   box-shadow: 0 0 12px var(--shadow-color-dark);
   border-radius: 50%;
-  padding: 0.5rem;
+  padding: var(--padding-x-small);
   &:active {
     transform: scale(0.85);
   }
@@ -80,10 +80,9 @@ const Button = styled.button`
 
 const Heading = styled.figcaption`
   color: var(--text-color-light-heading);
-  font-size: larger;
-  font-weight: 600;
+  font-size: var(--header-h1);
 `;
 const Content = styled.p`
   color: var(--text-color-light-content);
-  font-weight: 400;
+  font-size: var(--big-text);
 `;

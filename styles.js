@@ -29,7 +29,8 @@ export default createGlobalStyle`
 
   --background-color-light-button: #ffffff;
   --background-color-highlight-button: #BF8F54;
-
+  --background-color-highlight-content: #BF8F54;
+  --background-color-dark-content:#404040;
 
 
 
