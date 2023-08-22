@@ -28,7 +28,9 @@ export default function userList({
             activeTab={activeTab}
             handleTabClick={handleTabClick}
           />
-          <LoadFetching />
+          <LoadingSection>
+            <LoadFetching />
+          </LoadingSection>
           <FooterNav />
         </>
       ) : null}
@@ -63,4 +65,8 @@ const MobileViewWrapper = styled.div`
   display: grid;
   margin-left: auto;
   margin-right: auto;
+`;
+
+const LoadingSection = styled.section`
+  height: 92vh;
 `;

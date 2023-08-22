@@ -18,7 +18,7 @@ export default function LoadFetching() {
 }
 const StyledSection = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   justify-items: center;
