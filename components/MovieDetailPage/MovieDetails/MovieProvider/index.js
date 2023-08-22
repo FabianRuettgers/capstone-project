@@ -13,24 +13,28 @@ export default function MovieProvider({ id }) {
   }
   console.log(data.provider.results.DE);
   return (
-    <StyledSection>
-      <div>
-        {data.provider.results.DE?.flatrate ? (
-          <ProviderList
-            heading={"Bei diesen Anbietern  im Abo enthalten"}
-            providerData={data.provider.results.DE.flatrate}
-          />
-        ) : null}
-      </div>
-      <div>
-        {data.provider.results.DE?.buy ? (
-          <ProviderList
-            heading={"Bei diesen Anbietern zum Kauf erhältlich"}
-            providerData={data.provider.results.DE.buy}
-          />
-        ) : null}
-      </div>
-    </StyledSection>
+    <>
+      {data.provider.results.DE?.flatrate || data.provider.results.DE?.buy ? (
+        <StyledSection>
+          <div>
+            {data.provider.results.DE?.flatrate ? (
+              <ProviderList
+                heading={"Bei diesen Anbietern  im Abo enthalten"}
+                providerData={data.provider.results.DE.flatrate}
+              />
+            ) : null}
+          </div>
+          <div>
+            {data.provider.results.DE?.buy ? (
+              <ProviderList
+                heading={"Bei diesen Anbietern zum Kauf erhältlich"}
+                providerData={data.provider.results.DE.buy}
+              />
+            ) : null}
+          </div>
+        </StyledSection>
+      ) : null}
+    </>
   );
 }
 

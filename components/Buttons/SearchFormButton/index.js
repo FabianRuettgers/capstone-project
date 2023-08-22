@@ -18,11 +18,10 @@ export default function SearchFormButton() {
 }
 
 const StyledLink = styled(Link)`
-  fill: var(--text-color-dark-heading);
-  color: var(--text-color-dark-heading);
-  background-color: var(--highlight-color);
-  font-size: larger;
-  font-weight: 400;
+  fill: var(--text-color-dark-button);
+  color: var(--text-color-dark-button);
+  background-color: var(--background-color-highlight-button);
+  font-size: var(--header-h3);
   display: flex;
   align-items: center;
   position: fixed;

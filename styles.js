@@ -26,13 +26,19 @@ export default createGlobalStyle`
   --shadow-color-dark: black; // schwarz
    
 
-  --text-color-light-heading: #ffffff; // weiß
-  --text-color-light-content: #ffffff; // weiß
+
+  --background-color-light-button: #ffffff;
+  --background-color-highlight-button: #BF8F54;
+
+
+
 
   --text-color-dark-heading: #404040; // dunkel grau
   --text-color-dark-content: #404040; // dunkel grau
+  --text-color-dark-button: #404040; // dunkel grau
   --text-color-light-heading: #ffffff; // weiß
   --text-color-light-content: #ffffff; // weiß
+  --text-color-light-button: #ffffff; // weiß
 
 --gap-small:1rem;
 --gap-medium:2rem;
@@ -55,6 +61,11 @@ export default createGlobalStyle`
   --border-radius-medium:2rem;
   --border-radius-large:3rem;
 
+  --header-h1:30px;
+  --header-h2:20px;
+  --header-h3:15px;
+  --big-text:13px;
+  --plain-text:10px;
   }
 
   *, *::before, *::after {

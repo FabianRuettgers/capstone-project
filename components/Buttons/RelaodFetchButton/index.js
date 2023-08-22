@@ -23,8 +23,8 @@ export default function ReloadFetchButton() {
 }
 
 const StyledButton = styled.button`
-  background-color: var(--highlight-color);
-  fill: var(--text-color-dark);
+  background-color: var(--background-color-highlight-button);
+  fill: var(--text-color-dark-button);
   padding: var(--padding-xx-small);
   border-radius: 50%;
   &:active {

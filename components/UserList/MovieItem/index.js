@@ -13,7 +13,7 @@ export default function MovieItem({ id, date, content, startFetchLoading }) {
   if (isLoading) {
     return startFetchLoading();
   }
-  console.log(data);
+
   return (
     <StyledListitem key={data.data.id}>
       <StyledLink href={`/movie/${data.data.id}`}>

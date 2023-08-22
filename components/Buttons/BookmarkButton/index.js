@@ -38,12 +38,11 @@ export default function BookmarkButton({
 }
 
 const StyledButton = styled.button`
+  fill: var(--text-color-light-button);
   background-color: transparent;
-  fill: var(--text-color-light-heading);
   border-radius: 50%;
-  padding: var(--padding-x-small);
   &:active {
     transform: scale(0.85);
   }
-  z-index: 2000000;
+  padding: var(--padding-x-small);
 `;
