@@ -55,7 +55,7 @@ export default function MovieSearchList({ movie }) {
 }
 
 const StyledListitem = styled.li`
-  background-color: var(--lowlight-dark);
+  background-color: var(--background-color-dark-content);
   box-shadow: 0 0 12px var(--shadow-color-dark);
   margin-bottom: var(--margin-small);
   border-radius: var(--border-radius-small);
@@ -83,7 +83,7 @@ const ImageContainer = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-  background-color: var(--highlight-color);
+  background-color: var(--background-color-highlight-content);
   box-shadow: 0 0 12px var(--shadow-color-dark);
   border-radius: var(--border-radius-small);
   object-fit: contain;
@@ -91,7 +91,7 @@ const StyledImage = styled(Image)`
 
 const Heading = styled.h2`
   color: var(--text-color-light-heading);
-  font-size: medium;
+  font-size: var(--header-h3);
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
@@ -100,8 +100,8 @@ const Heading = styled.h2`
 `;
 
 const StyledParagraph = styled.p`
-  color: var(--text-color-light-heading);
-  font-size: medium;
+  color: var(--text-color-light-content);
+  font-size: var(--big-text);
   grid-area: 2 / 2 / 3 / 3;
 `;
 const SvgContainer = styled.div`
