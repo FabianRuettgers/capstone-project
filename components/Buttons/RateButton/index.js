@@ -10,11 +10,13 @@ export default function RateButton({ handleRateButtonClick, startRating }) {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="48"
-          viewBox="0 -960 960 960"
-          width="48"
+          height="24px"
+          viewBox="0 0 24 24"
+          width="24px"
+          fill="#000000"
         >
-          <path d="m323-205 157-94 157 95-42-178 138-120-182-16-71-168-71 167-182 16 138 120-42 178ZM233-80l65-281L80-550l288-25 112-265 112 265 288 25-218 189 65 281-247-149L233-80Zm247-355Z" />
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17l-.59.59-.58.58V4h16v12zm-9.5-2H18v-2h-5.5zm3.86-5.87c.2-.2.2-.51 0-.71l-1.77-1.77c-.2-.2-.51-.2-.71 0L6 11.53V14h2.47l5.89-5.87z" />
         </svg>
       </StyledButton>
     </>
@@ -23,9 +25,10 @@ export default function RateButton({ handleRateButtonClick, startRating }) {
 
 const StyledButton = styled.button`
   background-color: var(--highlight-color);
-  fill: var(--text-color-dark);
+  fill: var(--text-color-light);
+  padding: 0.75rem;
   border-radius: 50%;
-  padding: var(--padding-x-small);
+  box-shadow: 0 0 12px var(--shadow-color-dark);
   &:active {
     transform: scale(0.85);
   }

@@ -14,7 +14,7 @@ export default createGlobalStyle`
   --ternery-color: #400A14; //dunkelrot
   
   --lowlight-dark:#404040; // dunkel grau
-  --background-color: #8C1127; //rot
+  --background-color: #404040; //rot #8C1127
   --background-color-light: #ffffff; //weiß
   --text-color-light: #ffffff; // weiß
 

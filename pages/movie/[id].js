@@ -8,6 +8,7 @@ import LoadFetching from "@/components/LoadingHandling/LoadFetching";
 import Head from "next/head";
 import CreateMovieRating from "@/components/MovieDetailPage/MovieRatingForm/CreateMovieRating";
 import DeleteMovieRating from "@/components/MovieDetailPage/MovieRatingForm/DeleteMovieRating";
+import HeaderDetailsPage from "@/components/Navigation/Header/HeaderDetailsPage";
 
 export default function Detailpage({
   userInformation,
@@ -34,7 +35,7 @@ export default function Detailpage({
           <title>Loading screen</title>
           <meta name="description" content="a Loading-screen" />
         </Head>
-        <HeaderMenu title={"Film Details"} />
+        <HeaderMenu />
         <MobileViewWrapper>
           <LoadFetching />
         </MobileViewWrapper>
@@ -49,7 +50,7 @@ export default function Detailpage({
           <title>Error</title>
           <meta name="description" content="a error-screen" />
         </Head>
-        <HeaderMenu title={"Film Details"} />
+        <HeaderMenu />
         <MobileViewWrapper>
           <ErrorFetching />
         </MobileViewWrapper>
@@ -63,7 +64,7 @@ export default function Detailpage({
         <title>Movie Detailpage</title>
         <meta name="description" content="a Movie Detailpage" />
       </Head>
-      <HeaderMenu title={"Film Details"} disable={HeaderDisable} />
+      <HeaderDetailsPage disable={HeaderDisable} />
       <MobileViewWrapper>
         <MovieDetailPage
           movie={data}
@@ -76,14 +77,14 @@ export default function Detailpage({
       </MobileViewWrapper>
       {startRating ? (
         <CreateMovieRating
-          id={data.movie.id}
+          id={data.data.id}
           handleRate={handleRate}
           handleGoBackRating={handleRateButtonClick}
         />
       ) : null}
       {startDelete ? (
         <DeleteMovieRating
-          id={data.movie.id}
+          id={data.data.id}
           handleDelete={handleDelete}
           handleGoBackDelete={handleDeleteButtonClick}
         />
