@@ -22,5 +22,6 @@ const StyledImage = styled(Image)``;
 
 const ImageContainer = styled.div`
   height: 100vh;
+  max-width: 100vw;
   box-shadow: 0 0 24px var(--shadow-color-dark);
 `;

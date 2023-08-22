@@ -31,6 +31,8 @@ const StyledButton = styled.button`
   display: flex;
   align-items: center;
   padding: var(--padding-small);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   &:active {
     transform: scale(0.85);
   }

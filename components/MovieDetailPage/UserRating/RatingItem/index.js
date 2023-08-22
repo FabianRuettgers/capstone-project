@@ -1,8 +1,6 @@
 import { styled } from "styled-components";
 
-export default function RatingItem({ movie }) {
-  const movieRating = movie.vote_average.toFixed(1);
-
+export default function RatingItem({ movieRating }) {
   const starIconFilled = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -143,10 +141,14 @@ export default function RatingItem({ movie }) {
   }
 
   return (
-    <StyledFigure>
-      {starIcons}
-      <Content>{`Rating: ${movieRating} / 10 (${movie.vote_count})`}</Content>
-    </StyledFigure>
+    <>
+      {movieRating !== undefined && movieRating !== null ? (
+        <StyledFigure>
+          {starIcons}
+          <Content>{`Dein Rating: ${movieRating} / 10 `}</Content>
+        </StyledFigure>
+      ) : null}
+    </>
   );
 }
 

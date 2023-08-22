@@ -10,8 +10,6 @@ export default function GenreItem({ content }) {
 
 const StyledFigure = styled.div`
   background-color: var(--highlight-color);
-  box-shadow: 0 0 8px var(--shadow-color-dark);
-
   text-align: center;
   padding: var(--padding-x-small);
   border-radius: var(--border-radius-medium);
