@@ -59,6 +59,7 @@ const Heading = styled.h2`
 
 const Form = styled.form`
   width: 100%;
+  max-width: calc(420px - 4rem);
   display: grid;
   gap: var(--gap-medium);
 `;

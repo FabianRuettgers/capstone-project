@@ -21,5 +21,6 @@ export default function MovieImage({ movie }) {
 const ImageContainer = styled.div`
   box-shadow: 0 0 24px var(--shadow-color-dark);
   height: 100vh;
-  max-width: 100vw;
+  max-width: 420px;
+  overflow: hidden;
 `;

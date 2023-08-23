@@ -5,6 +5,7 @@ import MovieTitle from "./MovieDetails/MovieTitle";
 import MovieDescribtion from "./MovieDetails/MovieDescribtion";
 import MovieProvider from "./MovieDetails/MovieProvider";
 import MovieComments from "./MovieDetails/MovieComments";
+
 import MovieRating from "./MovieDetails/MovieRating";
 import UserRating from "./MovieDetails/UserRating";
 import MovieGenre from "./MovieDetails/MovieGenre";
