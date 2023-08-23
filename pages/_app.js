@@ -77,6 +77,51 @@ export default function App({ Component, pageProps }) {
     };
   }
 
+  const [startComment, setStartComment] = useState(false);
+  function handleCommentButtonClick() {
+    setStartComment((prevStartComment) => !prevStartComment);
+  }
+  function handleComment(
+    id,
+    userInformation,
+    setUserInformation,
+    handleCommentbuttonClick
+  ) {
+    return function (event) {
+      event.preventDefault();
+      event.target.reset();
+
+      // const existingMovie = userInformation.find((movie) => movie.id === id);
+
+      // const newComment = {
+      //   id: id,
+      //   comments: {
+      //     author: event.target.elements.author.value,
+      //     comment: event.target.elements.comment.value,
+      //     commentDate:
+      //       existingMovie && existingMovie.commentDate
+      //         ? undefined
+      //         : new Date().toLocaleDateString("de-DE", {
+      //             day: "2-digit",
+      //             month: "2-digit",
+      //             year: "numeric",
+      //           }),
+      //   },
+      // };
+
+      // setUserInformation((prevUserInformation) => {
+      //   if (existingMovie) {
+      //     return prevUserInformation.map((movie) =>
+      //       movie.id === id ? { ...movie, ...newComment } : movie
+      //     );
+      //   }
+      //   return [...prevUserInformation, newComment];
+      // });
+
+      // handleCommentbuttonClick();
+    };
+  }
+  console.log(userInformation);
   function handleBookmarkToggle(id) {
     setUserInformation((currentMovies) => {
       if (currentMovies.find((movie) => movie.id === id)) {
@@ -140,6 +185,9 @@ export default function App({ Component, pageProps }) {
           handleTabClick={handleTabClick}
           isFetchLoading={isFetchLoading}
           startFetchLoading={startFetchLoading}
+          handleCommentButtonClick={handleCommentButtonClick}
+          handleComment={handleComment}
+          startComment={startComment}
         />
       </SWRConfig>
     </>

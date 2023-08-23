@@ -6,9 +6,10 @@ import MovieTitle from "./MovieDetails/MovieTitle";
 import MovieDescribtion from "./MovieDetails/MovieDescribtion";
 import MovieProvider from "./MovieDetails/MovieProvider";
 import MovieComments from "./MovieDetails/MovieComments";
-import MovieGenre from "./MovieGenre";
-import MovieRating from "./MovieRating";
-import UserRating from "./UserRating";
+
+import MovieRating from "./MovieDetails/MovieRating";
+import UserRating from "./MovieDetails/UserRating";
+import MovieGenre from "./MovieDetails/MovieGenre";
 
 export default function MovieDetailPage({
   movie,
@@ -17,6 +18,7 @@ export default function MovieDetailPage({
   handleRateButtonClick,
   startRating,
   handleDeleteButtonClick,
+  handleCommentButtonClick,
 }) {
   const userItem = userInformation.find((item) => item.id === movie.data.id);
   const userRating = userItem ? userItem.rating : null;
@@ -37,7 +39,11 @@ export default function MovieDetailPage({
         handleDeleteButtonClick={handleDeleteButtonClick}
         startRating={startRating}
       />
-      <MovieComments MovieComments={movie.reviews} />
+      <MovieComments
+        MovieComments={movie.reviews}
+        handleCommentButtonClick={handleCommentButtonClick}
+      />
+
       <MovieProvider id={movie.data.id} />
     </StyledMain>
   );

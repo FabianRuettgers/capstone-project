@@ -8,6 +8,7 @@ import Head from "next/head";
 import CreateMovieRating from "@/components/MovieDetailPage/MovieRatingForm/CreateMovieRating";
 import DeleteMovieRating from "@/components/MovieDetailPage/MovieRatingForm/DeleteMovieRating";
 import HeaderDetailsPage from "@/components/Navigation/Header/HeaderDetailsPage";
+import CreateMovieComment from "@/components/MovieDetailPage/MovieCommentForm/CreateMovieComment";
 
 export default function Detailpage({
   userInformation,
@@ -18,6 +19,9 @@ export default function Detailpage({
   handleDelete,
   handleDeleteButtonClick,
   startDelete,
+  handleCommentButtonClick,
+  handleComment,
+  startComment,
 }) {
   const router = useRouter();
   const { id } = router.query;
@@ -69,6 +73,7 @@ export default function Detailpage({
           handleBookmarkToggle={handleBookmarkToggle}
           handleRateButtonClick={handleRateButtonClick}
           handleDeleteButtonClick={handleDeleteButtonClick}
+          handleCommentButtonClick={handleCommentButtonClick}
           startRating={startRating}
         />
       </MobileViewWrapper>
@@ -84,6 +89,12 @@ export default function Detailpage({
           id={data.data.id}
           handleDelete={handleDelete}
           handleGoBackDelete={handleDeleteButtonClick}
+        />
+      ) : null}
+      {startComment ? (
+        <CreateMovieComment
+          handleCommentButtonClick={handleCommentButtonClick}
+          handleComment={handleComment}
         />
       ) : null}
     </>

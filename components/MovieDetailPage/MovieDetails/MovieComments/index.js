@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 
-export default function MovieComments({ MovieComments }) {
+export default function MovieComments({
+  MovieComments,
+  handleCommentButtonClick,
+}) {
   const comments = MovieComments.results;
   const [showAll, setShowAll] = useState(false);
   console.log(comments);
@@ -11,9 +14,10 @@ export default function MovieComments({ MovieComments }) {
   const characterLength = 300;
   return (
     <>
+      <ListHeading>Kommentare</ListHeading>
+      <button onClick={handleCommentButtonClick}>neuer Kommentar</button>
       {comments && comments.length > 0 && (
         <>
-          <ListHeading>Kommentare</ListHeading>
           <List>
             {comments.map((comment) => (
               <StyledListItem key={comment.id}>
