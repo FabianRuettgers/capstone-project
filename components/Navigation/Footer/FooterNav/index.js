@@ -8,7 +8,11 @@ export default function FooterNav() {
   return (
     <StyledFooter>
       <MobileViewWrapper>
-        <Link href={"/"} isActivated={router.pathname === "/"}>
+        <Link
+          href={"/"}
+          isActivated={router.pathname === "/"}
+          aria-label="Get to Spotlight-Page"
+        >
           <StyledSvg
             isActivated={router.pathname === "/"}
             xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +27,7 @@ export default function FooterNav() {
         <Link
           href={"/user-list"}
           isActivated={router.pathname === "/user-list"}
+          aria-label="Get to User-list-Page"
         >
           <StyledSvg
             isActivated={router.pathname === "/user-list"}

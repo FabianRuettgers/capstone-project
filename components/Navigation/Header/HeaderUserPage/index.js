@@ -5,14 +5,14 @@ export default function HeaderUserPage({ activeTab, handleTabClick }) {
     <StyledHeader>
       <MobileViewWrapper>
         <StyledButton
-          aria-label="saved movies button"
+          aria-label="Gespeicherte Filme"
           onClick={() => handleTabClick("saved")}
           isActive={activeTab === "saved"}
         >
           Gespeicherte Filme
         </StyledButton>
         <StyledButton
-          aria-label="watched movies button"
+          aria-label="Geschaute Filme"
           onClick={() => handleTabClick("watched")}
           isActive={activeTab === "watched"}
         >

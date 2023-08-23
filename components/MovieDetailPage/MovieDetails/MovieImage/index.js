@@ -8,11 +8,10 @@ export default function MovieImage({ movie }) {
     <ImageContainer>
       <Image
         src={movieImage}
-        alt={movie.title}
+        alt={movie.data.title}
         layout="fill"
         objectFit="cover"
         objectPosition="center"
-        priority={true}
       />
     </ImageContainer>
   );
