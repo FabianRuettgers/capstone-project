@@ -3,6 +3,7 @@ import GlobalStyle from "../styles";
 import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { useLoading } from "@/components/LoadingHandling/LoadingHook";
+import { uid } from "uid";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -26,7 +27,9 @@ export default function App({ Component, pageProps }) {
   }
   function handleDelete(id) {
     setUserInformation((currentMovies) =>
-      currentMovies.filter((movie) => movie.id !== id)
+      currentMovies.map((movie) =>
+        movie.id === id ? { id: movie.id, comments: movie.comments } : null
+      )
     );
     handleDeleteButtonClick();
   }
@@ -81,47 +84,68 @@ export default function App({ Component, pageProps }) {
   function handleCommentButtonClick() {
     setStartComment((prevStartComment) => !prevStartComment);
   }
-  function handleComment(
-    id,
-    userInformation,
-    setUserInformation,
-    handleCommentbuttonClick
-  ) {
+  function handleComment(id) {
     return function (event) {
       event.preventDefault();
+      setUserInformation((userInformation) => {
+        const userWithComments = userInformation.find((user) => user.id === id);
+
+        if (userWithComments) {
+          return userInformation.map((user) =>
+            user.id === id
+              ? {
+                  ...user,
+                  comments: [
+                    ...(user.comments || []),
+                    {
+                      id: uid(),
+                      author: event.target.elements.author.value,
+                      content: event.target.elements.comment.value,
+                      created_at: new Date()
+                        .toLocaleDateString("de-DE", {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
+                        })
+                        .split(".")
+                        .reverse()
+                        .join("."),
+                    },
+                  ],
+                }
+              : user
+          );
+        } else {
+          return [
+            ...userInformation,
+            {
+              id: id,
+              comments: [
+                {
+                  id: uid(),
+                  author: event.target.elements.author.value,
+                  content: event.target.elements.comment.value,
+                  created_at: new Date()
+                    .toLocaleDateString("de-DE", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })
+                    .split(".")
+                    .reverse()
+                    .join("."),
+                },
+              ],
+            },
+          ];
+        }
+      });
+
       event.target.reset();
-
-      // const existingMovie = userInformation.find((movie) => movie.id === id);
-
-      // const newComment = {
-      //   id: id,
-      //   comments: {
-      //     author: event.target.elements.author.value,
-      //     comment: event.target.elements.comment.value,
-      //     commentDate:
-      //       existingMovie && existingMovie.commentDate
-      //         ? undefined
-      //         : new Date().toLocaleDateString("de-DE", {
-      //             day: "2-digit",
-      //             month: "2-digit",
-      //             year: "numeric",
-      //           }),
-      //   },
-      // };
-
-      // setUserInformation((prevUserInformation) => {
-      //   if (existingMovie) {
-      //     return prevUserInformation.map((movie) =>
-      //       movie.id === id ? { ...movie, ...newComment } : movie
-      //     );
-      //   }
-      //   return [...prevUserInformation, newComment];
-      // });
-
-      // handleCommentbuttonClick();
+      handleCommentButtonClick();
     };
   }
-  console.log(userInformation);
+
   function handleBookmarkToggle(id) {
     setUserInformation((currentMovies) => {
       if (currentMovies.find((movie) => movie.id === id)) {

@@ -99,12 +99,13 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video,textarea {
 	margin: 0;
 	padding: 0;
   text-decoration: none;
   list-style: none;
   background-color: none;
   border: none;
+  font-family: "roboto", sans-serif;
 }
 `;

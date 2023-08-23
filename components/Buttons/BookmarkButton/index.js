@@ -5,13 +5,15 @@ export default function BookmarkButton({
   handleBookmarkToggle,
   id,
   startRating,
+  startComment,
 }) {
+  const disableButton = startComment || startRating;
   return (
     <>
       <StyledButton
         onClick={() => handleBookmarkToggle(id)}
         aria-label="Bookmark button"
-        disabled={startRating}
+        disabled={disableButton}
       >
         {isBookmarked ? (
           <svg

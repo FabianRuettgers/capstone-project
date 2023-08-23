@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import BookmarkButton from "../../../Buttons/BookmarkButton";
 import RateButton from "@/components/Buttons/RateButton";
-import DeleteButton from "@/components/Buttons/Delete Button";
+import DeleteButton from "@/components/Buttons/DeleteButton";
 
 export default function ButtonSection({
   id,
@@ -10,6 +10,7 @@ export default function ButtonSection({
   handleRateButtonClick,
   handleDeleteButtonClick,
   startRating,
+  startComment,
 }) {
   const selectedItem = userInformation.find((item) => item.id === id);
   const isBookmarked = selectedItem ? selectedItem.isBookmarked : false;
@@ -32,6 +33,7 @@ export default function ButtonSection({
             handleBookmarkToggle={handleBookmarkToggle}
             id={id}
             startRating={startRating}
+            startComment={startComment}
           />
         )}
       </BookmarkSection>
@@ -40,6 +42,7 @@ export default function ButtonSection({
           <RateButton
             handleRateButtonClick={handleRateButtonClick}
             startRating={startRating}
+            startComment={startComment}
           />
         )}
       </RateSection>

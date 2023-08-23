@@ -1,12 +1,17 @@
 import { styled } from "styled-components";
 
-export default function RateButton({ handleRateButtonClick, startRating }) {
+export default function RateButton({
+  handleRateButtonClick,
+  startRating,
+  startComment,
+}) {
+  const disableButton = startComment || startRating;
   return (
     <>
       <StyledButton
         onClick={handleRateButtonClick}
         aria-label="Rate button"
-        disabled={startRating}
+        disabled={disableButton}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

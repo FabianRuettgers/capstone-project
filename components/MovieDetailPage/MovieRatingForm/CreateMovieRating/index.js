@@ -15,7 +15,7 @@ export default function CreateMovieRating({
           type="number"
           min="0"
           max="10"
-          step="0"
+          step="0.1"
           placeholder="rating"
           name="rating"
           required

@@ -4,12 +4,12 @@ import { styled } from "styled-components";
 export default function CreateMovieComment({
   id,
   handleCommentButtonClick,
-  handleGoBackRating,
+  handleComment,
 }) {
   return (
     <Container>
       <Heading>Kommentar</Heading>
-      <Form onSubmit={""}>
+      <Form onSubmit={handleComment(id)}>
         <StyledInput type="text" placeholder="Autor" name="author" required />
         <StyledTextarea
           placeholder="Kommentar"
@@ -80,8 +80,7 @@ const ButtonWrapper = styled.div`
 
 const StyledTextarea = styled.textarea`
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: var(--padding-small);
   border-radius: var(--border-radius-small);
-  font-size: 16px;
+  font-size: var(--big-text);
 `;

@@ -4,10 +4,22 @@ import { styled } from "styled-components";
 export default function MovieComments({
   MovieComments,
   handleCommentButtonClick,
+  userInformation,
+  id,
+  startRating,
+  startComment,
+  startDelete,
 }) {
+  const disableButton = startComment || startRating || startDelete;
+  const foundUser = userInformation.find((user) => user.id === id);
+  const userComments = foundUser ? foundUser.comments : null;
   const comments = MovieComments.results;
+  const combinedComments = userComments
+    ? [...userComments, ...comments]
+    : comments;
+
   const [showAll, setShowAll] = useState(false);
-  console.log(comments);
+
   const handleToggleShowAll = () => {
     setShowAll(!showAll);
   };
@@ -15,11 +27,18 @@ export default function MovieComments({
   return (
     <>
       <ListHeading>Kommentare</ListHeading>
-      <button onClick={handleCommentButtonClick}>neuer Kommentar</button>
-      {comments && comments.length > 0 && (
+      <ButtonWrapper>
+        <StyledButton
+          onClick={handleCommentButtonClick}
+          disabled={disableButton}
+        >
+          neuer Kommentar
+        </StyledButton>
+      </ButtonWrapper>
+      {combinedComments && combinedComments.length > 0 && (
         <>
           <List>
-            {comments.map((comment) => (
+            {combinedComments.map((comment) => (
               <StyledListItem key={comment.id}>
                 <Heading>{comment.author}</Heading>
                 <Date>
@@ -48,6 +67,24 @@ export default function MovieComments({
     </>
   );
 }
+const ButtonWrapper = styled.div`
+  margin-top: var(--margin-medium);
+  margin-inline: var(--margin-medium);
+`;
+
+const StyledButton = styled.button`
+  background-color: var(--background-color-highlight-button);
+  color: var(--text-color-dark-button);
+  box-shadow: 0 0 12px var(--shadow-color-dark);
+  border-radius: var(--border-radius-medium);
+  width: 100%;
+  padding: var(--padding-small);
+  font-size: var(--header-h3);
+  &:active {
+    transform: scale(0.85);
+  }
+`;
+
 const ListHeading = styled.h2`
   text-align: center;
   margin-top: var(--margin-medium);

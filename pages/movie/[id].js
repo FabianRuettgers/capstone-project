@@ -27,7 +27,7 @@ export default function Detailpage({
   const { id } = router.query;
 
   const { data, isLoading, error } = useSWR(`/api/movie/${id}`);
-  const HeaderDisable = startRating || startDelete;
+  const HeaderDisable = startRating || startDelete || startComment;
 
   if (isLoading) {
     return (
@@ -75,6 +75,8 @@ export default function Detailpage({
           handleDeleteButtonClick={handleDeleteButtonClick}
           handleCommentButtonClick={handleCommentButtonClick}
           startRating={startRating}
+          startComment={startComment}
+          startDelete={startDelete}
         />
       </MobileViewWrapper>
       {startRating ? (
@@ -93,6 +95,7 @@ export default function Detailpage({
       ) : null}
       {startComment ? (
         <CreateMovieComment
+          id={data.data.id}
           handleCommentButtonClick={handleCommentButtonClick}
           handleComment={handleComment}
         />
