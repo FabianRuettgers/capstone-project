@@ -20,8 +20,16 @@ export default function MovieDetailPage({
   handleCommentButtonClick,
   startComment,
   startDelete,
+  handleEditButtonClick,
+  startEditComment,
+  editingComment,
+  handleInputChange,
+  handleEditDone,
+  handleEditGoBack,
 }) {
-  const userItem = userInformation.find((item) => item.id === movie.data.id);
+  const userItem = userInformation.find(
+    (item) => item && item.id === movie.data.id
+  );
   const userRating = userItem ? userItem.rating : null;
 
   return (
@@ -40,6 +48,7 @@ export default function MovieDetailPage({
         handleDeleteButtonClick={handleDeleteButtonClick}
         startRating={startRating}
         startComment={startComment}
+        startEditComment={startEditComment}
       />
       <MovieComments
         id={movie.data.id}
@@ -49,6 +58,12 @@ export default function MovieDetailPage({
         startRating={startRating}
         startComment={startComment}
         startDelete={startDelete}
+        startEditComment={startEditComment}
+        handleEditButtonClick={handleEditButtonClick}
+        editingComment={editingComment}
+        handleInputChange={handleInputChange}
+        handleEditDone={handleEditDone}
+        handleEditGoBack={handleEditGoBack}
       />
 
       <MovieProvider id={movie.data.id} />

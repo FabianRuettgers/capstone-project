@@ -9,8 +9,16 @@ export default function MovieComments({
   startRating,
   startComment,
   startDelete,
+  handleEditButtonClick,
+  startEditComment,
+  editingComment,
+  handleInputChange,
+  handleEditDone,
+  handleEditGoBack,
 }) {
-  const disableButton = startComment || startRating || startDelete;
+  const disableButton =
+    startComment || startRating || startDelete || startEditComment;
+  const disableEditButton = startComment || startRating || startDelete;
   const foundUser = userInformation.find((user) => user.id === id);
   const userComments = foundUser ? foundUser.comments : null;
   const comments = MovieComments.results;
@@ -36,37 +44,65 @@ export default function MovieComments({
         </StyledButton>
       </ButtonWrapper>
       {combinedComments && combinedComments.length > 0 && (
-        <>
-          <List>
-            {combinedComments.map((comment) => (
-              <StyledListItem key={comment.id}>
+        <List>
+          {combinedComments.map((comment) => (
+            <StyledListItem key={comment.id}>
+              <StyledEditButton
+                onClick={() => handleEditButtonClick(comment.id)}
+                disabled={disableEditButton}
+              >
                 <Heading>{comment.author}</Heading>
                 <Date>
                   erstellt am {comment.created_at.slice(8, 10)}.
                   {comment.created_at.slice(5, 7)}.
                   {comment.created_at.slice(0, 4)}
                 </Date>
-                <Content>
-                  {showAll
-                    ? comment.content
-                    : comment.content.slice(0, characterLength)}
-                  {comment.content.length > characterLength &&
-                    !showAll &&
-                    "..."}
-                </Content>
-                {comment.content.length > characterLength && (
-                  <ToggleShowButton onClick={handleToggleShowAll}>
-                    {showAll ? "Weniger anzeigen" : "Mehr anzeigen"}
-                  </ToggleShowButton>
-                )}
-              </StyledListItem>
-            ))}
-          </List>
-        </>
+              </StyledEditButton>
+              {startEditComment === true &&
+              editingComment &&
+              editingComment.id === comment.id ? (
+                <div>
+                  <textarea
+                    rows="3"
+                    value={editingComment.content}
+                    onChange={handleInputChange}
+                  />
+                  <button onClick={() => handleEditDone(id)}>Save</button>
+                  <button onClick={handleEditGoBack}>go back</button>
+                </div>
+              ) : (
+                <>
+                  <Content>
+                    {showAll
+                      ? comment.content
+                      : comment.content.slice(0, characterLength)}
+                    {comment.content.length > characterLength &&
+                      !showAll &&
+                      "..."}
+                  </Content>
+                  {comment.content.length > characterLength && (
+                    <ToggleShowButton onClick={handleToggleShowAll}>
+                      {showAll ? "Weniger anzeigen" : "Mehr anzeigen"}
+                    </ToggleShowButton>
+                  )}
+                </>
+              )}
+            </StyledListItem>
+          ))}
+        </List>
       )}
     </>
   );
 }
+
+const StyledEditButton = styled.button`
+  border: 2px solid red;
+  background-color: transparent;
+  &:active {
+    transform: scale(0.85);
+  }
+`;
+
 const ButtonWrapper = styled.div`
   margin-top: var(--margin-medium);
   margin-inline: var(--margin-medium);
@@ -96,6 +132,7 @@ const ListHeading = styled.h2`
 const List = styled.ul`
   margin-inline: var(--margin-medium);
   margin-top: var(--margin-medium);
+  display: grid;
 `;
 
 const StyledListItem = styled.li`

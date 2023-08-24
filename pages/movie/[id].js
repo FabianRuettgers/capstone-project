@@ -22,12 +22,19 @@ export default function Detailpage({
   handleCommentButtonClick,
   handleComment,
   startComment,
+  handleEditButtonClick,
+  startEditComment,
+  editingComment,
+  handleInputChange,
+  handleEditDone,
+  handleEditGoBack,
 }) {
   const router = useRouter();
   const { id } = router.query;
 
   const { data, isLoading, error } = useSWR(`/api/movie/${id}`);
-  const HeaderDisable = startRating || startDelete || startComment;
+  const HeaderDisable =
+    startRating || startDelete || startComment || startEditComment;
 
   if (isLoading) {
     return (
@@ -77,6 +84,12 @@ export default function Detailpage({
           startRating={startRating}
           startComment={startComment}
           startDelete={startDelete}
+          handleEditButtonClick={handleEditButtonClick}
+          startEditComment={startEditComment}
+          editingComment={editingComment}
+          handleInputChange={handleInputChange}
+          handleEditDone={handleEditDone}
+          handleEditGoBack={handleEditGoBack}
         />
       </MobileViewWrapper>
       {startRating ? (
