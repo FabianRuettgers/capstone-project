@@ -28,6 +28,7 @@ export default function Detailpage({
   handleInputChange,
   handleEditDone,
   handleEditGoBack,
+  handleDeleteComment,
 }) {
   const router = useRouter();
   const { id } = router.query;
@@ -90,6 +91,7 @@ export default function Detailpage({
           handleInputChange={handleInputChange}
           handleEditDone={handleEditDone}
           handleEditGoBack={handleEditGoBack}
+          handleDeleteComment={handleDeleteComment}
         />
       </MobileViewWrapper>
       {startRating ? (

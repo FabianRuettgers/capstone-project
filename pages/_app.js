@@ -242,6 +242,23 @@ export default function App({ Component, pageProps }) {
     setStartEditComment(false);
   }
 
+  function handleDeleteComment(id, commentId) {
+    setUserInformation((currentUsers) =>
+      currentUsers.map((user) => {
+        if (user.id === id && user.comments) {
+          const updatedComments = user.comments.filter(
+            (comment) => comment.id !== commentId
+          );
+
+          return { ...user, comments: updatedComments };
+        }
+        return user;
+      })
+    );
+    setEditingComment(null);
+    setStartEditComment(false);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -271,6 +288,7 @@ export default function App({ Component, pageProps }) {
           handleInputChange={handleInputChange}
           handleEditDone={handleEditDone}
           handleEditGoBack={handleEditGoBack}
+          handleDeleteComment={handleDeleteComment}
         />
       </SWRConfig>
     </>

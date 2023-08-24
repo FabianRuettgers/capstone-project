@@ -26,6 +26,7 @@ export default function MovieDetailPage({
   handleInputChange,
   handleEditDone,
   handleEditGoBack,
+  handleDeleteComment,
 }) {
   const userItem = userInformation.find(
     (item) => item && item.id === movie.data.id
@@ -64,6 +65,7 @@ export default function MovieDetailPage({
         handleInputChange={handleInputChange}
         handleEditDone={handleEditDone}
         handleEditGoBack={handleEditGoBack}
+        handleDeleteComment={handleDeleteComment}
       />
 
       <MovieProvider id={movie.data.id} />

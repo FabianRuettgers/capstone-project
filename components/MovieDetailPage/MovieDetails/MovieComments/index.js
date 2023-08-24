@@ -15,6 +15,7 @@ export default function MovieComments({
   handleInputChange,
   handleEditDone,
   handleEditGoBack,
+  handleDeleteComment,
 }) {
   const disableButton =
     startComment || startRating || startDelete || startEditComment;
@@ -61,7 +62,7 @@ export default function MovieComments({
               {startEditComment === true &&
               editingComment &&
               editingComment.id === comment.id ? (
-                <div>
+                <EditSection>
                   <textarea
                     rows="3"
                     value={editingComment.content}
@@ -69,9 +70,15 @@ export default function MovieComments({
                   />
                   <button onClick={() => handleEditDone(id)}>Save</button>
                   <button onClick={handleEditGoBack}>go back</button>
-                </div>
+                  <button onClick={() => handleDeleteComment(id, comment.id)}>
+                    Delete
+                  </button>
+                </EditSection>
               ) : (
-                <>
+                <StyledEditButton
+                  onClick={() => handleEditButtonClick(comment.id)}
+                  disabled={disableEditButton}
+                >
                   <Content>
                     {showAll
                       ? comment.content
@@ -85,7 +92,7 @@ export default function MovieComments({
                       {showAll ? "Weniger anzeigen" : "Mehr anzeigen"}
                     </ToggleShowButton>
                   )}
-                </>
+                </StyledEditButton>
               )}
             </StyledListItem>
           ))}
@@ -95,12 +102,18 @@ export default function MovieComments({
   );
 }
 
+const EditSection = styled.section`
+  display: grid;
+  gap: 2rem;
+`;
+
 const StyledEditButton = styled.button`
-  border: 2px solid red;
   background-color: transparent;
   &:active {
     transform: scale(0.85);
   }
+  text-align: left;
+  display: grid;
 `;
 
 const ButtonWrapper = styled.div`
@@ -122,7 +135,7 @@ const StyledButton = styled.button`
 `;
 
 const ListHeading = styled.h2`
-  text-align: center;
+  text-align: left;
   margin-top: var(--margin-medium);
   margin-inline: var(--margin-medium);
   color: var(--text-color-light-heading);
@@ -137,6 +150,7 @@ const List = styled.ul`
 
 const StyledListItem = styled.li`
   margin-bottom: var(--margin-small);
+  border: 2px solid red;
 `;
 
 const Heading = styled.h3`
