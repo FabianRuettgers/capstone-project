@@ -2,7 +2,6 @@ import GenreItem from "./GenreItem";
 import { styled } from "styled-components";
 
 export default function MovieGenre({ movie }) {
-  console.log(movie);
   return (
     <GenreContainer>
       {movie.genres[0] ? <GenreItem content={movie.genres[0].name} /> : null}
