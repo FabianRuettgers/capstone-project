@@ -11,7 +11,6 @@ export default function MovieProvider({ id }) {
   if (!data) {
     return null;
   }
-  console.log(data.provider.results.DE);
   return (
     <>
       {data.provider.results.DE?.flatrate || data.provider.results.DE?.buy ? (
