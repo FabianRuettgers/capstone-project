@@ -20,6 +20,7 @@ export default function MovieComments({
   const disableButton =
     startComment || startRating || startDelete || startEditComment;
   const disableEditButton = startComment || startRating || startDelete;
+  const emptyInput = !editingComment || !editingComment.content;
   const foundUser = userInformation.find((user) => user.id === id);
   const userComments = foundUser ? foundUser.comments : null;
   const comments = MovieComments.results;
@@ -68,7 +69,15 @@ export default function MovieComments({
                     value={editingComment.content}
                     onChange={handleInputChange}
                   />
-                  <button onClick={() => handleEditDone(id)}>Save</button>
+                  {emptyInput ? (
+                    <ErrorInput>Das Textfeld darf nicht leer sein</ErrorInput>
+                  ) : null}
+                  <button
+                    onClick={() => handleEditDone(id)}
+                    disabled={emptyInput}
+                  >
+                    Save
+                  </button>
                   <button onClick={handleEditGoBack}>go back</button>
                   <button onClick={() => handleDeleteComment(id, comment.id)}>
                     Delete
@@ -104,7 +113,7 @@ export default function MovieComments({
 
 const EditSection = styled.section`
   display: grid;
-  gap: 2rem;
+  gap: 1rem;
 `;
 
 const StyledEditButton = styled.button`
@@ -174,4 +183,9 @@ const ToggleShowButton = styled.button`
   background: none;
   color: var(--text-color-light-heading);
   font-size: var(--big-text);
+`;
+
+const ErrorInput = styled.p`
+  color: var(--text-color-light-content);
+  opacity: 0.7;
 `;

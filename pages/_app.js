@@ -209,10 +209,10 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleInputChange(event) {
-    const { value } = event.target;
+    const changeValue = event.target.value;
     setEditingComment((prevEditingComment) => ({
       ...prevEditingComment,
-      content: value,
+      content: changeValue,
     }));
   }
 
