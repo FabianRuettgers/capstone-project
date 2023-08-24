@@ -75,7 +75,7 @@ const RateSection = styled.section`
   right: 2rem;
 `;
 
-const SytledSvg = styled.svg`
+const StyledSvg = styled.svg`
   fill: var(--text-color-light-heading);
   position: absolute;
   top: 0.5rem;
