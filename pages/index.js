@@ -4,17 +4,13 @@ import MovieRandom from "@/components/MovieRandom";
 import FooterNav from "@/components/Navigation/Footer/FooterNav";
 import HeaderNav from "@/components/Navigation/Header/HeaderNav";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { styled } from "styled-components";
 import useSWR from "swr";
 
 const API_KEY = process.env.API_KEY;
 
-export default function HomePage({
-  isFetchError,
-  isFetchLoading,
-  startFetchLoading,
-}) {
+export default function HomePage({ isFetchLoading, startFetchLoading }) {
   const { data, error, isLoading } = useSWR(`/api/movies`);
 
   useEffect(() => {
@@ -32,7 +28,9 @@ export default function HomePage({
         </Head>
         <HeaderNav />
         <MobileViewWrapper>
-          <LoadFetching />
+          <LoadingSection>
+            <LoadFetching />
+          </LoadingSection>
         </MobileViewWrapper>
         <FooterNav />
       </>
@@ -46,7 +44,6 @@ export default function HomePage({
           <title>Error</title>
           <meta name="description" content="a error-screen" />
         </Head>
-        <HeaderNav />
         <MobileViewWrapper>
           <ErrorFetching />
         </MobileViewWrapper>
@@ -78,4 +75,8 @@ const MobileViewWrapper = styled.div`
   display: grid;
   margin-left: auto;
   margin-right: auto;
+`;
+
+const LoadingSection = styled.section`
+  height: 100vh;
 `;

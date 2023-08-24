@@ -5,13 +5,15 @@ export default function BookmarkButton({
   handleBookmarkToggle,
   id,
   startRating,
+  startComment,
 }) {
+  const disableButton = startComment || startRating;
   return (
     <>
       <StyledButton
         onClick={() => handleBookmarkToggle(id)}
         aria-label="Bookmark button"
-        disabled={startRating}
+        disabled={disableButton}
       >
         {isBookmarked ? (
           <svg
@@ -20,7 +22,7 @@ export default function BookmarkButton({
             viewBox="0 -960 960 960"
             width="48"
           >
-            <path d="M200-120v-665q0-24 18-42t42-18h440q24 0 42 18t18 42v665L480-240 200-120Z" />
+            <path d="m480-121-41-37q-106-97-175-167.5t-110-126Q113-507 96.5-552T80-643q0-90 60.5-150.5T290-854q57 0 105.5 27t84.5 78q42-54 89-79.5T670-854q89 0 149.5 60.5T880-643q0 46-16.5 91T806-451.5q-41 55.5-110 126T521-158l-41 37Z" />
           </svg>
         ) : (
           <svg
@@ -29,7 +31,7 @@ export default function BookmarkButton({
             viewBox="0 -960 960 960"
             width="48"
           >
-            <path d="M200-120v-665q0-24 18-42t42-18h440q24 0 42 18t18 42v665L480-240 200-120Zm60-91 220-93 220 93v-574H260v574Zm0-574h440-440Z" />
+            <path d="m480-121-41-37q-105.768-97.121-174.884-167.561Q195-396 154-451.5T96.5-552Q80-597 80-643q0-90.155 60.5-150.577Q201-854 290-854q57 0 105.5 27t84.5 78q42-54 89-79.5T670-854q89 0 149.5 60.423Q880-733.155 880-643q0 46-16.5 91T806-451.5Q765-396 695.884-325.561 626.768-255.121 521-158l-41 37Zm0-79q101.236-92.995 166.618-159.498Q712-426 750.5-476t54-89.135q15.5-39.136 15.5-77.72Q820-709 778-751.5T670.225-794q-51.524 0-95.375 31.5Q531-731 504-674h-49q-26-56-69.85-88-43.851-32-95.375-32Q224-794 182-751.5t-42 108.816Q140-604 155.5-564.5t54 90Q248-424 314-358t166 158Zm0-297Z" />
           </svg>
         )}
       </StyledButton>
@@ -38,11 +40,11 @@ export default function BookmarkButton({
 }
 
 const StyledButton = styled.button`
-  background-color: var(--highlight-color);
-  fill: var(--text-color-dark);
+  fill: var(--text-color-light-button);
+  background-color: transparent;
   border-radius: 50%;
-  padding: var(--padding-x-small);
   &:active {
     transform: scale(0.85);
   }
+  padding: var(--padding-x-small);
 `;

@@ -17,9 +17,9 @@ export default function HeaderNav() {
 }
 
 const StyledHeader = styled.header`
-  background-color: var(--background-color);
-  color: var(--text-color-light);
-  fill: var(--text-color-light);
+  background-color: var(--background-color-dark-content);
+  color: var(--text-color-light-heading);
+  fill: var(--text-color-highlight-heading);
   box-shadow: 0 0 28px var(--shadow-color-dark);
   height: 12vh;
   width: 100%;

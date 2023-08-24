@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { styled } from "styled-components";
 
-export default function HeaderMenu({ title, disable }) {
+export default function HeaderDetailsPage({ disable }) {
   const router = useRouter();
   function handleGoBackRating() {
     router.back();
@@ -22,27 +22,24 @@ export default function HeaderMenu({ title, disable }) {
           <path d="M359-242 120-481l239-239 43 43-166 166h604v60H236l166 166-43 43Z" />
         </svg>
       </StyledButton>
-      <h1>{title}</h1>
     </StyledHeader>
   );
 }
 
 const StyledHeader = styled.header`
-  color: var(--text-color-light-heading);
-  fill: var(--text-color-light-heading);
-  background-color: var(--background-color-dark-content);
-  box-shadow: 0 0 28px var(--shadow-color-dark);
-  font-size: var(--header-h3);
-  width: 100%;
+  color: var(--text-color-light-button);
+  fill: var(--text-color-light-button);
+  background-color: transparent;
+
   height: 12vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  position: relative;
+  position: absolute;
   top: 0;
   gap: var(--gap-small);
-  z-index: 1000;
+  z-index: 10;
 `;
 
 const StyledButton = styled.button`

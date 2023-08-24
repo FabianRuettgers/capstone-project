@@ -18,7 +18,7 @@ export default function LoadFetching() {
 }
 const StyledSection = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   justify-items: center;
@@ -33,7 +33,7 @@ const spinAnimation = keyframes`
 const Spinner = styled.div`
   height: 7rem;
   width: 7rem;
-  background-color: var(--highlight-color);
+  background-color: var(--background-color-highlight-button);
   box-shadow: 0 0 12px var(--shadow-color-dark);
   border-radius: 50%;
   display: grid;
@@ -46,5 +46,5 @@ const Spinner = styled.div`
 
 const StyledSvg = styled.svg`
   scale: 1.5;
-  fill: var(--text-color-dark);
+  fill: var(--text-color-dark-button);
 `;

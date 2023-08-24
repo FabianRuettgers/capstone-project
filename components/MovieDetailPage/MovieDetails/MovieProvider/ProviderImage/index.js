@@ -15,6 +15,6 @@ export default function ProviderImage({ provider }) {
 }
 
 const StyledImage = styled(Image)`
-  background-color: var(--highlight-color);
+  background-color: var(--background-color-highlight-content);
   border-radius: var(--border-radius-x-small);
 `;

@@ -34,22 +34,20 @@ export default function MovieSearch({
 }
 
 const StyledMain = styled.main`
-  color: var(--text-color-light);
-  fill: var(--text-color-light);
   padding: var(--padding-medium);
   height: 76vh;
 `;
 
 const StyledInput = styled.input`
-  font-size: large;
+  font-size: var(--header-h2);
   width: 100%;
   height: 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: var(--margin-medium);
 `;
 
 const LoadFetchWrapper = styled.div`
   height: 100%;
-  display: grid;
+  display: flex;
   justify-items: center;
   align-items: center;
 `;

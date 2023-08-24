@@ -22,16 +22,18 @@ export default function DeleteButton({ handleDeleteButtonClick }) {
 }
 
 const StyledButton = styled.button`
-  fill: var(--text-color-dark);
-  color: var(--text-color-dark);
+  fill: var(--text-color-dark-heading);
+  color: var(--text-color-dark-heading);
   background-color: var(--primary-color);
   box-shadow: 0 0 12px var(--shadow-color-dark);
-  font-size: x-large;
+  font-size: var(--header-h2);
   border-radius: var(--border-radius-small);
   display: flex;
   align-items: center;
-  padding: var(--padding-small);
   &:active {
     transform: scale(0.85);
   }
+  padding: var(--padding-small);
+  margin-top: var(--margin-medium);
+  margin-bottom: var(--margin-medium);
 `;

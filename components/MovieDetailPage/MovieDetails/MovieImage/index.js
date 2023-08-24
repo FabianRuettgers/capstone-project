@@ -2,35 +2,24 @@ import Image from "next/image";
 import { styled } from "styled-components";
 
 export default function MovieImage({ movie }) {
+  const movieImage =
+    `https://image.tmdb.org/t/p/w500${movie.data.poster_path}` || `/backup.jpg`;
   return (
-    <>
-      {movie.poster_path !== null ? (
-        <StyledImage
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.title}
-          layout="responsive"
-          objectFit="contain"
-          height={750}
-          width={500}
-          priority={true}
-        />
-      ) : (
-        <StyledImage
-          src={`/backup.jpg`}
-          alt={movie.title}
-          layout="responsive"
-          objectFit="contain"
-          height={750}
-          width={500}
-          priority={true}
-        />
-      )}
-    </>
+    <ImageContainer>
+      <Image
+        src={movieImage}
+        alt={movie.data.title}
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+      />
+    </ImageContainer>
   );
 }
 
-const StyledImage = styled(Image)`
-  background-color: var(--highlight-color);
-  box-shadow: 0 0 12px var(--shadow-color-dark);
-  border-radius: var(--border-radius-medium);
+const ImageContainer = styled.div`
+  box-shadow: 0 0 24px var(--shadow-color-dark);
+  height: 100vh;
+  max-width: 420px;
+  overflow: hidden;
 `;

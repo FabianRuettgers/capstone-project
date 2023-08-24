@@ -3,6 +3,7 @@ import GlobalStyle from "../styles";
 import { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { useLoading } from "@/components/LoadingHandling/LoadingHook";
+import { uid } from "uid";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -26,7 +27,9 @@ export default function App({ Component, pageProps }) {
   }
   function handleDelete(id) {
     setUserInformation((currentMovies) =>
-      currentMovies.filter((movie) => movie.id !== id)
+      currentMovies.map((movie) =>
+        movie.id === id ? { id: movie.id, comments: movie.comments } : null
+      )
     );
     handleDeleteButtonClick();
   }
@@ -74,6 +77,72 @@ export default function App({ Component, pageProps }) {
       });
       event.target.reset();
       handleRateButtonClick();
+    };
+  }
+
+  const [startComment, setStartComment] = useState(false);
+  function handleCommentButtonClick() {
+    setStartComment((prevStartComment) => !prevStartComment);
+  }
+  function handleComment(id) {
+    return function (event) {
+      event.preventDefault();
+      setUserInformation((userInformation) => {
+        const userWithComments = userInformation.find((user) => user.id === id);
+
+        if (userWithComments) {
+          return userInformation.map((user) =>
+            user.id === id
+              ? {
+                  ...user,
+                  comments: [
+                    ...(user.comments || []),
+                    {
+                      id: uid(),
+                      author: event.target.elements.author.value,
+                      content: event.target.elements.comment.value,
+                      created_at: new Date()
+                        .toLocaleDateString("de-DE", {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
+                        })
+                        .split(".")
+                        .reverse()
+                        .join("."),
+                    },
+                  ],
+                }
+              : user
+          );
+        } else {
+          return [
+            ...userInformation,
+            {
+              id: id,
+              comments: [
+                {
+                  id: uid(),
+                  author: event.target.elements.author.value,
+                  content: event.target.elements.comment.value,
+                  created_at: new Date()
+                    .toLocaleDateString("de-DE", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })
+                    .split(".")
+                    .reverse()
+                    .join("."),
+                },
+              ],
+            },
+          ];
+        }
+      });
+
+      event.target.reset();
+      handleCommentButtonClick();
     };
   }
 
@@ -140,6 +209,9 @@ export default function App({ Component, pageProps }) {
           handleTabClick={handleTabClick}
           isFetchLoading={isFetchLoading}
           startFetchLoading={startFetchLoading}
+          handleCommentButtonClick={handleCommentButtonClick}
+          handleComment={handleComment}
+          startComment={startComment}
         />
       </SWRConfig>
     </>

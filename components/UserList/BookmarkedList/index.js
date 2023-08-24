@@ -53,11 +53,15 @@ const List = styled.ul`
 `;
 
 const StyledFigure = styled.figure`
-  display: grid;
-  margin-top: var(--margin-medium);
-  justify-items: center;
+  opacity: 0.7;
+  width: 100%;
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: var(--margin-medium);
 `;
 
 const StyledSvg = styled.svg`
@@ -66,14 +70,14 @@ const StyledSvg = styled.svg`
 
 const Caption = styled.figcaption`
   color: var(--text-color-light-heading);
-  font-weight: 600;
-  font-size: large;
-  margin-top: 1rem;
+
+  font-size: var(--header-h2);
+  margin-top: var(--margin-small);
 `;
 
 const StyledErrorParagraph = styled.p`
   color: var(--text-color-light-content);
-  font-weight: 400;
-  font-size: medium;
+
+  font-size: var(--big-text);
   margin-top: var(--margin-x-small);
 `;

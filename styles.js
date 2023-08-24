@@ -14,7 +14,7 @@ export default createGlobalStyle`
   --ternery-color: #400A14; //dunkelrot
   
   --lowlight-dark:#404040; // dunkel grau
-  --background-color: #8C1127; //rot
+  --background-color: #404040; //rot #8C1127
   --background-color-light: #ffffff; //weiß
   --text-color-light: #ffffff; // weiß
 
@@ -26,18 +26,30 @@ export default createGlobalStyle`
   --shadow-color-dark: black; // schwarz
    
 
-  --text-color-light-heading: #ffffff; // weiß
-  --text-color-light-content: #ffffff; // weiß
+
+  --background-color-light-button: #ffffff;
+  --background-color-highlight-button: #BF8F54;
+  --background-color-highlight-content: #BF8F54;
+  --background-color-dark-content:#404040;
+
+
 
   --text-color-dark-heading: #404040; // dunkel grau
   --text-color-dark-content: #404040; // dunkel grau
+  --text-color-dark-button: #404040; // dunkel grau
   --text-color-light-heading: #ffffff; // weiß
   --text-color-light-content: #ffffff; // weiß
+  --text-color-light-button: #ffffff; // weiß
+--text-color-highlight-heading: #BF8F54;
+--text-color-highlight-content: #BF8F54;
 
+
+--gap-x-small:0.5rem;
 --gap-small:1rem;
 --gap-medium:2rem;
 --gap-large:3rem;
 
+--margin-xx-small:0.25rem;
   --margin-x-small:0.5rem;
   --margin-small:1rem;
   --margin-medium:2rem;
@@ -55,6 +67,11 @@ export default createGlobalStyle`
   --border-radius-medium:2rem;
   --border-radius-large:3rem;
 
+  --header-h1:30px;
+  --header-h2:20px;
+  --header-h3:15px;
+  --big-text:13px;
+  --plain-text:10px;
   }
 
   *, *::before, *::after {
@@ -82,12 +99,13 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video,textarea {
 	margin: 0;
 	padding: 0;
   text-decoration: none;
   list-style: none;
   background-color: none;
   border: none;
+  font-family: "roboto", sans-serif;
 }
 `;

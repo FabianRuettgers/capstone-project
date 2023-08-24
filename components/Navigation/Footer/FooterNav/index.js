@@ -8,7 +8,11 @@ export default function FooterNav() {
   return (
     <StyledFooter>
       <MobileViewWrapper>
-        <Link href={"/"} isActivated={router.pathname === "/"}>
+        <Link
+          href={"/"}
+          isActivated={router.pathname === "/"}
+          aria-label="Get to Spotlight-Page"
+        >
           <StyledSvg
             isActivated={router.pathname === "/"}
             xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +27,7 @@ export default function FooterNav() {
         <Link
           href={"/user-list"}
           isActivated={router.pathname === "/user-list"}
+          aria-label="Get to User-list-Page"
         >
           <StyledSvg
             isActivated={router.pathname === "/user-list"}
@@ -50,8 +55,8 @@ const MobileViewWrapper = styled.div`
 `;
 
 const StyledFooter = styled.footer`
-  background-color: var(--background-color);
-  fill: var(--text-color-light);
+  background-color: var(--background-color-dark-content);
+  fill: var(--text-color-light-button);
   box-shadow: 0 0 28px var(--shadow-color-dark);
   height: 12vh;
   width: 100%;
@@ -64,10 +69,10 @@ const StyledFooter = styled.footer`
 const StyledSvg = styled.svg`
   fill: ${(props) =>
     props.isActivated
-      ? "var(--text-color-dark-heading)"
-      : "var(--text-color-light)"};
+      ? "var(--text-color-dark-button)"
+      : "var(--text-color-light-button)"};
   background-color: ${(props) =>
-    props.isActivated ? "var(--highlight-color)" : "inherit"};
+    props.isActivated ? "var(--background-color-highlight-button)" : "inherit"};
   padding: var(--padding-x-small);
   border-radius: 50%;
 `;

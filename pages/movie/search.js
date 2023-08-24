@@ -21,7 +21,6 @@ export default function Search({ query, setQuery }) {
           <title>Error</title>
           <meta name="description" content="a error-screen" />
         </Head>
-        <HeaderMenu title={"Film suchen"} />
         <MobileViewWrapper>
           <ErrorFetching />
         </MobileViewWrapper>

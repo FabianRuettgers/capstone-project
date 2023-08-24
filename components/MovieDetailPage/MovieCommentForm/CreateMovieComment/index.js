@@ -1,31 +1,37 @@
 import FormButton from "@/components/Buttons/FormButton";
 import { styled } from "styled-components";
 
-export default function DeleteMovieRating({
+export default function CreateMovieComment({
   id,
-  handleDelete,
-  handleGoBackDelete,
+  handleCommentButtonClick,
+  handleComment,
 }) {
   return (
     <Container>
-      <Heading>Bewertung löschen?</Heading>
-      <GridWrapper>
-        <StyledLabel>sicher das du deine Bewertung löschen willst?</StyledLabel>
+      <Heading>Kommentar</Heading>
+      <Form onSubmit={handleComment(id)}>
+        <StyledInput type="text" placeholder="Autor" name="author" required />
+        <StyledTextarea
+          placeholder="Kommentar"
+          name="comment"
+          rows="6"
+          required
+        />
         <ButtonWrapper>
           <FormButton
             title={"zurück"}
             backgroundcolor={"var(--background-color-light)"}
             textcolor={"var( --text-color-dark-content)"}
-            handleClick={handleGoBackDelete}
+            handleClick={handleCommentButtonClick}
           />
           <FormButton
-            title={"löschen"}
+            type={"submit"}
+            title={"speichern"}
             backgroundcolor={"var(--highlight-color)"}
             textcolor={"var( --text-color-dark-content)"}
-            handleClick={() => handleDelete(id)}
           />
         </ButtonWrapper>
-      </GridWrapper>
+      </Form>
     </Container>
   );
 }
@@ -51,20 +57,31 @@ const Heading = styled.h2`
   font-size: var(--header-h1);
 `;
 
-const GridWrapper = styled.div`
-  display: grid;
+const Form = styled.form`
   width: 100%;
   max-width: calc(420px - 4rem);
+  display: grid;
   gap: var(--gap-medium);
 `;
 
-const StyledLabel = styled.h3`
-  color: var(--text-color-light-heading);
-  font-size: var(--header-h2);
+const StyledInput = styled.input`
+  color: var(--text-color-dark-content);
   text-align: center;
+  height: 3rem;
+  width: 100%;
+  border-radius: var(--border-radius-small);
+  margin-right: auto;
+  margin-left: auto;
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+`;
+
+const StyledTextarea = styled.textarea`
+  width: 100%;
+  padding: var(--padding-small);
+  border-radius: var(--border-radius-small);
+  font-size: var(--big-text);
 `;
