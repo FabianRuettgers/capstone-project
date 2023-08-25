@@ -57,7 +57,7 @@ const Container = styled.section`
   align-items: center;
   padding: var(--padding-medium);
   gap: var(--gap-small);
-  z-index: 1000;
+  z-index: 999999999;
 `;
 
 const Heading = styled.h2`
