@@ -42,6 +42,7 @@ const StyledButton = styled.button`
   top: 0;
   background-color: black;
   opacity: 0.2;
+  z-index: 99999999;
 `;
 
 const Container = styled.section`
