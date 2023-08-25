@@ -11,7 +11,7 @@ export default createGlobalStyle`
 :root {
   --primary-color: #D93636; //noch helleres rot
   --secondary-color: #A62626; //helleres rot
-  --ternery-color: #400A14; //dunkelrot
+  --ternery-color: #008000; //dunkelrot
   
   --lowlight-dark:#404040; // dunkel grau
   --background-color: #404040; //rot #8C1127
@@ -31,6 +31,7 @@ export default createGlobalStyle`
   --background-color-highlight-button: #BF8F54;
   --background-color-highlight-content: #BF8F54;
   --background-color-dark-content:#404040;
+  --background-color-light-content: #ffffff;
 
 
 

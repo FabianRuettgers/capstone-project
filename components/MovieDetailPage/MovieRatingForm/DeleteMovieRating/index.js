@@ -39,8 +39,8 @@ const StyledButton = styled.button`
   width: 100vw;
   position: fixed;
   top: 0;
-  background-color: white;
-  opacity: 0.1;
+  background-color: black;
+  opacity: 0.2;
 `;
 
 const Container = styled.section`
