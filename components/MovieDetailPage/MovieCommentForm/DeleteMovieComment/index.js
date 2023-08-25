@@ -1,42 +1,36 @@
 import FormButton from "@/components/Buttons/FormButton";
 import { styled } from "styled-components";
 
-export default function CreateMovieRating({
+export default function DeleteMovieComment({
   id,
-  handleRate,
-  handleGoBackRating,
+  commentId,
+  handleCommentDeleteButtonClick,
+  handleDeleteComment,
 }) {
   return (
     <>
-      <StyledButton onClick={handleGoBackRating} />
+      <StyledButton onClick={handleCommentDeleteButtonClick} />
       <Container>
-        <Heading>Bewerte den Film</Heading>
-        <Form onSubmit={handleRate(id)}>
-          <StyledLabel>bewerte den Film von 0 bis 10 </StyledLabel>
-          <StyledInput
-            type="number"
-            min="0"
-            max="10"
-            step="0.1"
-            placeholder="rating"
-            name="rating"
-            required
-          />
+        <Heading>Kommentar löschen?</Heading>
+        <GridWrapper>
+          <StyledLabel>
+            sicher das du deinen Kommentar löschen willst?
+          </StyledLabel>
           <ButtonWrapper>
             <FormButton
               title={"zurück"}
               backgroundcolor={"var(--background-color-light)"}
               textcolor={"var( --text-color-dark-content)"}
-              handleClick={handleGoBackRating}
+              handleClick={handleCommentDeleteButtonClick}
             />
             <FormButton
-              type={"submit"}
-              title={"bewerten"}
+              title={"löschen"}
               backgroundcolor={"var(--highlight-color)"}
               textcolor={"var( --text-color-dark-content)"}
+              handleClick={() => handleDeleteComment(id, commentId)}
             />
           </ButtonWrapper>
-        </Form>
+        </GridWrapper>
       </Container>
     </>
   );
@@ -71,25 +65,17 @@ const Heading = styled.h2`
   font-size: var(--header-h1);
 `;
 
-const Form = styled.form`
+const GridWrapper = styled.div`
   display: grid;
+  width: 100%;
+  max-width: calc(420px - 4rem);
   gap: var(--gap-medium);
 `;
 
-const StyledLabel = styled.label`
+const StyledLabel = styled.h3`
   color: var(--text-color-light-heading);
   font-size: var(--header-h2);
   text-align: center;
-`;
-
-const StyledInput = styled.input`
-  color: var(--text-color-dark-content);
-  text-align: center;
-  height: 4rem;
-  width: 40%;
-  border-radius: var(--border-radius-small);
-  margin-right: auto;
-  margin-left: auto;
 `;
 
 const ButtonWrapper = styled.div`

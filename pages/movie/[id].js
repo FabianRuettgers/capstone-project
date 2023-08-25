@@ -9,6 +9,7 @@ import CreateMovieRating from "@/components/MovieDetailPage/MovieRatingForm/Crea
 import DeleteMovieRating from "@/components/MovieDetailPage/MovieRatingForm/DeleteMovieRating";
 import HeaderDetailsPage from "@/components/Navigation/Header/HeaderDetailsPage";
 import CreateMovieComment from "@/components/MovieDetailPage/MovieCommentForm/CreateMovieComment";
+import DeleteMovieComment from "@/components/MovieDetailPage/MovieCommentForm/DeleteMovieComment";
 
 export default function Detailpage({
   userInformation,
@@ -25,6 +26,7 @@ export default function Detailpage({
   handleEditDone,
   handleEditGoBack,
   handleDeleteComment,
+  handleCommentDeleteButtonClick,
 }) {
   const router = useRouter();
   const { id } = router.query;
@@ -83,6 +85,7 @@ export default function Detailpage({
           handleEditDone={handleEditDone}
           handleEditGoBack={handleEditGoBack}
           handleDeleteComment={handleDeleteComment}
+          handleCommentDeleteButtonClick={handleCommentDeleteButtonClick}
         />
       </MobileViewWrapper>
       {currentAction.userInput === "ACTION_RATING" ? (
@@ -104,6 +107,14 @@ export default function Detailpage({
           id={data.data.id}
           handleCommentButtonClick={handleCommentButtonClick}
           handleComment={handleComment}
+        />
+      ) : null}
+      {currentAction.userInput === "ACTION_DELETE_COMMENT" ? (
+        <DeleteMovieComment
+          id={data.data.id}
+          commentId={currentAction.editingComment.id}
+          handleCommentDeleteButtonClick={handleCommentDeleteButtonClick}
+          handleDeleteComment={handleDeleteComment}
         />
       ) : null}
     </>

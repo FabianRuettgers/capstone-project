@@ -7,34 +7,45 @@ export default function CreateMovieComment({
   handleComment,
 }) {
   return (
-    <Container>
-      <Heading>Kommentar</Heading>
-      <Form onSubmit={handleComment(id)}>
-        <StyledInput type="text" placeholder="Autor" name="author" required />
-        <StyledTextarea
-          placeholder="Kommentar"
-          name="comment"
-          rows="6"
-          required
-        />
-        <ButtonWrapper>
-          <FormButton
-            title={"zurück"}
-            backgroundcolor={"var(--background-color-light)"}
-            textcolor={"var( --text-color-dark-content)"}
-            handleClick={handleCommentButtonClick}
+    <>
+      <StyledButton onClick={handleCommentButtonClick} />
+      <Container>
+        <Heading>Kommentar</Heading>
+        <Form onSubmit={handleComment(id)}>
+          <StyledInput type="text" placeholder="Autor" name="author" required />
+          <StyledTextarea
+            placeholder="Kommentar"
+            name="comment"
+            rows="6"
+            required
           />
-          <FormButton
-            type={"submit"}
-            title={"speichern"}
-            backgroundcolor={"var(--highlight-color)"}
-            textcolor={"var( --text-color-dark-content)"}
-          />
-        </ButtonWrapper>
-      </Form>
-    </Container>
+          <ButtonWrapper>
+            <FormButton
+              title={"zurück"}
+              backgroundcolor={"var(--background-color-light)"}
+              textcolor={"var( --text-color-dark-content)"}
+              handleClick={handleCommentButtonClick}
+            />
+            <FormButton
+              type={"submit"}
+              title={"speichern"}
+              backgroundcolor={"var(--highlight-color)"}
+              textcolor={"var( --text-color-dark-content)"}
+            />
+          </ButtonWrapper>
+        </Form>
+      </Container>
+    </>
   );
 }
+const StyledButton = styled.button`
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  opacity: 0.1;
+`;
 
 const Container = styled.section`
   color: var(--text-color-light-heading);

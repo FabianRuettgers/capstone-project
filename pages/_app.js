@@ -305,6 +305,20 @@ export default function App({ Component, pageProps }) {
     }));
   }
   // Comment delete
+  function handleCommentDeleteButtonClick() {
+    if (currentAction.userInput === "ACTION_COMMENT_EDIT") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "ACTION_DELETE_COMMENT",
+      }));
+    }
+    if (currentAction.userInput === "ACTION_DELETE_COMMENT") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "ACTION_COMMENT_EDIT",
+      }));
+    }
+  }
   function handleDeleteComment(id, commentId) {
     setUserInformation((currentUsers) =>
       currentUsers.map((user) => {
@@ -351,6 +365,7 @@ export default function App({ Component, pageProps }) {
           handleEditDone={handleEditDone}
           handleEditGoBack={handleEditGoBack}
           handleDeleteComment={handleDeleteComment}
+          handleCommentDeleteButtonClick={handleCommentDeleteButtonClick}
         />
       </SWRConfig>
     </>

@@ -12,6 +12,7 @@ export default function MovieComments({
   handleEditDone,
   handleEditGoBack,
   handleDeleteComment,
+  handleCommentDeleteButtonClick,
 }) {
   const emptyInput =
     !currentAction.editingComment || !currentAction.editingComment.content;
@@ -73,9 +74,7 @@ export default function MovieComments({
                         Save
                       </button>
                       <button onClick={handleEditGoBack}>go back</button>
-                      <button
-                        onClick={() => handleDeleteComment(id, comment.id)}
-                      >
+                      <button onClick={handleCommentDeleteButtonClick}>
                         Delete
                       </button>
                     </EditSection>

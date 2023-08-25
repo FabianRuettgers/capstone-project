@@ -23,6 +23,7 @@ export default function MovieDetailPage({
   handleEditDone,
   handleEditGoBack,
   handleDeleteComment,
+  handleCommentDeleteButtonClick,
 }) {
   const userItem = userInformation.find(
     (item) => item && item.id === movie.data.id
@@ -56,6 +57,7 @@ export default function MovieDetailPage({
         handleEditDone={handleEditDone}
         handleEditGoBack={handleEditGoBack}
         handleDeleteComment={handleDeleteComment}
+        handleCommentDeleteButtonClick={handleCommentDeleteButtonClick}
       />
 
       <MovieProvider id={movie.data.id} />
