@@ -9,8 +9,18 @@ export default function MovieComments({
   startRating,
   startComment,
   startDelete,
+  handleEditButtonClick,
+  startEditComment,
+  editingComment,
+  handleInputChange,
+  handleEditDone,
+  handleEditGoBack,
+  handleDeleteComment,
 }) {
-  const disableButton = startComment || startRating || startDelete;
+  const disableButton =
+    startComment || startRating || startDelete || startEditComment;
+  const disableEditButton = startComment || startRating || startDelete;
+  const emptyInput = !editingComment || !editingComment.content;
   const foundUser = userInformation.find((user) => user.id === id);
   const userComments = foundUser ? foundUser.comments : null;
   const comments = MovieComments.results;
@@ -36,37 +46,85 @@ export default function MovieComments({
         </StyledButton>
       </ButtonWrapper>
       {combinedComments && combinedComments.length > 0 && (
-        <>
-          <List>
-            {combinedComments.map((comment) => (
-              <StyledListItem key={comment.id}>
+        <List>
+          {combinedComments.map((comment) => (
+            <StyledListItem key={comment.id}>
+              <StyledEditButton
+                onClick={() => handleEditButtonClick(comment.id)}
+                disabled={disableEditButton}
+              >
                 <Heading>{comment.author}</Heading>
                 <Date>
                   erstellt am {comment.created_at.slice(8, 10)}.
                   {comment.created_at.slice(5, 7)}.
                   {comment.created_at.slice(0, 4)}
                 </Date>
-                <Content>
-                  {showAll
-                    ? comment.content
-                    : comment.content.slice(0, characterLength)}
-                  {comment.content.length > characterLength &&
-                    !showAll &&
-                    "..."}
-                </Content>
-                {comment.content.length > characterLength && (
-                  <ToggleShowButton onClick={handleToggleShowAll}>
-                    {showAll ? "Weniger anzeigen" : "Mehr anzeigen"}
-                  </ToggleShowButton>
-                )}
-              </StyledListItem>
-            ))}
-          </List>
-        </>
+              </StyledEditButton>
+              {startEditComment === true &&
+              editingComment &&
+              editingComment.id === comment.id ? (
+                <EditSection>
+                  <textarea
+                    rows="3"
+                    value={editingComment.content}
+                    onChange={handleInputChange}
+                  />
+                  {emptyInput ? (
+                    <ErrorInput>Das Textfeld darf nicht leer sein</ErrorInput>
+                  ) : null}
+                  <button
+                    onClick={() => handleEditDone(id)}
+                    disabled={emptyInput}
+                  >
+                    Save
+                  </button>
+                  <button onClick={handleEditGoBack}>go back</button>
+                  <button onClick={() => handleDeleteComment(id, comment.id)}>
+                    Delete
+                  </button>
+                </EditSection>
+              ) : (
+                <StyledEditButton
+                  onClick={() => handleEditButtonClick(comment.id)}
+                  disabled={disableEditButton}
+                >
+                  <Content>
+                    {showAll
+                      ? comment.content
+                      : comment.content.slice(0, characterLength)}
+                    {comment.content.length > characterLength &&
+                      !showAll &&
+                      "..."}
+                  </Content>
+                  {comment.content.length > characterLength && (
+                    <ToggleShowButton onClick={handleToggleShowAll}>
+                      {showAll ? "Weniger anzeigen" : "Mehr anzeigen"}
+                    </ToggleShowButton>
+                  )}
+                </StyledEditButton>
+              )}
+            </StyledListItem>
+          ))}
+        </List>
       )}
     </>
   );
 }
+
+const EditSection = styled.section`
+  display: grid;
+  gap: 1rem;
+`;
+
+const StyledEditButton = styled.button`
+  background-color: transparent;
+  &:active {
+    transform: scale(0.85);
+  }
+  text-align: left;
+  display: grid;
+`;
+
 const ButtonWrapper = styled.div`
   margin-top: var(--margin-medium);
   margin-inline: var(--margin-medium);
@@ -86,7 +144,7 @@ const StyledButton = styled.button`
 `;
 
 const ListHeading = styled.h2`
-  text-align: center;
+  text-align: left;
   margin-top: var(--margin-medium);
   margin-inline: var(--margin-medium);
   color: var(--text-color-light-heading);
@@ -96,10 +154,12 @@ const ListHeading = styled.h2`
 const List = styled.ul`
   margin-inline: var(--margin-medium);
   margin-top: var(--margin-medium);
+  display: grid;
 `;
 
 const StyledListItem = styled.li`
   margin-bottom: var(--margin-small);
+  border: 2px solid red;
 `;
 
 const Heading = styled.h3`
@@ -123,4 +183,9 @@ const ToggleShowButton = styled.button`
   background: none;
   color: var(--text-color-light-heading);
   font-size: var(--big-text);
+`;
+
+const ErrorInput = styled.p`
+  color: var(--text-color-light-content);
+  opacity: 0.7;
 `;

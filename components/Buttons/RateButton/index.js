@@ -4,8 +4,9 @@ export default function RateButton({
   handleRateButtonClick,
   startRating,
   startComment,
+  startEditComment,
 }) {
-  const disableButton = startComment || startRating;
+  const disableButton = startComment || startRating || startEditComment;
   return (
     <>
       <StyledButton

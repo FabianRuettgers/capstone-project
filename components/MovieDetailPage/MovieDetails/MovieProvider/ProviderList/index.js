@@ -3,7 +3,6 @@ import ProviderImage from "../ProviderImage";
 
 export default function ProviderList({ heading, providerData }) {
   let gridColumns = 5;
-  console.log(providerData.length);
   if (providerData.length > 5) {
     gridColumns = "repeat(5, 1fr)";
   } else {

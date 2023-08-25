@@ -189,6 +189,76 @@ export default function App({ Component, pageProps }) {
     }, 2000);
   }
 
+  const [startEditComment, setStartEditComment] = useState(false);
+  const [editingComment, setEditingComment] = useState(null);
+
+  function handleEditButtonClick(id) {
+    if (editingComment && editingComment.id === id) {
+      setStartEditComment(false);
+      setEditingComment(null);
+    } else {
+      const commentToEdit = userInformation
+        .flatMap((user) => user.comments || [])
+        .find((comment) => comment.id === id);
+
+      if (commentToEdit) {
+        setEditingComment(commentToEdit);
+        setStartEditComment(true);
+      }
+    }
+  }
+
+  function handleInputChange(event) {
+    const changeValue = event.target.value;
+    setEditingComment((prevEditingComment) => ({
+      ...prevEditingComment,
+      content: changeValue,
+    }));
+  }
+
+  function handleEditDone(id) {
+    console.log(userInformation);
+    const updatedUserInformation = userInformation.map((user) => {
+      if (user.id === id) {
+        const updatedComments = user.comments.map((comment) => {
+          if (comment.id === editingComment.id) {
+            return { ...comment, content: editingComment.content };
+          }
+          return comment;
+        });
+
+        return { ...user, comments: updatedComments };
+      }
+      return user;
+    });
+
+    setUserInformation(updatedUserInformation);
+    setEditingComment(null);
+    setStartEditComment(false);
+  }
+
+  function handleEditGoBack() {
+    setEditingComment(null);
+    setStartEditComment(false);
+  }
+
+  function handleDeleteComment(id, commentId) {
+    setUserInformation((currentUsers) =>
+      currentUsers.map((user) => {
+        if (user.id === id && user.comments) {
+          const updatedComments = user.comments.filter(
+            (comment) => comment.id !== commentId
+          );
+
+          return { ...user, comments: updatedComments };
+        }
+        return user;
+      })
+    );
+    setEditingComment(null);
+    setStartEditComment(false);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -212,6 +282,13 @@ export default function App({ Component, pageProps }) {
           handleCommentButtonClick={handleCommentButtonClick}
           handleComment={handleComment}
           startComment={startComment}
+          handleEditButtonClick={handleEditButtonClick}
+          startEditComment={startEditComment}
+          editingComment={editingComment}
+          handleInputChange={handleInputChange}
+          handleEditDone={handleEditDone}
+          handleEditGoBack={handleEditGoBack}
+          handleDeleteComment={handleDeleteComment}
         />
       </SWRConfig>
     </>

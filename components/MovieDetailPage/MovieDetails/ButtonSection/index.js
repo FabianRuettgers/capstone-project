@@ -11,6 +11,7 @@ export default function ButtonSection({
   handleDeleteButtonClick,
   startRating,
   startComment,
+  startEditComment,
 }) {
   const selectedItem = userInformation.find((item) => item.id === id);
   const isBookmarked = selectedItem ? selectedItem.isBookmarked : false;
@@ -34,6 +35,7 @@ export default function ButtonSection({
             id={id}
             startRating={startRating}
             startComment={startComment}
+            startEditComment={startEditComment}
           />
         )}
       </BookmarkSection>
@@ -43,11 +45,17 @@ export default function ButtonSection({
             handleRateButtonClick={handleRateButtonClick}
             startRating={startRating}
             startComment={startComment}
+            startEditComment={startEditComment}
           />
         )}
       </RateSection>
       {israted ? (
-        <DeleteButton handleDeleteButtonClick={handleDeleteButtonClick} />
+        <DeleteButton
+          handleDeleteButtonClick={handleDeleteButtonClick}
+          startRating={startRating}
+          startComment={startComment}
+          startEditComment={startEditComment}
+        />
       ) : null}
     </SectionContainer>
   );
