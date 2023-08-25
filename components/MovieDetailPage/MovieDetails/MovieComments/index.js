@@ -2,25 +2,19 @@ import { useState } from "react";
 import { styled } from "styled-components";
 
 export default function MovieComments({
+  id,
+  userInformation,
+  currentAction,
   MovieComments,
   handleCommentButtonClick,
-  userInformation,
-  id,
-  startRating,
-  startComment,
-  startDelete,
   handleEditButtonClick,
-  startEditComment,
-  editingComment,
   handleInputChange,
   handleEditDone,
   handleEditGoBack,
   handleDeleteComment,
 }) {
-  const disableButton =
-    startComment || startRating || startDelete || startEditComment;
-  const disableEditButton = startComment || startRating || startDelete;
-  const emptyInput = !editingComment || !editingComment.content;
+  const emptyInput =
+    !currentAction.editingComment || !currentAction.editingComment.content;
   const foundUser = userInformation.find((user) => user.id === id);
   const userComments = foundUser ? foundUser.comments : null;
   const comments = MovieComments.results;
@@ -38,10 +32,7 @@ export default function MovieComments({
     <>
       <ListHeading>Kommentare</ListHeading>
       <ButtonWrapper>
-        <StyledButton
-          onClick={handleCommentButtonClick}
-          disabled={disableButton}
-        >
+        <StyledButton onClick={handleCommentButtonClick}>
           neuer Kommentar
         </StyledButton>
       </ButtonWrapper>
@@ -51,7 +42,6 @@ export default function MovieComments({
             <StyledListItem key={comment.id}>
               <StyledEditButton
                 onClick={() => handleEditButtonClick(comment.id)}
-                disabled={disableEditButton}
               >
                 <Heading>{comment.author}</Heading>
                 <Date>
@@ -60,49 +50,55 @@ export default function MovieComments({
                   {comment.created_at.slice(0, 4)}
                 </Date>
               </StyledEditButton>
-              {startEditComment === true &&
-              editingComment &&
-              editingComment.id === comment.id ? (
-                <EditSection>
-                  <textarea
-                    rows="3"
-                    value={editingComment.content}
-                    onChange={handleInputChange}
-                  />
-                  {emptyInput ? (
-                    <ErrorInput>Das Textfeld darf nicht leer sein</ErrorInput>
-                  ) : null}
-                  <button
-                    onClick={() => handleEditDone(id)}
-                    disabled={emptyInput}
-                  >
-                    Save
-                  </button>
-                  <button onClick={handleEditGoBack}>go back</button>
-                  <button onClick={() => handleDeleteComment(id, comment.id)}>
-                    Delete
-                  </button>
-                </EditSection>
-              ) : (
-                <StyledEditButton
-                  onClick={() => handleEditButtonClick(comment.id)}
-                  disabled={disableEditButton}
-                >
-                  <Content>
-                    {showAll
-                      ? comment.content
-                      : comment.content.slice(0, characterLength)}
-                    {comment.content.length > characterLength &&
-                      !showAll &&
-                      "..."}
-                  </Content>
-                  {comment.content.length > characterLength && (
-                    <ToggleShowButton onClick={handleToggleShowAll}>
-                      {showAll ? "Weniger anzeigen" : "Mehr anzeigen"}
-                    </ToggleShowButton>
-                  )}
-                </StyledEditButton>
-              )}
+              {
+                (currentAction =
+                  "ACTION_COMMENT_EDIT" &&
+                  currentAction.editingComment &&
+                  currentAction.editingComment.id === comment.id ? (
+                    <EditSection>
+                      <textarea
+                        rows="3"
+                        value={currentAction.editingComment.content}
+                        onChange={handleInputChange}
+                      />
+                      {emptyInput ? (
+                        <ErrorInput>
+                          Das Textfeld darf nicht leer sein
+                        </ErrorInput>
+                      ) : null}
+                      <button
+                        onClick={() => handleEditDone(id)}
+                        disabled={emptyInput}
+                      >
+                        Save
+                      </button>
+                      <button onClick={handleEditGoBack}>go back</button>
+                      <button
+                        onClick={() => handleDeleteComment(id, comment.id)}
+                      >
+                        Delete
+                      </button>
+                    </EditSection>
+                  ) : (
+                    <StyledEditButton
+                      onClick={() => handleEditButtonClick(comment.id)}
+                    >
+                      <Content>
+                        {showAll
+                          ? comment.content
+                          : comment.content.slice(0, characterLength)}
+                        {comment.content.length > characterLength &&
+                          !showAll &&
+                          "..."}
+                      </Content>
+                      {comment.content.length > characterLength && (
+                        <ToggleShowButton onClick={handleToggleShowAll}>
+                          {showAll ? "Weniger anzeigen" : "Mehr anzeigen"}
+                        </ToggleShowButton>
+                      )}
+                    </StyledEditButton>
+                  ))
+              }
             </StyledListItem>
           ))}
         </List>

@@ -6,12 +6,10 @@ import DeleteButton from "@/components/Buttons/DeleteButton";
 export default function ButtonSection({
   id,
   userInformation,
+  currentAction,
   handleBookmarkToggle,
   handleRateButtonClick,
   handleDeleteButtonClick,
-  startRating,
-  startComment,
-  startEditComment,
 }) {
   const selectedItem = userInformation.find((item) => item.id === id);
   const isBookmarked = selectedItem ? selectedItem.isBookmarked : false;
@@ -30,32 +28,19 @@ export default function ButtonSection({
           </StyledSvg>
         ) : (
           <BookmarkButton
+            id={id}
             isBookmarked={isBookmarked}
             handleBookmarkToggle={handleBookmarkToggle}
-            id={id}
-            startRating={startRating}
-            startComment={startComment}
-            startEditComment={startEditComment}
           />
         )}
       </BookmarkSection>
       <RateSection>
         {israted ? null : (
-          <RateButton
-            handleRateButtonClick={handleRateButtonClick}
-            startRating={startRating}
-            startComment={startComment}
-            startEditComment={startEditComment}
-          />
+          <RateButton handleRateButtonClick={handleRateButtonClick} />
         )}
       </RateSection>
       {israted ? (
-        <DeleteButton
-          handleDeleteButtonClick={handleDeleteButtonClick}
-          startRating={startRating}
-          startComment={startComment}
-          startEditComment={startEditComment}
-        />
+        <DeleteButton handleDeleteButtonClick={handleDeleteButtonClick} />
       ) : null}
     </SectionContainer>
   );
