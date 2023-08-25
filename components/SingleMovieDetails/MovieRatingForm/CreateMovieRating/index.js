@@ -48,6 +48,7 @@ const StyledButton = styled.button`
   top: 0;
   background-color: black;
   opacity: 0.2;
+  z-index: 99999999;
 `;
 
 const Container = styled.section`
@@ -63,7 +64,7 @@ const Container = styled.section`
   align-items: center;
   padding: var(--padding-medium);
   gap: var(--gap-small);
-  z-index: 1000;
+  z-index: 999999999;
 `;
 
 const Heading = styled.h2`

@@ -1,6 +1,7 @@
 import DeleteCommentButton from "@/components/Buttons/DeleteCommentButton";
 import EditCommentButton from "@/components/Buttons/EditCommentButton";
-import ExitEditCommentButton from "@/components/Buttons/ExitEditCommentButton";
+import ExitCommentButton from "@/components/Buttons/ExitCommentButton";
+
 import SaveCommentButton from "@/components/Buttons/SaveCommentButton";
 import { useState } from "react";
 import { keyframes, styled } from "styled-components";
@@ -26,7 +27,7 @@ export default function MovieComments({
     ? [...userComments, ...comments]
     : comments;
 
-  function deleteMode(commentId) {
+  function userIsInDeleteMode(commentId) {
     const itemToDelete =
       currentAction.userInput === "ACTION_DELETE_COMMENT" &&
       currentAction.editingComment &&
@@ -34,7 +35,7 @@ export default function MovieComments({
     return itemToDelete;
   }
 
-  function editMode(commentId) {
+  function userIsInEditMode(commentId) {
     const itemToEdit =
       currentAction.userInput === "ACTION_COMMENT_EDIT" &&
       currentAction.editingComment &&
@@ -51,7 +52,7 @@ export default function MovieComments({
   return (
     <>
       {currentAction.editingComment &&
-      editMode(currentAction.editingComment.id) ? (
+      userIsInEditMode(currentAction.editingComment.id) ? (
         <StyledExitButton
           onClick={() => handleEditButtonClick(currentAction.editingComment.id)}
         />
@@ -67,23 +68,25 @@ export default function MovieComments({
           {combinedComments.map((comment) => (
             <StyledListItem
               key={comment.id}
-              deleteMode={deleteMode(comment.id)}
+              deleteMode={userIsInDeleteMode(comment.id)}
             >
-              <EditCommentButton
-                handleEditClick={() => handleEditButtonClick(comment.id)}
-                handleBackClick={handleEditGoBack}
-                editMode={editMode(comment.id)}
-              />
+              {userIsInEditMode(comment.id) ? (
+                <>
+                  <ExitCommentButton onClick={handleEditGoBack} />
+                  <DeleteCommentButton
+                    onClick={handleCommentDeleteButtonClick}
+                  />
+                  <SaveCommentButton
+                    onClick={() => handleEditDone(id)}
+                    disabled={emptyInput}
+                  />
+                </>
+              ) : (
+                <EditCommentButton
+                  onClick={() => handleEditButtonClick(comment.id)}
+                />
+              )}
 
-              <SaveCommentButton
-                onClick={() => handleEditDone(id)}
-                disabled={emptyInput}
-                editMode={editMode(comment.id)}
-              />
-              <DeleteCommentButton
-                onClick={handleCommentDeleteButtonClick}
-                editMode={editMode(comment.id)}
-              />
               <Heading>{comment.author}</Heading>
               <Date>
                 erstellt am {comment.created_at.slice(8, 10)}.

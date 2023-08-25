@@ -10,7 +10,7 @@ import MovieRating from "./MovieDetails/MovieRating";
 import UserRating from "./MovieDetails/UserRating";
 import MovieGenre from "./MovieDetails/MovieGenre";
 
-export default function MovieDetailPage({
+export default function SingleMovieDetails({
   movie,
   userInformation,
   currentAction,

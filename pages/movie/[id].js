@@ -2,14 +2,14 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { styled } from "styled-components";
 import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
-import MovieDetailPage from "@/components/MovieDetailPage";
+import SingleMovieDetails from "@/components/SingleMovieDetails";
 import LoadFetching from "@/components/LoadingHandling/LoadFetching";
 import Head from "next/head";
-import CreateMovieRating from "@/components/MovieDetailPage/MovieRatingForm/CreateMovieRating";
-import DeleteMovieRating from "@/components/MovieDetailPage/MovieRatingForm/DeleteMovieRating";
+import CreateMovieRating from "@/components/SingleMovieDetails/MovieRatingForm/CreateMovieRating";
+import DeleteMovieRating from "@/components/SingleMovieDetails/MovieRatingForm/DeleteMovieRating";
 import HeaderDetailsPage from "@/components/Navigation/Header/HeaderDetailsPage";
-import CreateMovieComment from "@/components/MovieDetailPage/MovieCommentForm/CreateMovieComment";
-import DeleteMovieComment from "@/components/MovieDetailPage/MovieCommentForm/DeleteMovieComment";
+import CreateMovieComment from "@/components/SingleMovieDetails/MovieCommentForm/CreateMovieComment";
+import DeleteMovieComment from "@/components/SingleMovieDetails/MovieCommentForm/DeleteMovieComment";
 
 export default function Detailpage({
   userInformation,
@@ -72,7 +72,7 @@ export default function Detailpage({
       </Head>
       <HeaderDetailsPage disable={HeaderDisable} />
       <MobileViewWrapper>
-        <MovieDetailPage
+        <SingleMovieDetails
           movie={data}
           userInformation={userInformation}
           currentAction={currentAction}

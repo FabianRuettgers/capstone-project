@@ -20,7 +20,6 @@ export default function App({ Component, pageProps }) {
     query: "",
   });
 
-  console.log(currentAction);
   // search query input change
   function handleQueryInputChange(event) {
     setCurrentAction((prevAction) => ({
@@ -271,7 +270,6 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleEditDone(id) {
-    console.log(userInformation);
     const updatedUserInformation = userInformation.map((user) => {
       if (user.id === id) {
         const updatedComments = user.comments.map((comment) => {
