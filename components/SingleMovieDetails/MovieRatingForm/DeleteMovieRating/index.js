@@ -7,28 +7,42 @@ export default function DeleteMovieRating({
   handleGoBackDelete,
 }) {
   return (
-    <Container>
-      <Heading>Bewertung löschen?</Heading>
-      <GridWrapper>
-        <StyledLabel>sicher das du deine Bewertung löschen willst?</StyledLabel>
-        <ButtonWrapper>
-          <FormButton
-            title={"zurück"}
-            backgroundcolor={"var(--background-color-light)"}
-            textcolor={"var( --text-color-dark-content)"}
-            handleClick={handleGoBackDelete}
-          />
-          <FormButton
-            title={"löschen"}
-            backgroundcolor={"var(--highlight-color)"}
-            textcolor={"var( --text-color-dark-content)"}
-            handleClick={() => handleDelete(id)}
-          />
-        </ButtonWrapper>
-      </GridWrapper>
-    </Container>
+    <>
+      <StyledButton onClick={handleGoBackDelete} />
+      <Container>
+        <Heading>Bewertung löschen?</Heading>
+        <GridWrapper>
+          <StyledLabel>
+            sicher das du deine Bewertung löschen willst?
+          </StyledLabel>
+          <ButtonWrapper>
+            <FormButton
+              title={"zurück"}
+              backgroundcolor={"var(--background-color-light)"}
+              textcolor={"var( --text-color-dark-content)"}
+              handleClick={handleGoBackDelete}
+            />
+            <FormButton
+              title={"löschen"}
+              backgroundcolor={"var(--highlight-color)"}
+              textcolor={"var( --text-color-dark-content)"}
+              handleClick={() => handleDelete(id)}
+            />
+          </ButtonWrapper>
+        </GridWrapper>
+      </Container>
+    </>
   );
 }
+const StyledButton = styled.button`
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  background-color: black;
+  opacity: 0.2;
+  z-index: 99999999;
+`;
 
 const Container = styled.section`
   color: var(--text-color-light-heading);
@@ -43,7 +57,7 @@ const Container = styled.section`
   align-items: center;
   padding: var(--padding-medium);
   gap: var(--gap-small);
-  z-index: 1000;
+  z-index: 999999999;
 `;
 
 const Heading = styled.h2`

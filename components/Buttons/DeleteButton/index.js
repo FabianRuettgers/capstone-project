@@ -1,18 +1,11 @@
 import { styled } from "styled-components";
 
-export default function DeleteButton({
-  handleDeleteButtonClick,
-  startRating,
-  startComment,
-  startEditComment,
-}) {
-  const disableButton = startComment || startRating || startEditComment;
+export default function DeleteButton({ handleDeleteButtonClick }) {
   return (
     <>
       <StyledButton
         aria-label="Delete button"
         onClick={handleDeleteButtonClick}
-        disabled={disableButton}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -5,14 +5,10 @@ import useSWR from "swr";
 import MovieSearch from "@/components/MovieSearch";
 import Head from "next/head";
 
-export default function Search({ query, setQuery }) {
+export default function Search({ currentAction, handleQueryInputChange }) {
   const { data, error, isLoading } = useSWR(
-    query ? `/api/movie/search/${query}` : null
+    currentAction.query ? `/api/movie/search/${currentAction.query}` : null
   );
-
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
-  };
 
   if (error) {
     return (
@@ -37,8 +33,8 @@ export default function Search({ query, setQuery }) {
       <HeaderMenu title={"Film suchen"} />
       <MobileViewWrapper>
         <MovieSearch
-          query={query}
-          handleInputChange={handleInputChange}
+          query={currentAction.query}
+          handleInputChange={handleQueryInputChange}
           data={data}
           isLoading={isLoading}
         />

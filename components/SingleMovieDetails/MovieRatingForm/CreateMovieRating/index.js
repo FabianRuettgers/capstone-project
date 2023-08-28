@@ -7,37 +7,49 @@ export default function CreateMovieRating({
   handleGoBackRating,
 }) {
   return (
-    <Container>
-      <Heading>Bewerte den Film</Heading>
-      <Form onSubmit={handleRate(id)}>
-        <StyledLabel>bewerte den Film von 0 bis 10 </StyledLabel>
-        <StyledInput
-          type="number"
-          min="0"
-          max="10"
-          step="0.1"
-          placeholder="rating"
-          name="rating"
-          required
-        />
-        <ButtonWrapper>
-          <FormButton
-            title={"zurück"}
-            backgroundcolor={"var(--background-color-light)"}
-            textcolor={"var( --text-color-dark-content)"}
-            handleClick={handleGoBackRating}
+    <>
+      <StyledButton onClick={handleGoBackRating} />
+      <Container>
+        <Heading>Bewerte den Film</Heading>
+        <Form onSubmit={handleRate(id)}>
+          <StyledLabel>bewerte den Film von 0 bis 10 </StyledLabel>
+          <StyledInput
+            type="number"
+            min="0"
+            max="10"
+            step="0.1"
+            placeholder="rating"
+            name="rating"
+            required
           />
-          <FormButton
-            type={"submit"}
-            title={"bewerten"}
-            backgroundcolor={"var(--highlight-color)"}
-            textcolor={"var( --text-color-dark-content)"}
-          />
-        </ButtonWrapper>
-      </Form>
-    </Container>
+          <ButtonWrapper>
+            <FormButton
+              title={"zurück"}
+              backgroundcolor={"var(--background-color-light)"}
+              textcolor={"var( --text-color-dark-content)"}
+              handleClick={handleGoBackRating}
+            />
+            <FormButton
+              type={"submit"}
+              title={"bewerten"}
+              backgroundcolor={"var(--highlight-color)"}
+              textcolor={"var( --text-color-dark-content)"}
+            />
+          </ButtonWrapper>
+        </Form>
+      </Container>
+    </>
   );
 }
+const StyledButton = styled.button`
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  background-color: black;
+  opacity: 0.2;
+  z-index: 99999999;
+`;
 
 const Container = styled.section`
   color: var(--text-color-light-heading);
@@ -52,7 +64,7 @@ const Container = styled.section`
   align-items: center;
   padding: var(--padding-medium);
   gap: var(--gap-small);
-  z-index: 1000;
+  z-index: 999999999;
 `;
 
 const Heading = styled.h2`

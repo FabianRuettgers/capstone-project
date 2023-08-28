@@ -2,40 +2,37 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { styled } from "styled-components";
 import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
-import MovieDetailPage from "@/components/MovieDetailPage";
+import SingleMovieDetails from "@/components/SingleMovieDetails";
 import LoadFetching from "@/components/LoadingHandling/LoadFetching";
 import Head from "next/head";
-import CreateMovieRating from "@/components/MovieDetailPage/MovieRatingForm/CreateMovieRating";
-import DeleteMovieRating from "@/components/MovieDetailPage/MovieRatingForm/DeleteMovieRating";
+import CreateMovieRating from "@/components/SingleMovieDetails/MovieRatingForm/CreateMovieRating";
+import DeleteMovieRating from "@/components/SingleMovieDetails/MovieRatingForm/DeleteMovieRating";
 import HeaderDetailsPage from "@/components/Navigation/Header/HeaderDetailsPage";
-import CreateMovieComment from "@/components/MovieDetailPage/MovieCommentForm/CreateMovieComment";
+import CreateMovieComment from "@/components/SingleMovieDetails/MovieCommentForm/CreateMovieComment";
+import DeleteMovieComment from "@/components/SingleMovieDetails/MovieCommentForm/DeleteMovieComment";
 
 export default function Detailpage({
   userInformation,
+  currentAction,
   handleBookmarkToggle,
-  handleRate,
   handleRateButtonClick,
-  startRating,
-  handleDelete,
+  handleRate,
   handleDeleteButtonClick,
-  startDelete,
+  handleDelete,
   handleCommentButtonClick,
   handleComment,
-  startComment,
   handleEditButtonClick,
-  startEditComment,
-  editingComment,
   handleInputChange,
   handleEditDone,
   handleEditGoBack,
   handleDeleteComment,
+  handleCommentDeleteButtonClick,
 }) {
   const router = useRouter();
   const { id } = router.query;
 
   const { data, isLoading, error } = useSWR(`/api/movie/${id}`);
-  const HeaderDisable =
-    startRating || startDelete || startComment || startEditComment;
+  const HeaderDisable = currentAction.userInput !== "";
 
   if (isLoading) {
     return (
@@ -75,44 +72,49 @@ export default function Detailpage({
       </Head>
       <HeaderDetailsPage disable={HeaderDisable} />
       <MobileViewWrapper>
-        <MovieDetailPage
+        <SingleMovieDetails
           movie={data}
           userInformation={userInformation}
+          currentAction={currentAction}
           handleBookmarkToggle={handleBookmarkToggle}
           handleRateButtonClick={handleRateButtonClick}
           handleDeleteButtonClick={handleDeleteButtonClick}
           handleCommentButtonClick={handleCommentButtonClick}
-          startRating={startRating}
-          startComment={startComment}
-          startDelete={startDelete}
           handleEditButtonClick={handleEditButtonClick}
-          startEditComment={startEditComment}
-          editingComment={editingComment}
           handleInputChange={handleInputChange}
           handleEditDone={handleEditDone}
           handleEditGoBack={handleEditGoBack}
           handleDeleteComment={handleDeleteComment}
+          handleCommentDeleteButtonClick={handleCommentDeleteButtonClick}
         />
       </MobileViewWrapper>
-      {startRating ? (
+      {currentAction.userInput === "ACTION_RATING" ? (
         <CreateMovieRating
           id={data.data.id}
           handleRate={handleRate}
           handleGoBackRating={handleRateButtonClick}
         />
       ) : null}
-      {startDelete ? (
+      {currentAction.userInput === "ACTION_DELETE_RATING" ? (
         <DeleteMovieRating
           id={data.data.id}
           handleDelete={handleDelete}
           handleGoBackDelete={handleDeleteButtonClick}
         />
       ) : null}
-      {startComment ? (
+      {currentAction.userInput === "ACTION_COMMENT" ? (
         <CreateMovieComment
           id={data.data.id}
           handleCommentButtonClick={handleCommentButtonClick}
           handleComment={handleComment}
+        />
+      ) : null}
+      {currentAction.userInput === "ACTION_DELETE_COMMENT" ? (
+        <DeleteMovieComment
+          id={data.data.id}
+          commentId={currentAction.editingComment.id}
+          handleCommentDeleteButtonClick={handleCommentDeleteButtonClick}
+          handleDeleteComment={handleDeleteComment}
         />
       ) : null}
     </>

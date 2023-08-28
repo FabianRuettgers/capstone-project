@@ -8,22 +8,53 @@ import { uid } from "uid";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
+  const { isFetchLoading, setFetchLoading, clearFetchLoading } = useLoading();
   const [userInformation, setUserInformation] = useLocalStorageState(
     "UserInformation",
     { defaultValue: [] }
   );
+  const [currentAction, setCurrentAction] = useState({
+    userInput: "",
+    activeTab: "saved",
+    editingComment: null,
+    query: "",
+  });
 
-  const [query, setQuery] = useState("");
-
-  const [activeTab, setActiveTab] = useState("saved");
-
-  function handleTabClick(tab) {
-    setActiveTab(tab);
+  // search query input change
+  function handleQueryInputChange(event) {
+    setCurrentAction((prevAction) => ({
+      ...prevAction,
+      query: event.target.value,
+    }));
   }
-
-  const [startDelete, setStartDelete] = useState(false);
+  // Custom hook for fetching
+  function startFetchLoading() {
+    setFetchLoading();
+    setTimeout(() => {
+      clearFetchLoading();
+    }, 2000);
+  }
+  // Switching Tab function User-list
+  function handleTabClick(tab) {
+    setCurrentAction((prevAction) => ({
+      ...prevAction,
+      activeTab: tab,
+    }));
+  }
+  // Delete Rating
   function handleDeleteButtonClick() {
-    setStartDelete((prevStartDelete) => !prevStartDelete);
+    if (currentAction.userInput === "") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "ACTION_DELETE_RATING",
+      }));
+    }
+    if (currentAction.userInput === "ACTION_DELETE_RATING") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "",
+      }));
+    }
   }
   function handleDelete(id) {
     setUserInformation((currentMovies) =>
@@ -33,10 +64,20 @@ export default function App({ Component, pageProps }) {
     );
     handleDeleteButtonClick();
   }
-
-  const [startRating, setStartRating] = useState(false);
+  // Set Rating
   function handleRateButtonClick() {
-    setStartRating((prevStartRating) => !prevStartRating);
+    if (currentAction.userInput === "") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "ACTION_RATING",
+      }));
+    }
+    if (currentAction.userInput === "ACTION_RATING") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "",
+      }));
+    }
   }
   function handleRate(id) {
     return function (event) {
@@ -79,10 +120,20 @@ export default function App({ Component, pageProps }) {
       handleRateButtonClick();
     };
   }
-
-  const [startComment, setStartComment] = useState(false);
+  // Set Comment
   function handleCommentButtonClick() {
-    setStartComment((prevStartComment) => !prevStartComment);
+    if (currentAction.userInput === "") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "ACTION_COMMENT",
+      }));
+    }
+    if (currentAction.userInput === "ACTION_COMMENT") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "",
+      }));
+    }
   }
   function handleComment(id) {
     return function (event) {
@@ -145,7 +196,7 @@ export default function App({ Component, pageProps }) {
       handleCommentButtonClick();
     };
   }
-
+  // Bookmark toggle
   function handleBookmarkToggle(id) {
     setUserInformation((currentMovies) => {
       if (currentMovies.find((movie) => movie.id === id)) {
@@ -181,48 +232,52 @@ export default function App({ Component, pageProps }) {
     });
   }
 
-  const { isFetchLoading, setFetchLoading, clearFetchLoading } = useLoading();
-  function startFetchLoading() {
-    setFetchLoading();
-    setTimeout(() => {
-      clearFetchLoading();
-    }, 2000);
-  }
-
-  const [startEditComment, setStartEditComment] = useState(false);
-  const [editingComment, setEditingComment] = useState(null);
-
+  // Comment Edit
   function handleEditButtonClick(id) {
-    if (editingComment && editingComment.id === id) {
-      setStartEditComment(false);
-      setEditingComment(null);
+    if (
+      currentAction.editingComment &&
+      currentAction.editingComment.id === id
+    ) {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "",
+        editingComment: null,
+      }));
     } else {
       const commentToEdit = userInformation
         .flatMap((user) => user.comments || [])
         .find((comment) => comment.id === id);
 
       if (commentToEdit) {
-        setEditingComment(commentToEdit);
-        setStartEditComment(true);
+        setCurrentAction((prevAction) => ({
+          ...prevAction,
+          userInput: "ACTION_COMMENT_EDIT",
+          editingComment: commentToEdit,
+        }));
       }
     }
   }
 
   function handleInputChange(event) {
     const changeValue = event.target.value;
-    setEditingComment((prevEditingComment) => ({
-      ...prevEditingComment,
-      content: changeValue,
+    setCurrentAction((prevAction) => ({
+      ...prevAction,
+      editingComment: {
+        ...prevAction.editingComment,
+        content: changeValue,
+      },
     }));
   }
 
   function handleEditDone(id) {
-    console.log(userInformation);
     const updatedUserInformation = userInformation.map((user) => {
       if (user.id === id) {
         const updatedComments = user.comments.map((comment) => {
-          if (comment.id === editingComment.id) {
-            return { ...comment, content: editingComment.content };
+          if (comment.id === currentAction.editingComment.id) {
+            return {
+              ...comment,
+              content: currentAction.editingComment.content,
+            };
           }
           return comment;
         });
@@ -233,15 +288,35 @@ export default function App({ Component, pageProps }) {
     });
 
     setUserInformation(updatedUserInformation);
-    setEditingComment(null);
-    setStartEditComment(false);
+    setCurrentAction((prevAction) => ({
+      ...prevAction,
+      userInput: "",
+      editingComment: null,
+    }));
   }
 
   function handleEditGoBack() {
-    setEditingComment(null);
-    setStartEditComment(false);
+    setCurrentAction((prevAction) => ({
+      ...prevAction,
+      userInput: "",
+      editingComment: null,
+    }));
   }
-
+  // Comment delete
+  function handleCommentDeleteButtonClick() {
+    if (currentAction.userInput === "ACTION_COMMENT_EDIT") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "ACTION_DELETE_COMMENT",
+      }));
+    }
+    if (currentAction.userInput === "ACTION_DELETE_COMMENT") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "ACTION_COMMENT_EDIT",
+      }));
+    }
+  }
   function handleDeleteComment(id, commentId) {
     setUserInformation((currentUsers) =>
       currentUsers.map((user) => {
@@ -255,9 +330,14 @@ export default function App({ Component, pageProps }) {
         return user;
       })
     );
-    setEditingComment(null);
-    setStartEditComment(false);
+
+    setCurrentAction((prevAction) => ({
+      ...prevAction,
+      userInput: "",
+      editingComment: null,
+    }));
   }
+  //
 
   return (
     <>
@@ -265,30 +345,25 @@ export default function App({ Component, pageProps }) {
       <SWRConfig value={{ fetcher }}>
         <Component
           {...pageProps}
-          query={query}
-          setQuery={setQuery}
           userInformation={userInformation}
+          currentAction={currentAction}
+          isFetchLoading={isFetchLoading}
           handleBookmarkToggle={handleBookmarkToggle}
           handleRate={handleRate}
           handleRateButtonClick={handleRateButtonClick}
-          startRating={startRating}
           handleDelete={handleDelete}
           handleDeleteButtonClick={handleDeleteButtonClick}
-          startDelete={startDelete}
-          activeTab={activeTab}
           handleTabClick={handleTabClick}
-          isFetchLoading={isFetchLoading}
           startFetchLoading={startFetchLoading}
           handleCommentButtonClick={handleCommentButtonClick}
           handleComment={handleComment}
-          startComment={startComment}
           handleEditButtonClick={handleEditButtonClick}
-          startEditComment={startEditComment}
-          editingComment={editingComment}
           handleInputChange={handleInputChange}
+          handleQueryInputChange={handleQueryInputChange}
           handleEditDone={handleEditDone}
           handleEditGoBack={handleEditGoBack}
           handleDeleteComment={handleDeleteComment}
+          handleCommentDeleteButtonClick={handleCommentDeleteButtonClick}
         />
       </SWRConfig>
     </>

@@ -10,23 +10,20 @@ import MovieRating from "./MovieDetails/MovieRating";
 import UserRating from "./MovieDetails/UserRating";
 import MovieGenre from "./MovieDetails/MovieGenre";
 
-export default function MovieDetailPage({
+export default function SingleMovieDetails({
   movie,
   userInformation,
+  currentAction,
   handleBookmarkToggle,
   handleRateButtonClick,
-  startRating,
   handleDeleteButtonClick,
   handleCommentButtonClick,
-  startComment,
-  startDelete,
   handleEditButtonClick,
-  startEditComment,
-  editingComment,
   handleInputChange,
   handleEditDone,
   handleEditGoBack,
   handleDeleteComment,
+  handleCommentDeleteButtonClick,
 }) {
   const userItem = userInformation.find(
     (item) => item && item.id === movie.data.id
@@ -43,29 +40,24 @@ export default function MovieDetailPage({
       <MovieGenre movie={movie.data} />
       <ButtonSection
         id={movie.data.id}
+        currentAction={currentAction}
         userInformation={userInformation}
         handleBookmarkToggle={handleBookmarkToggle}
         handleRateButtonClick={handleRateButtonClick}
         handleDeleteButtonClick={handleDeleteButtonClick}
-        startRating={startRating}
-        startComment={startComment}
-        startEditComment={startEditComment}
       />
       <MovieComments
         id={movie.data.id}
+        userInformation={userInformation}
+        currentAction={currentAction}
         MovieComments={movie.reviews}
         handleCommentButtonClick={handleCommentButtonClick}
-        userInformation={userInformation}
-        startRating={startRating}
-        startComment={startComment}
-        startDelete={startDelete}
-        startEditComment={startEditComment}
         handleEditButtonClick={handleEditButtonClick}
-        editingComment={editingComment}
         handleInputChange={handleInputChange}
         handleEditDone={handleEditDone}
         handleEditGoBack={handleEditGoBack}
         handleDeleteComment={handleDeleteComment}
+        handleCommentDeleteButtonClick={handleCommentDeleteButtonClick}
       />
 
       <MovieProvider id={movie.data.id} />
