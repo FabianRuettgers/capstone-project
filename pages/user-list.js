@@ -9,9 +9,8 @@ import { styled } from "styled-components";
 
 export default function userList({
   userInformation,
-  activeTab,
   handleTabClick,
-
+  currentAction,
   isFetchLoading,
   startFetchLoading,
 }) {
@@ -25,7 +24,7 @@ export default function userList({
           </Head>
           <HeaderNav />
           <HeaderUserPage
-            activeTab={activeTab}
+            activeTab={currentAction.activeTab}
             handleTabClick={handleTabClick}
           />
           <LoadingSection>
@@ -42,13 +41,13 @@ export default function userList({
           </Head>
           <HeaderNav />
           <HeaderUserPage
-            activeTab={activeTab}
+            activeTab={currentAction.activeTab}
             handleTabClick={handleTabClick}
           />
           <MobileViewWrapper>
             <UserList
               userInformation={userInformation}
-              activeTab={activeTab}
+              activeTab={currentAction.activeTab}
               startFetchLoading={startFetchLoading}
             />
           </MobileViewWrapper>
