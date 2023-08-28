@@ -5,13 +5,14 @@ export default function CreateMovieRating({
   id,
   handleRate,
   handleGoBackRating,
+  data,
 }) {
   return (
     <>
       <StyledButton onClick={handleGoBackRating} />
       <Container>
         <Heading>Bewerte den Film</Heading>
-        <Form onSubmit={handleRate(id)}>
+        <Form onSubmit={handleRate(id, data)}>
           <StyledLabel>bewerte den Film von 0 bis 10 </StyledLabel>
           <StyledInput
             type="number"
