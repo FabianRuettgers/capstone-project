@@ -9,7 +9,7 @@ export default function userstatistcs({ userInformation }) {
     <>
       <Head>
         <title>User Statistics-page</title>
-        <meta name="description" content="a random Movie spotlightpage" />
+        <meta name="description" content="your Movie statistics" />
       </Head>
       <HeaderNav />
       <MobileViewWrapper>

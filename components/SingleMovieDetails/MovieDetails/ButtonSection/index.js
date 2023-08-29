@@ -11,7 +11,7 @@ export default function ButtonSection({
   handleRateButtonClick,
   handleDeleteButtonClick,
 }) {
-  const selectedItem = userInformation.find((item) => item.id === id);
+  const selectedItem = userInformation.find((item) => item?.id === id);
   const isBookmarked = selectedItem ? selectedItem.isBookmarked : false;
   const israted = selectedItem ? selectedItem.rating : false;
   return (

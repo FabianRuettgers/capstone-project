@@ -11,20 +11,24 @@ export default function StatisticItem({ content, caption }) {
 
 const StyledFigure = styled.figure`
   background-color: var(--background-color-highlight-content);
+  color: var(--text-color-dark-content);
+  box-shadow: 0 0 8px var(--shadow-color-dark);
+  border-radius: var(--border-radius-small);
   display: grid;
   align-items: end;
-  color: var(--text-color-dark-content);
-  padding: 1rem;
-  border-radius: 1rem;
+  text-align: center;
+  padding: var(--padding-x-small);
 `;
 
 const Content = styled.p`
-  text-align: center;
+  color: var(--text-color-dark-content);
   font-size: var(--big-text);
-  margin-bottom: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: var(--margin-x-small);
 `;
 const Caption = styled.figcaption`
-  border-top: 1px solid black;
-  padding-top: 0.5rem;
+  color: var(--text-color-dark-content);
   font-size: var(--plain-text);
+  border-top: 1px solid black;
 `;

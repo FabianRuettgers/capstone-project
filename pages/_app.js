@@ -58,9 +58,15 @@ export default function App({ Component, pageProps }) {
   }
   function handleDelete(id) {
     setUserInformation((currentMovies) =>
-      currentMovies.map((movie) =>
-        movie.id === id ? { id: movie.id, comments: movie.comments } : null
-      )
+      currentMovies
+        .map((movie) =>
+          movie.id === id
+            ? movie.comments
+              ? { id: movie.id, comments: movie.comments }
+              : null
+            : movie
+        )
+        .filter((movie) => movie !== null)
     );
     handleDeleteButtonClick();
   }

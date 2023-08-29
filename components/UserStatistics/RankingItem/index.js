@@ -1,13 +1,14 @@
+import Link from "next/link";
 import { styled } from "styled-components";
 
-export default function RankingItem({ content, caption, rating }) {
+export default function RankingItem({ content, caption, rating, id }) {
   return (
     <StyledFigure>
       <Caption caption={caption}>{caption}</Caption>
-      <Wrapper>
+      <StyledLink href={`/movie/${id}`}>
         <Content>{content}</Content>
         <Rating>{rating}</Rating>
-      </Wrapper>
+      </StyledLink>
     </StyledFigure>
   );
 }
@@ -15,7 +16,7 @@ export default function RankingItem({ content, caption, rating }) {
 const StyledFigure = styled.figure`
   display: flex;
   align-items: center;
-  color: white;
+  color: var(--text-color-light-content);
 `;
 
 const Caption = styled.figcaption`
@@ -37,8 +38,8 @@ const Caption = styled.figcaption`
       return "var(--text-color-light-content)";
     }
   }};
-  border-radius: 0.5rem;
   box-shadow: 0 0 8px var(--shadow-color-dark);
+  border-radius: var(--border-radius-x-small);
   height: 2rem;
   width: 2rem;
   display: flex;
@@ -46,29 +47,35 @@ const Caption = styled.figcaption`
   align-items: center;
 `;
 
-const Wrapper = styled.div`
+const StyledLink = styled(Link)`
+  box-shadow: 0 0 8px var(--shadow-color-dark);
+  border-radius: var(--border-radius-x-small);
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: 88% 12%;
   align-items: center;
-  margin-left: 0.5rem;
-  padding-left: 0.5rem;
-
-  border: 2px solid red;
-  border-radius: 0.5rem;
+  margin-left: var(--margin-x-small);
+  padding-left: var(--padding-x-small);
 `;
 
 const Content = styled.p`
+  color: var(--text-color-light-content);
   font-size: var(--big-text);
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-bottom: var(--padding-x-small);
+  padding-top: var(--padding-x-small);
+  padding-right: var(--padding-x-small);
 `;
 const Rating = styled.p`
+  color: var(--text-color-light-content);
+  background-color: var(--background-color-highlight-content);
   display: grid;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: red;
+  border-top-right-radius: var(--border-radius-x-small);
+  border-bottom-right-radius: var(--border-radius-x-small);
 `;

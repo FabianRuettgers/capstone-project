@@ -20,7 +20,7 @@ export default function MovieComments({
 }) {
   const emptyInput =
     !currentAction.editingComment || !currentAction.editingComment.content;
-  const foundUser = userInformation.find((user) => user.id === id);
+  const foundUser = userInformation.find((user) => user?.id === id);
   const userComments = foundUser ? foundUser.comments : null;
   const comments = MovieComments.results;
   const combinedComments = userComments
