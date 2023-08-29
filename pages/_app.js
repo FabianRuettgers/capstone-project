@@ -88,9 +88,8 @@ export default function App({ Component, pageProps }) {
             movie.id === id
               ? {
                   ...movie,
-                  title: data.data.title,
-                  watchtime: data.data.runtime,
-                  genre: data.data.genres[0].name,
+                  title: data.data.title || null,
+                  watchtime: data.data.runtime || null,
                   isBookmarked: false,
                   bookmarkDate: undefined,
                   rating: event.target.elements.rating.value,
@@ -109,9 +108,8 @@ export default function App({ Component, pageProps }) {
           ...userInformation,
           {
             id: id,
-            title: data.data.title,
-            watchtime: data.data.runtime,
-            genre: data.data.genres[0].name,
+            title: data.data.title || null,
+            watchtime: data.data.runtime || null,
             isBookmarked: false,
             rating: event.target.elements.rating.value,
             ratingDate: new Date().toLocaleDateString("de-DE", {

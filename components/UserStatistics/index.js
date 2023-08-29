@@ -28,24 +28,33 @@ export default function UserStatistics({ userInformation }) {
           caption={"gespeicherte filme"}
           content={userInformation.filter((movie) => movie.isBookmarked).length}
         />
+
         <StatisticItem
           caption={"Beste Bewertung"}
-          content={sortedMoviesHightoLow[0].rating}
-        />
-        <StatisticItem
-          caption={"Beste Bewertung"}
-          content={sortedMoviesHightoLow[0].title}
-        />
-        <StatisticItem
-          caption={"Schlechteste Bewertung"}
           content={
-            sortedMoviesHightoLow[sortedMoviesHightoLow.length - 1].rating
+            sortedMoviesHightoLow[0] ? sortedMoviesHightoLow[0].rating : null
+          }
+        />
+        <StatisticItem
+          caption={"Beste Bewertung"}
+          content={
+            sortedMoviesHightoLow[0] ? sortedMoviesHightoLow[0].title : null
           }
         />
         <StatisticItem
           caption={"Schlechteste Bewertung"}
           content={
-            sortedMoviesHightoLow[sortedMoviesHightoLow.length - 1].title
+            sortedMoviesHightoLow[sortedMoviesHightoLow.length - 1]
+              ? sortedMoviesHightoLow[sortedMoviesHightoLow.length - 1].rating
+              : null
+          }
+        />
+        <StatisticItem
+          caption={"Schlechteste Bewertung"}
+          content={
+            sortedMoviesHightoLow[sortedMoviesHightoLow.length - 1]
+              ? sortedMoviesHightoLow[sortedMoviesHightoLow.length - 1].title
+              : null
           }
         />
         <StatisticItem
@@ -85,6 +94,11 @@ const StyledMain = styled.main`
 const StyledStatisticsSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
 `;
 
-const StyledRankingSection = styled.section``;
+const StyledRankingSection = styled.section`
+  display: grid;
+  gap: 0.5rem;
+`;
