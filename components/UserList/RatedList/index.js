@@ -13,8 +13,7 @@ export default function RatedList({
   const sortedMoviesHightoLow = ratedMovies.sort(
     (a, b) => Number(b?.rating) - Number(a?.rating)
   );
-  // console.log(currentAction);
-  console.log(ratedMovies);
+
   return (
     <>
       {ratedMovies ? (
