@@ -91,6 +91,7 @@ export default function Detailpage({
       {currentAction.userInput === "ACTION_RATING" ? (
         <CreateMovieRating
           id={data.data.id}
+          data={data}
           handleRate={handleRate}
           handleGoBackRating={handleRateButtonClick}
         />

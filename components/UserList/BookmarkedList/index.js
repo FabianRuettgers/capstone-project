@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import MovieItem from "../MovieItem";
 
 export default function BookmarkedList({ userInformation, startFetchLoading }) {
-  const bookmarkedMovies = userInformation.filter((item) => item.isBookmarked);
+  const bookmarkedMovies = userInformation.filter((item) => item?.isBookmarked);
 
   return (
     <>

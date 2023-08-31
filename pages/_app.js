@@ -58,9 +58,15 @@ export default function App({ Component, pageProps }) {
   }
   function handleDelete(id) {
     setUserInformation((currentMovies) =>
-      currentMovies.map((movie) =>
-        movie.id === id ? { id: movie.id, comments: movie.comments } : null
-      )
+      currentMovies
+        .map((movie) =>
+          movie.id === id
+            ? movie.comments
+              ? { id: movie.id, comments: movie.comments }
+              : null
+            : movie
+        )
+        .filter((movie) => movie !== null)
     );
     handleDeleteButtonClick();
   }
@@ -79,7 +85,7 @@ export default function App({ Component, pageProps }) {
       }));
     }
   }
-  function handleRate(id) {
+  function handleRate(id, data) {
     return function (event) {
       event.preventDefault();
       setUserInformation((movie) => {
@@ -88,6 +94,8 @@ export default function App({ Component, pageProps }) {
             movie.id === id
               ? {
                   ...movie,
+                  title: data.data.title || null,
+                  watchtime: data.data.runtime || null,
                   isBookmarked: false,
                   bookmarkDate: undefined,
                   rating: event.target.elements.rating.value,
@@ -106,6 +114,8 @@ export default function App({ Component, pageProps }) {
           ...userInformation,
           {
             id: id,
+            title: data.data.title || null,
+            watchtime: data.data.runtime || null,
             isBookmarked: false,
             rating: event.target.elements.rating.value,
             ratingDate: new Date().toLocaleDateString("de-DE", {
