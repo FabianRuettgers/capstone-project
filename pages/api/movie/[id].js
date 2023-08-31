@@ -9,7 +9,7 @@ export default async function handler(request, response) {
     const providerUrl = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${API_KEY}`;
     const similarMoviesUrl = `https://api.themoviedb.org/3/movie/${id}/similar?language=de&page=1&api_key=${API_KEY}`;
     const reviewsUrl = `https://api.themoviedb.org/3/movie/${id}/reviews?language=de&api_key=${API_KEY}`;
-    const releaseDatesUrl = `https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=${API_KEY}`;
+    const creditsUrl = `https://api.themoviedb.org/3/movie/${id}/credits?language=de-DE&api_key=${API_KEY}`;
 
     try {
       const movieResponse = await fetch(dataUrl);
@@ -18,7 +18,7 @@ export default async function handler(request, response) {
       const videoResponse = await fetch(videoUrl);
       const similarMoviesResponse = await fetch(similarMoviesUrl);
       const reviewsResponse = await fetch(reviewsUrl);
-      const releaseDatesResponse = await fetch(releaseDatesUrl);
+      const creditsResponse = await fetch(creditsUrl);
 
       const responses = [
         movieResponse,
@@ -27,7 +27,7 @@ export default async function handler(request, response) {
         videoResponse,
         similarMoviesResponse,
         reviewsResponse,
-        releaseDatesResponse,
+        creditsResponse,
       ];
 
       const responseData = {};
@@ -42,7 +42,7 @@ export default async function handler(request, response) {
               "videos",
               "similarMovies",
               "reviews",
-              "releaseDates",
+              "credits",
             ][index]
           ] = await res.json();
         }
