@@ -4,6 +4,7 @@ import FooterNav from "@/components/Navigation/Footer/FooterNav";
 import HeaderNav from "@/components/Navigation/Header/HeaderNav";
 import HeaderUserPage from "@/components/Navigation/Header/HeaderUserPage";
 import UserList from "@/components/UserList";
+import FilteringMoviesForm from "@/components/UserList/FilteringMoviesForm";
 import Head from "next/head";
 import { styled } from "styled-components";
 
@@ -13,6 +14,9 @@ export default function userList({
   currentAction,
   isFetchLoading,
   startFetchLoading,
+  handleFilterButtonClick,
+  handleFiltering,
+  handleResetFilter,
 }) {
   return (
     <>
@@ -39,7 +43,11 @@ export default function userList({
             <title>Random Movie Spotlight-page</title>
             <meta name="description" content="a random Movie spotlightpage" />
           </Head>
-          <HeaderNav />
+          <HeaderNav
+            activeTab={currentAction.activeTab}
+            handleFilterButtonClick={handleFilterButtonClick}
+            currentAction={currentAction}
+          />
           <HeaderUserPage
             activeTab={currentAction.activeTab}
             handleTabClick={handleTabClick}
@@ -49,9 +57,18 @@ export default function userList({
               userInformation={userInformation}
               activeTab={currentAction.activeTab}
               startFetchLoading={startFetchLoading}
+              currentAction={currentAction}
             />
           </MobileViewWrapper>
           <SearchFormButton />
+          {currentAction.userInput === "ACTION_FILTER_RATING" ? (
+            <FilteringMoviesForm
+              handleFilterButtonClick={handleFilterButtonClick}
+              handleFiltering={handleFiltering}
+              handleResetFilter={handleResetFilter}
+            />
+          ) : null}
+
           <FooterNav />
         </>
       ) : null}

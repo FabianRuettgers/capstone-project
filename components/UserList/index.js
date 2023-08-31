@@ -6,6 +6,7 @@ export default function UserList({
   userInformation,
   activeTab,
   startFetchLoading,
+  currentAction,
 }) {
   return (
     <StyledMain>
@@ -18,6 +19,7 @@ export default function UserList({
         <RatedList
           userInformation={userInformation}
           startFetchLoading={startFetchLoading}
+          currentAction={currentAction}
         />
       )}
     </StyledMain>

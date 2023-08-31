@@ -43,6 +43,7 @@ export default createGlobalStyle`
   --text-color-light-button: #ffffff; // weiß
 --text-color-highlight-heading: #BF8F54;
 --text-color-highlight-content: #BF8F54;
+--text-color-highlight-button: #BF8F54;
 
 
 --gap-x-small:0.5rem;

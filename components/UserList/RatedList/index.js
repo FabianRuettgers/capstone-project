@@ -1,10 +1,17 @@
 import { styled } from "styled-components";
 import MovieItem from "../MovieItem";
 
-export default function RatedList({ userInformation, startFetchLoading }) {
-  const ratedMovies = userInformation.filter((item) => item?.rating);
+export default function RatedList({
+  userInformation,
+  startFetchLoading,
+  currentAction,
+}) {
+  const ratedMovies = userInformation.filter(
+    (item) => Number(item?.rating) >= currentAction.ratingFilter
+  );
+
   const sortedMoviesHightoLow = ratedMovies.sort(
-    (a, b) => b?.rating - a?.rating
+    (a, b) => Number(b?.rating) - Number(a?.rating)
   );
 
   return (
