@@ -18,6 +18,7 @@ export default function App({ Component, pageProps }) {
     activeTab: "saved",
     editingComment: null,
     query: "",
+    ratingFilter: 0,
   });
 
   // search query input change
@@ -349,6 +350,38 @@ export default function App({ Component, pageProps }) {
   }
   //
 
+  function handleFilterButtonClick() {
+    if (currentAction.userInput === "") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "ACTION_FILTER_RATING",
+      }));
+    }
+    if (currentAction.userInput === "ACTION_FILTER_RATING") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "",
+      }));
+    }
+  }
+  function handleFiltering(event) {
+    event.preventDefault();
+    const minRating = event.target.rating.value;
+    setCurrentAction((prevAction) => ({
+      ...prevAction,
+      ratingFilter: minRating,
+    }));
+    handleFilterButtonClick();
+  }
+
+  function handleResetFilter() {
+    setCurrentAction((prevAction) => ({
+      ...prevAction,
+      ratingFilter: 0,
+    }));
+    handleFilterButtonClick();
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -374,6 +407,9 @@ export default function App({ Component, pageProps }) {
           handleEditGoBack={handleEditGoBack}
           handleDeleteComment={handleDeleteComment}
           handleCommentDeleteButtonClick={handleCommentDeleteButtonClick}
+          handleFilterButtonClick={handleFilterButtonClick}
+          handleFiltering={handleFiltering}
+          handleResetFilter={handleResetFilter}
         />
       </SWRConfig>
     </>
