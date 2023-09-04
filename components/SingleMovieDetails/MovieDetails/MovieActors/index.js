@@ -79,14 +79,16 @@ const StyledImage = styled(Image)`
 `;
 
 const HeadingH2 = styled.h2`
-  margin: 5px 1rem;
-  font-size: var(--plain-text);
+  margin: 5px 0.25rem;
+  font-size: var(--big-text);
+  color: var(--text-color-light-content);
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 const HeadingH3 = styled.h3`
-  margin: 5px 1rem;
-  font-size: var(--plain-text);
+  margin: 5px 0.25rem;
+  color: var(--text-color-lighter-content);
+  font-size: var(--big-text);
   overflow: hidden;
   text-overflow: ellipsis;
 `;
