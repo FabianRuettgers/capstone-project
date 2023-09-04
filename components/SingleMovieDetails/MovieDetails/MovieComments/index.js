@@ -11,7 +11,6 @@ export default function MovieComments({
   userInformation,
   currentAction,
   MovieComments,
-  handleCommentButtonClick,
   handleEditButtonClick,
   handleInputChange,
   handleEditDone,
@@ -58,11 +57,6 @@ export default function MovieComments({
         />
       ) : null}
       <ListHeading>Kommentare ({combinedComments.length})</ListHeading>
-      <ButtonWrapper>
-        <StyledButton onClick={handleCommentButtonClick}>
-          neuer Kommentar
-        </StyledButton>
-      </ButtonWrapper>
       {combinedComments && combinedComments.length > 0 && (
         <List>
           {combinedComments.map((comment) => (
@@ -144,24 +138,6 @@ const EditSection = styled.section`
   gap: 1rem;
 `;
 
-const ButtonWrapper = styled.div`
-  margin-top: var(--margin-medium);
-  margin-inline: var(--margin-medium);
-`;
-
-const StyledButton = styled.button`
-  background-color: var(--background-color-highlight-button);
-  color: var(--text-color-dark-button);
-  box-shadow: 0 0 12px var(--shadow-color-dark);
-  border-radius: var(--border-radius-medium);
-  width: 100%;
-  padding: var(--padding-small);
-  font-size: var(--header-h3);
-  &:active {
-    transform: scale(0.85);
-  }
-`;
-
 const ListHeading = styled.h2`
   text-align: left;
   margin-top: var(--margin-medium);
@@ -185,7 +161,7 @@ const spinAnimation = keyframes`
 
 const StyledListItem = styled.li`
   margin-bottom: var(--margin-small);
-  background-color: var(--background-color-light-content);
+  background-color: var(--background-color-dark-content);
   border: 3px solid
     ${(props) =>
       props.deleteMode
@@ -201,18 +177,17 @@ const StyledListItem = styled.li`
 `;
 
 const Heading = styled.h3`
-  color: var(--text-color-dark-heading);
+  color: var(--text-color-light-heading);
   font-size: var(--header-h2);
 `;
 
 const Date = styled.p`
-  color: var(--text-color-dark-heading);
-  opacity: 0.7;
+  color: var(--text-color-lighter-heading);
   font-size: var(--big-text);
 `;
 
 const Content = styled.p`
-  color: var(--text-color-dark-content);
+  color: var(--text-color-light-content);
   margin-top: var(--margin-small);
   font-size: var(--big-text);
 `;

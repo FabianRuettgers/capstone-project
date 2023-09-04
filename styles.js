@@ -14,7 +14,7 @@ export default createGlobalStyle`
   --ternery-color: #008000; //dunkelrot
   
   --lowlight-dark:#404040; // dunkel grau
-  --background-color: #404040; //rot #8C1127
+  --background-color: #353535; //rot #8C1127
   --background-color-light: #ffffff; //weiß
   --text-color-light: #ffffff; // weiß
 
@@ -39,6 +39,7 @@ export default createGlobalStyle`
   --text-color-dark-content: #404040; // dunkel grau
   --text-color-dark-button: #404040; // dunkel grau
   --text-color-light-heading: #ffffff; // weiß
+  --text-color-lighter-heading: #DCDCDC; // hellgrau
   --text-color-light-content: #ffffff; // weiß
   --text-color-light-button: #ffffff; // weiß
 --text-color-highlight-heading: #BF8F54;
@@ -109,5 +110,6 @@ time, mark, audio, video,textarea {
   background-color: none;
   border: none;
   font-family: "roboto", sans-serif;
+  font-weight: 400;
 }
 `;

@@ -2,16 +2,10 @@ import { styled } from "styled-components";
 import ProviderImage from "../ProviderImage";
 
 export default function ProviderList({ heading, providerData }) {
-  let gridColumns = 5;
-  if (providerData.length > 5) {
-    gridColumns = "repeat(5, 1fr)";
-  } else {
-    gridColumns = `repeat(${providerData.length}, 1fr)`;
-  }
   return (
     <>
       <Heading>{heading}</Heading>
-      <StyledList gridColumns={gridColumns}>
+      <StyledList>
         {providerData.map((provider) => (
           <StyledListitem key={provider.provider_id}>
             <ProviderImage provider={provider} />
@@ -26,14 +20,18 @@ const Heading = styled.h2`
   text-align: center;
   color: var(--text-color-light-heading);
   font-size: var(--header-h3);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--text-color-highlight-heading);
 `;
 
 const StyledList = styled.ul`
   display: grid;
-  grid-template-columns: ${(props) => props.gridColumns};
+  grid-template-columns: 1fr 1fr;
   grid-row-gap: var(--gap-small);
-  justify-items: center;
-  margin-top: var(--margin-small);
+  gap: 0.5rem;
+  column-gap: 0.5rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 `;
 
 const StyledListitem = styled.li`

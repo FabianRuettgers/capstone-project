@@ -61,7 +61,7 @@ export default function FooterNav() {
 }
 
 const MobileViewWrapper = styled.div`
-  max-width: 420px;
+  max-width: 414px;
   width: 100%;
   display: flex;
   align-items: center;
