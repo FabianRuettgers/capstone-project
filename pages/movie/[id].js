@@ -72,7 +72,7 @@ export default function Detailpage({
         <title>Movie Detailpage</title>
         <meta name="description" content="a Movie Detailpage" />
       </Head>
-      <HeaderMenu title={"Film "} />
+      <HeaderMenu title={"Film Details"} />
       <MobileViewWrapper>
         <SingleMovieDetails
           movie={data}

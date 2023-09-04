@@ -1,4 +1,7 @@
 import { styled } from "styled-components";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 import ButtonSection from "./MovieDetails/ButtonSection";
 import MovieImage from "./MovieDetails/MovieImage";
 import MovieTitle from "./MovieDetails/MovieTitle";
@@ -9,6 +12,7 @@ import UserRating from "./MovieDetails/UserRating";
 import MovieGenre from "./MovieDetails/MovieGenre";
 import MovieActors from "./MovieDetails/MovieActors";
 import MovieDuration from "./MovieDetails/MovieDuration";
+import MovieTrailer from "./MovieDetails/MovieTrailer";
 
 export default function SingleMovieDetails({
   movie,
@@ -33,12 +37,15 @@ export default function SingleMovieDetails({
 
   return (
     <StyledMain>
-      <GridContainer>
-        <MovieImage movie={movie} />
-        <MovieDuration movie={movie.data} />
-        <MovieGenre movie={movie.data} />
-        <MovieRating movie={movie.data} />
-      </GridContainer>
+      <CustomCarousel>
+        <GridContainer>
+          <MovieImage movie={movie} />
+          <MovieDuration movie={movie.data} />
+          <MovieGenre movie={movie.data} />
+          <MovieRating movie={movie.data} />
+        </GridContainer>
+        <MovieTrailer movie={movie} />
+      </CustomCarousel>
       <MovieTitle movie={movie.data} />
       <UserRating rating={userRating} />
       <ButtonSection
@@ -82,4 +89,8 @@ const GridContainer = styled.div`
   grid-template-columns: 70fr 30fr;
   grid-column-gap: 2rem;
   grid-row-gap: 1rem;
+`;
+
+const CustomCarousel = styled(Carousel)`
+  margin-right: 0.5rem;
 `;
