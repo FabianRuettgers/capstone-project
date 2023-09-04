@@ -9,6 +9,7 @@ import MovieComments from "./MovieDetails/MovieComments";
 import MovieRating from "./MovieDetails/MovieRating";
 import UserRating from "./MovieDetails/UserRating";
 import MovieGenre from "./MovieDetails/MovieGenre";
+import MovieActors from "./MovieDetails/MovieActors";
 
 export default function SingleMovieDetails({
   movie,
@@ -36,6 +37,7 @@ export default function SingleMovieDetails({
       <MovieTitle movie={movie.data} />
       <MovieRating movie={movie.data} />
       <UserRating rating={userRating} />
+      <MovieActors credits={movie.credits} />
       <MovieDescribtion movie={movie.data} />
       <MovieGenre movie={movie.data} />
       <ButtonSection
