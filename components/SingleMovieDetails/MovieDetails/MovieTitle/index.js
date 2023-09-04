@@ -9,13 +9,13 @@ export default function MovieTitle({ movie }) {
   );
 }
 const StyledSection = styled.section`
-  width: 65%;
+  width: calc(100% - 4rem);
   margin-left: var(--margin-medium);
 `;
 
 const Heading = styled.h1`
   color: var(--text-color-light-heading);
-  font-size: var(--header-h2);
+  font-size: var(--header-h1);
   overflow: hidden;
   text-overflow: ellipsis;
   margin-top: var(--margin-medium);

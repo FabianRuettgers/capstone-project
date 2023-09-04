@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 
-export default function DeleteButton({ handleDeleteButtonClick }) {
+export default function CommentButton({ handleCommentButtonClick }) {
   return (
     <>
       <StyledButton
-        aria-label="Delete button"
-        onClick={handleDeleteButtonClick}
+        onClick={handleCommentButtonClick}
+        aria-label="comment button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +13,7 @@ export default function DeleteButton({ handleDeleteButtonClick }) {
           viewBox="0 -960 960 960"
           width="36"
         >
-          <path d="M261-120q-24 0-42-18t-18-42v-570h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm106-146h60v-399h-60v399Zm166 0h60v-399h-60v399Z" />
+          <path d="M240-400h98l236-234q6-6 6-15t-6-15l-70-70q-6-6-15-6t-15 6L240-498v98Zm180 0h300v-80H500l-80 80ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z" />
         </svg>
       </StyledButton>
     </>

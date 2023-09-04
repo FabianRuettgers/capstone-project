@@ -1,18 +1,14 @@
 import { useRouter } from "next/router";
 import { styled } from "styled-components";
 
-export default function HeaderMenu({ title, disable }) {
+export default function HeaderMenu({ title }) {
   const router = useRouter();
   function handleGoBackRating() {
     router.back();
   }
   return (
     <StyledHeader>
-      <StyledButton
-        onClick={handleGoBackRating}
-        aria-label="Go back button"
-        disabled={disable}
-      >
+      <StyledButton onClick={handleGoBackRating} aria-label="Go back button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="48"
@@ -33,12 +29,11 @@ const StyledHeader = styled.header`
   background-color: var(--background-color-dark-content);
   box-shadow: 0 0 28px var(--shadow-color-dark);
   font-size: var(--header-h3);
-  width: 100%;
-  height: 12vh;
-  display: flex;
+  height: 10vh;
+  width: 100vw;
+  display: grid;
   justify-content: center;
   align-items: center;
-  position: fixed;
   position: relative;
   top: 0;
   gap: var(--gap-small);

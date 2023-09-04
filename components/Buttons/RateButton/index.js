@@ -6,13 +6,11 @@ export default function RateButton({ handleRateButtonClick }) {
       <StyledButton onClick={handleRateButtonClick} aria-label="Rate button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 0 24 24"
-          width="24px"
-          fill="#000000"
+          height="36"
+          viewBox="0 -960 960 960"
+          width="36"
         >
-          <path d="M0 0h24v24H0V0z" fill="none" />
-          <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17l-.59.59-.58.58V4h16v12zm-9.5-2H18v-2h-5.5zm3.86-5.87c.2-.2.2-.51 0-.71l-1.77-1.77c-.2-.2-.51-.2-.71 0L6 11.53V14h2.47l5.89-5.87z" />
+          <path d="M80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm283-310 117-71 117 71-31-133 104-90-137-11-53-126-53 126-137 11 104 90-31 133Z" />
         </svg>
       </StyledButton>
     </>
@@ -20,10 +18,10 @@ export default function RateButton({ handleRateButtonClick }) {
 }
 
 const StyledButton = styled.button`
-  background-color: var(--background-color-highlight-button);
-  fill: var(--text-color-light-button);
-  box-shadow: 0 0 12px var(--shadow-color-dark);
-  padding: 0.75rem;
+  background-color: var(--background-color-dark-content);
+  fill: var(--text-color-highlight-button);
+  box-shadow: 0 0 2px var(--shadow-color-dark);
+  padding: 0.5rem;
   border-radius: 50%;
   &:active {
     transform: scale(0.85);

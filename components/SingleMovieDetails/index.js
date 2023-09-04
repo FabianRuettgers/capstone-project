@@ -3,13 +3,12 @@ import ButtonSection from "./MovieDetails/ButtonSection";
 import MovieImage from "./MovieDetails/MovieImage";
 import MovieTitle from "./MovieDetails/MovieTitle";
 import MovieDescribtion from "./MovieDetails/MovieDescribtion";
-import MovieProvider from "./MovieDetails/MovieProvider";
 import MovieComments from "./MovieDetails/MovieComments";
-
 import MovieRating from "./MovieDetails/MovieRating";
 import UserRating from "./MovieDetails/UserRating";
 import MovieGenre from "./MovieDetails/MovieGenre";
 import MovieActors from "./MovieDetails/MovieActors";
+import MovieDuration from "./MovieDetails/MovieDuration";
 
 export default function SingleMovieDetails({
   movie,
@@ -25,6 +24,7 @@ export default function SingleMovieDetails({
   handleEditGoBack,
   handleDeleteComment,
   handleCommentDeleteButtonClick,
+  handleProviderButtonClick,
 }) {
   const userItem = userInformation.find(
     (item) => item && item.id === movie.data.id
@@ -33,13 +33,14 @@ export default function SingleMovieDetails({
 
   return (
     <StyledMain>
-      <MovieImage movie={movie} />
+      <GridContainer>
+        <MovieImage movie={movie} />
+        <MovieDuration movie={movie.data} />
+        <MovieGenre movie={movie.data} />
+        <MovieRating movie={movie.data} />
+      </GridContainer>
       <MovieTitle movie={movie.data} />
-      <MovieRating movie={movie.data} />
       <UserRating rating={userRating} />
-      <MovieActors credits={movie.credits} />
-      <MovieDescribtion movie={movie.data} />
-      <MovieGenre movie={movie.data} />
       <ButtonSection
         id={movie.data.id}
         currentAction={currentAction}
@@ -47,13 +48,18 @@ export default function SingleMovieDetails({
         handleBookmarkToggle={handleBookmarkToggle}
         handleRateButtonClick={handleRateButtonClick}
         handleDeleteButtonClick={handleDeleteButtonClick}
+        handleCommentButtonClick={handleCommentButtonClick}
       />
+      <MovieDescribtion
+        movie={movie}
+        handleProviderButtonClick={handleProviderButtonClick}
+      />
+      <MovieActors credits={movie.credits} />
       <MovieComments
         id={movie.data.id}
         userInformation={userInformation}
         currentAction={currentAction}
         MovieComments={movie.reviews}
-        handleCommentButtonClick={handleCommentButtonClick}
         handleEditButtonClick={handleEditButtonClick}
         handleInputChange={handleInputChange}
         handleEditDone={handleEditDone}
@@ -61,11 +67,19 @@ export default function SingleMovieDetails({
         handleDeleteComment={handleDeleteComment}
         handleCommentDeleteButtonClick={handleCommentDeleteButtonClick}
       />
-
-      <MovieProvider id={movie.data.id} />
     </StyledMain>
   );
 }
 const StyledMain = styled.main`
   margin-bottom: var(--margin-medium);
+  max-width: 414px;
+`;
+
+const GridContainer = styled.div`
+  margin-top: 2rem;
+  margin-inline: 2rem;
+  display: grid;
+  grid-template-columns: 70fr 30fr;
+  grid-column-gap: 2rem;
+  grid-row-gap: 1rem;
 `;

@@ -20,7 +20,7 @@ export default function UserStatistics({ userInformation }) {
   const averageRating =
     ratedMovies.length > 0 ? totalRatings / ratedMovies.length : 0;
 
-  const howManyBestRatedToShow = 3;
+  const howManyBestRatedToShow = 5;
 
   return (
     <StyledMain>
@@ -144,7 +144,7 @@ const Heading = styled.h2`
   color: var(--text-color-light-heading);
   font-size: var(--header-h2);
   text-align: center;
-  margin-top: var(--margin-small);
+  margin-top: var(--margin-medium);
   margin-bottom: var(--margin-x-small);
   padding-bottom: var(--margin-x-small);
 `;

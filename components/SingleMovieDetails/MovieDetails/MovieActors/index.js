@@ -33,7 +33,7 @@ export default function MovieActors({ credits }) {
 }
 
 const StyledSection = styled.section`
-  width: 311px;
+  width: 348px;
   margin-inline: var(--margin-medium);
   margin-top: var(--margin-medium);
 `;
@@ -58,13 +58,14 @@ const List = styled.ul`
   }
 `;
 const StyledListItem = styled.li`
-  display: grid;
-  align-items: center;
-  justify-items: center;
+  width: 116px;
   margin: 0.5rem;
+  display: grid;
+  text-align: center;
   border-radius: var(--border-radius-small);
   margin-bottom: 1rem;
   box-shadow: 0 0 8px var(--shadow-color-dark);
+  background-color: var(--background-color-dark-content);
 `;
 const ImageContainer = styled.div`
   height: 150px;
@@ -78,10 +79,16 @@ const StyledImage = styled(Image)`
 `;
 
 const HeadingH2 = styled.h2`
-  margin: 5px 1rem;
-  font-size: var(--plain-text);
+  margin: 5px 0.25rem;
+  font-size: var(--big-text);
+  color: var(--text-color-light-content);
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 const HeadingH3 = styled.h3`
-  margin: 5px 1rem;
-  font-size: var(--plain-text);
+  margin: 5px 0.25rem;
+  color: var(--text-color-lighter-content);
+  font-size: var(--big-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

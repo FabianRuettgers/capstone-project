@@ -382,6 +382,22 @@ export default function App({ Component, pageProps }) {
     handleFilterButtonClick();
   }
 
+  // Provider Button
+  function handleProviderButtonClick() {
+    if (currentAction.userInput === "") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "ACTION_SHOW_PROVIDER",
+      }));
+    }
+    if (currentAction.userInput === "ACTION_SHOW_PROVIDER") {
+      setCurrentAction((prevAction) => ({
+        ...prevAction,
+        userInput: "",
+      }));
+    }
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -410,6 +426,7 @@ export default function App({ Component, pageProps }) {
           handleFilterButtonClick={handleFilterButtonClick}
           handleFiltering={handleFiltering}
           handleResetFilter={handleResetFilter}
+          handleProviderButtonClick={handleProviderButtonClick}
         />
       </SWRConfig>
     </>

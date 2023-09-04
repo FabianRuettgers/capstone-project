@@ -1,10 +1,22 @@
+import StreamingkButton from "@/components/Buttons/StreamingButton";
 import { styled } from "styled-components";
 
-export default function MovieDescribtion({ movie }) {
+export default function MovieDescribtion({ movie, handleProviderButtonClick }) {
   return (
     <article>
+      <Wrapper>
+        <Heading>Filmbeschreibung</Heading>
+        {movie.provider.results.DE?.flatrate ||
+        movie.provider.results.DE?.buy ? (
+          <StreamingkButton
+            handleProviderButtonClick={handleProviderButtonClick}
+          />
+        ) : null}
+      </Wrapper>
       <Content>
-        {movie.overview ? movie.overview : "keine Filmbeschreibung vorhanden"}
+        {movie.data.overview
+          ? movie.data.overview
+          : "keine Filmbeschreibung vorhanden"}
       </Content>
     </article>
   );
@@ -16,4 +28,17 @@ const Content = styled.p`
   text-align: justify;
   margin-top: var(--margin-medium);
   margin-inline: var(--margin-medium);
+`;
+
+const Heading = styled.h2`
+  font-size: var(--header-h2);
+  color: var(--text-color-light-content);
+`;
+
+const Wrapper = styled.div`
+  margin-inline: var(--margin-medium);
+  margin-top: var(--margin-medium);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

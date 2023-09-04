@@ -7,9 +7,10 @@ import LoadFetching from "@/components/LoadingHandling/LoadFetching";
 import Head from "next/head";
 import CreateMovieRating from "@/components/SingleMovieDetails/MovieRatingForm/CreateMovieRating";
 import DeleteMovieRating from "@/components/SingleMovieDetails/MovieRatingForm/DeleteMovieRating";
-import HeaderDetailsPage from "@/components/Navigation/Header/HeaderDetailsPage";
 import CreateMovieComment from "@/components/SingleMovieDetails/MovieCommentForm/CreateMovieComment";
 import DeleteMovieComment from "@/components/SingleMovieDetails/MovieCommentForm/DeleteMovieComment";
+import MovieProvider from "@/components/SingleMovieDetails/MovieDetails/MovieProvider";
+import HeaderMenu from "@/components/Navigation/Header/HeaderMenu";
 
 export default function Detailpage({
   userInformation,
@@ -27,6 +28,7 @@ export default function Detailpage({
   handleEditGoBack,
   handleDeleteComment,
   handleCommentDeleteButtonClick,
+  handleProviderButtonClick,
 }) {
   const router = useRouter();
   const { id } = router.query;
@@ -70,7 +72,7 @@ export default function Detailpage({
         <title>Movie Detailpage</title>
         <meta name="description" content="a Movie Detailpage" />
       </Head>
-      <HeaderDetailsPage disable={HeaderDisable} />
+      <HeaderMenu title={"Film "} />
       <MobileViewWrapper>
         <SingleMovieDetails
           movie={data}
@@ -86,6 +88,7 @@ export default function Detailpage({
           handleEditGoBack={handleEditGoBack}
           handleDeleteComment={handleDeleteComment}
           handleCommentDeleteButtonClick={handleCommentDeleteButtonClick}
+          handleProviderButtonClick={handleProviderButtonClick}
         />
       </MobileViewWrapper>
       {currentAction.userInput === "ACTION_RATING" ? (
@@ -118,12 +121,18 @@ export default function Detailpage({
           handleDeleteComment={handleDeleteComment}
         />
       ) : null}
+      {currentAction.userInput === `ACTION_SHOW_PROVIDER` ? (
+        <MovieProvider
+          movie={data.provider}
+          handleProviderButtonClick={handleProviderButtonClick}
+        />
+      ) : null}
     </>
   );
 }
 
 const MobileViewWrapper = styled.div`
-  max-width: 420px;
+  max-width: 414px;
   display: grid;
   margin-left: auto;
   margin-right: auto;
