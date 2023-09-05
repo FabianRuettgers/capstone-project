@@ -2,7 +2,11 @@ import { styled } from "styled-components";
 
 export default function SaveCommentButton({ onClick, disabled, editMode }) {
   return (
-    <StyledButton onClick={onClick} disabled={disabled}>
+    <StyledButton
+      onClick={onClick}
+      disabled={disabled}
+      aria-label="save Comment Button"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24"

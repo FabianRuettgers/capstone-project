@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export default function EditCommentButton({ onClick }) {
   return (
-    <StyledButton onClick={onClick}>
+    <StyledButton onClick={onClick} aria-label="Edit Comment Button">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24"

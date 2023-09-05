@@ -3,10 +3,7 @@ import { styled } from "styled-components";
 export default function StreamingkButton({ handleProviderButtonClick }) {
   return (
     <>
-      <StyledButton
-        aria-label="where to watch button"
-        onClick={handleProviderButtonClick}
-      >
+      <StyledButton onClick={handleProviderButtonClick}>
         Where to watch?
         <svg
           xmlns="http://www.w3.org/2000/svg"

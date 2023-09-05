@@ -6,7 +6,11 @@ export default function FilteringButton({
 }) {
   const isActive = currentAction.ratingFilter > 0;
   return (
-    <StyledButton onClick={handleFilterButtonClick} isActive={isActive}>
+    <StyledButton
+      onClick={handleFilterButtonClick}
+      isActive={isActive}
+      aria-label="Filtering Button"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="36"
