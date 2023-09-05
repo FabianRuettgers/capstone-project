@@ -37,15 +37,25 @@ export default function SingleMovieDetails({
 
   return (
     <StyledMain>
-      <CustomCarousel>
+      {movie.videos.results[0]?.key ? (
+        <CustomCarousel>
+          <GridContainer>
+            <MovieImage movie={movie} />
+            <MovieDuration movie={movie.data} />
+            <MovieGenre movie={movie.data} />
+            <MovieRating movie={movie.data} />
+          </GridContainer>
+          <MovieTrailer movie={movie} />
+        </CustomCarousel>
+      ) : (
         <GridContainer>
           <MovieImage movie={movie} />
           <MovieDuration movie={movie.data} />
           <MovieGenre movie={movie.data} />
           <MovieRating movie={movie.data} />
         </GridContainer>
-        <MovieTrailer movie={movie} />
-      </CustomCarousel>
+      )}
+
       <MovieTitle movie={movie.data} />
       <UserRating rating={userRating} />
       <ButtonSection

@@ -18,6 +18,7 @@ const Heading = styled.h1`
   font-size: var(--header-h1);
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: 2rem;
 `;
 
 const Tagline = styled.h2`
