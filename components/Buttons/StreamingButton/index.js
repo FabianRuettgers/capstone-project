@@ -7,7 +7,7 @@ export default function StreamingkButton({ handleProviderButtonClick }) {
         aria-label="where to watch button"
         onClick={handleProviderButtonClick}
       >
-        Wer streamt es?
+        Where to watch?
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24"
@@ -32,7 +32,7 @@ const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   &:active {
     transform: scale(0.85);
   }

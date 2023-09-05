@@ -23,7 +23,7 @@ export default function HeaderUserPage({ activeTab, handleTabClick }) {
   );
 }
 const MobileViewWrapper = styled.div`
-  max-width: 420px;
+  max-width: 414px;
   width: 100%;
   height: 100%;
   display: grid;

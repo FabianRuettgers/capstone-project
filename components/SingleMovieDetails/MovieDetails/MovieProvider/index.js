@@ -9,13 +9,13 @@ export default function MovieProvider({ movie, handleProviderButtonClick }) {
         <StyledSection>
           {movie.results.DE?.flatrate ? (
             <ProviderList
-              heading={"Bei diesen Anbietern  im Abo enthalten"}
+              heading={"Watch on"}
               providerData={movie.results.DE.flatrate}
             />
           ) : null}
           {movie.results.DE?.buy ? (
             <ProviderList
-              heading={"Bei diesen Anbietern zum Kauf erhältlich"}
+              heading={"Buy on"}
               providerData={movie.results.DE.buy}
             />
           ) : null}
@@ -36,6 +36,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledSection = styled.section`
+  max-width: 414px;
   z-index: 99999999;
   display: grid;
   margin: var(--margin-medium);
@@ -47,7 +48,7 @@ const StyledSection = styled.section`
   border-radius: var(--border-radius-medium);
   position: fixed;
   top: 50%;
-  left: 0;
-  width: calc(100% - 4rem);
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(calc(-50% - 2rem), -50%);
+  width: calc(414px - 4rem);
 `;

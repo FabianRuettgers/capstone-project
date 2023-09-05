@@ -37,6 +37,12 @@ const StyledSection = styled.section`
   margin-inline: var(--margin-medium);
   margin-top: var(--margin-medium);
 `;
+
+const Heading = styled.h2`
+  font-size: var(--header-h2);
+  color: var(--text-color-light-content);
+`;
+
 const List = styled.ul`
   color: var(--text-color-light-content);
   display: flex;

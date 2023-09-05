@@ -44,7 +44,7 @@ export default function Search({ currentAction, handleQueryInputChange }) {
 }
 
 const MobileViewWrapper = styled.main`
-  max-width: 420px;
+  max-width: 414px;
   display: grid;
   margin-left: auto;
   margin-right: auto;

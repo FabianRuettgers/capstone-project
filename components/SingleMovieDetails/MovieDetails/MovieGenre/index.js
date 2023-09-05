@@ -13,7 +13,7 @@ export default function GenreItem({ movie }) {
       </StyledSvg>
       <Heading>Genre</Heading>
       <Content>
-        {movie.genres[0]?.name ? movie.genres[0].name : "Unbekannt"}
+        {movie.genres[0]?.name ? movie.genres[0].name : "unknown"}
       </Content>
     </StyledFigure>
   );

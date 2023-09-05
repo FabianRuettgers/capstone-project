@@ -52,6 +52,7 @@ export default function QuizQuestions({
 const Main = styled.main`
   display: grid;
   text-align: center;
+  margin-inline: 2rem;
 `;
 const Heading = styled.h2`
   font-size: var(--header-h1);
@@ -80,7 +81,7 @@ const Listitem = styled.li`
 const Counter = styled.p`
   font-size: var(--header-h2);
   color: white;
-  margin-top: 2rem;
+  margin-top: 1rem;
 `;
 const AnswerButton = styled.button`
   width: 100%;
@@ -95,12 +96,18 @@ const AnswerButton = styled.button`
     return props.selected ? "white" : "white";
   }};
   color: ${(props) => (props.correct || props.incorrect ? "white" : "black")};
+  &:active {
+    transform: scale(0.85);
+  }
 `;
 
 const NextButton = styled.button`
-  margin-top: 6rem;
+  margin-top: 2rem;
   margin-inline: 7rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   border-radius: 1rem;
+  &:active {
+    transform: scale(0.85);
+  }
 `;

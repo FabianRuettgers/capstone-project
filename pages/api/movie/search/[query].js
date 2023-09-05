@@ -3,7 +3,7 @@ export default async function handler(request, response) {
     const API_KEY = process.env.API_KEY;
     const { query } = request.query;
 
-    const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=de&api_key=${API_KEY}`;
+    const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en&api_key=${API_KEY}`;
 
     try {
       const moviesResponse = await fetch(url);

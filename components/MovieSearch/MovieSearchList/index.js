@@ -3,9 +3,10 @@ import Link from "next/link";
 import { styled } from "styled-components";
 
 export default function MovieSearchList({ movie }) {
+  const filteredMovies = movie.filter((movie) => movie.poster_path !== null);
   return (
     <ul>
-      {movie.map((movie) => (
+      {filteredMovies.map((movie) => (
         <StyledListitem key={movie.id}>
           <StyledLink href={`/movie/${movie.id}`}>
             <ImageContainer>

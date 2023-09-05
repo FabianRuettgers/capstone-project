@@ -77,7 +77,7 @@ export default function userList({
 }
 
 const MobileViewWrapper = styled.div`
-  max-width: 420px;
+  max-width: 414px;
   display: grid;
   margin-left: auto;
   margin-right: auto;

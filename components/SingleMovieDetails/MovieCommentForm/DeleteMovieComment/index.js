@@ -69,7 +69,7 @@ const Heading = styled.h2`
 const GridWrapper = styled.div`
   display: grid;
   width: 100%;
-  max-width: calc(420px - 4rem);
+  max-width: calc(414px - 4rem);
   gap: var(--gap-medium);
 `;
 

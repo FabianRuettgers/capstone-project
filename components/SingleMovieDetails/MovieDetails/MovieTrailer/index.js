@@ -16,13 +16,15 @@ export default function MovieTrailer({ movie }) {
 }
 
 const StyledSection = styled.section`
-  width: 100%;
-  height: 47vh;
+  margin-top: 2rem;
+  margin-inline: 2rem;
   display: flex;
-  justify-items: center;
-  align-items: center;
+  justify-content: center;
+  align-content: center;
 `;
 
 const ResponsiveIframe = styled.iframe`
   width: 100%;
+  height: 24vh;
+  border-radius: 1rem;
 `;
