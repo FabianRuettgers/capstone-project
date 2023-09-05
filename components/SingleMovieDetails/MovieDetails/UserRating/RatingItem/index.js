@@ -145,7 +145,7 @@ export default function RatingItem({ movieRating }) {
       {movieRating !== undefined && movieRating !== null ? (
         <StyledFigure>
           {starIcons}
-          <Content>{`Dein Rating: ${movieRating} / 10 `}</Content>
+          <Content>{`Your rating: ${movieRating} / 10 `}</Content>
         </StyledFigure>
       ) : null}
     </>

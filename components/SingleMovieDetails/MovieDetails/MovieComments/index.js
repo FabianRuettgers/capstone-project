@@ -78,7 +78,7 @@ export default function MovieComments({
                 </>
               ) : (
                 <>
-                  {foundUser.comments.some(
+                  {foundUser.comments?.some(
                     (commentary) => commentary.id === comment.id
                   ) ? (
                     <EditCommentButton
@@ -198,6 +198,7 @@ const Content = styled.p`
   color: var(--text-color-light-content);
   margin-top: var(--margin-small);
   font-size: var(--big-text);
+  max-width: 414px;
 `;
 
 const TextareaContent = styled.textarea`

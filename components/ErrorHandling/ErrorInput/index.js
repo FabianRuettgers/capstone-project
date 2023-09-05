@@ -16,12 +16,12 @@ export default function ErrorInput() {
         </svg>
       </SvgWrapper>
       <StyledFigure>
-        <Heading>Dein Film wurde nicht gefunden!</Heading>
+        <Heading>We couldn&apos;t find your Movie!</Heading>
         <Content>
-          versuche es erneut oder lasse dich von den aktuellen Trends inspiriren
+          try again or discover the new Trends by clicking the button below
         </Content>
         <div>
-          <Button onClick={() => router.push("/")}>
+          <Button onClick={() => router.push("/")} aria-label="Trends button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="48"

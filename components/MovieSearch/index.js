@@ -13,7 +13,7 @@ export default function MovieSearch({
     <StyledMain>
       <StyledInput
         type="text"
-        placeholder="Tippe um einen Film zu suchen"
+        placeholder="search a movie..."
         value={query}
         onChange={handleInputChange}
       />
