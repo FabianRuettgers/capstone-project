@@ -31,7 +31,9 @@ export default function SingleMovieDetails({
     (item) => item && item.id === movie.data.id
   );
   const userRating = userItem ? userItem.rating : null;
-
+  const videoId = movie.videos.results.find(
+    (movie) => movie.type === "Trailer"
+  ).key;
   return (
     <StyledMain>
       <GridContainer>
@@ -58,7 +60,7 @@ export default function SingleMovieDetails({
         />
       ) : null}
 
-      {movie.videos.results[0]?.key ? <MovieTrailer movie={movie} /> : null}
+      {videoId ? <MovieTrailer videoId={videoId} /> : null}
       <MovieActors credits={movie.credits} />
       <MovieComments
         id={movie.data.id}

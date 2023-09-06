@@ -104,7 +104,7 @@ const MovieStatus = styled.p`
   color: var(--text-color-dark-heading);
   fill: var(--text-color-dark-heading);
   font-size: var(--header-h2);
-  padding: 1rem;
+  padding: 0.7rem;
   border-radius: 2rem;
   display: flex;
   gap: 0.5rem;

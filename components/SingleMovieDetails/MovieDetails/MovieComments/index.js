@@ -57,7 +57,7 @@ export default function MovieComments({
           onClick={() => handleEditButtonClick(currentAction.editingComment.id)}
         />
       ) : null}
-      <ListHeading>Kommentare ({combinedComments.length})</ListHeading>
+      <ListHeading>Comments ({combinedComments.length})</ListHeading>
       {combinedComments && combinedComments.length > 0 && (
         <List>
           {combinedComments.map((comment) => (
