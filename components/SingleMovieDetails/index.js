@@ -33,7 +33,7 @@ export default function SingleMovieDetails({
   const userRating = userItem ? userItem.rating : null;
   const videoId = movie.videos.results.find(
     (movie) => movie.type === "Trailer"
-  ).key;
+  )?.key;
   return (
     <StyledMain>
       <GridContainer>
