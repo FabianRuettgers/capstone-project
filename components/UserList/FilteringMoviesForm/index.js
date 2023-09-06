@@ -11,9 +11,9 @@ export default function FilteringMoviesForm({
     <>
       <StyledButton onClick={handleFilterButtonClick} />
       <Container>
-        <Heading>Filme Filtern</Heading>
+        <Heading>Filter Rating</Heading>
         <Form onSubmit={handleFiltering}>
-          <StyledLabel>Filme ab einer Bewertung von</StyledLabel>
+          <StyledLabel>Movies with a minimum rate of</StyledLabel>
 
           <StyledInput
             type="number"
@@ -54,10 +54,13 @@ const Container = styled.section`
   color: var(--text-color-light-heading);
   fill: var(--text-color-light-heading);
   background-color: var(--background-color-dark-content);
-  box-shadow: 0 0 28px var(--shadow-color-dark);
-  width: 100%;
+  box-shadow: 0 0 12px var(--shadow-color-dark);
+  border-radius: var(--border-radius-medium);
   position: fixed;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50%), -50%);
+  width: calc(414px - 4rem);
   display: grid;
   justify-items: center;
   align-items: center;

@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 export default function MovieTrailer({ movie }) {
-  const videoId = movie.videos.results[0].key;
-
+  const videoId = movie.videos.results.find(
+    (movie) => movie.type === "Teaser"
+  ).key;
+  console.log(videoId);
   return (
     <StyledSection>
       <ResponsiveIframe

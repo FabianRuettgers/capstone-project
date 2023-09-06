@@ -78,6 +78,7 @@ export default function SingleMovieDetails({
 const StyledMain = styled.main`
   margin-bottom: var(--margin-medium);
   max-width: 414px;
+  width: 100vw;
 `;
 
 const GridContainer = styled.div`

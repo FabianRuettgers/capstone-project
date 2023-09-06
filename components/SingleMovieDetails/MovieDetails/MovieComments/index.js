@@ -78,7 +78,7 @@ export default function MovieComments({
                 </>
               ) : (
                 <>
-                  {foundUser.comments?.some(
+                  {foundUser?.comments?.some(
                     (commentary) => commentary.id === comment.id
                   ) ? (
                     <EditCommentButton
