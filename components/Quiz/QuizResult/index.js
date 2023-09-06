@@ -36,6 +36,7 @@ const Main = styled.main`
   align-items: center;
   align-content: center;
   margin-inline: 2rem;
+  margin-top: 12vh;
 `;
 
 const Heading = styled.h2`

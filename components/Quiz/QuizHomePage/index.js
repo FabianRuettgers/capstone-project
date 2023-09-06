@@ -25,6 +25,7 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   margin-inline: 2rem;
+  margin-top: 12vh;
 `;
 const Heading = styled.h2`
   font-size: var(--header-h1);

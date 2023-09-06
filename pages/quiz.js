@@ -1,3 +1,5 @@
+import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
+import LoadFetching from "@/components/LoadingHandling/LoadFetching";
 import FooterNav from "@/components/Navigation/Footer/FooterNav";
 import HeaderNav from "@/components/Navigation/Header/HeaderNav";
 import QuizHomePage from "@/components/Quiz/QuizHomePage";
@@ -9,7 +11,7 @@ import { styled } from "styled-components";
 import useSWR from "swr";
 
 export default function Quiz() {
-  const { data, error } = useSWR(`/api/quiz`);
+  const { data, error, isLoading } = useSWR(`/api/quiz`);
   const [quizState, setQuizState] = useState({
     selectedAnswer: null,
     isAnswered: false,
@@ -41,12 +43,36 @@ export default function Quiz() {
     }
   }, [data, quizState.currentQuestionIndex]);
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
+  if (isLoading) {
+    return (
+      <>
+        <Head>
+          <title>Loading screen</title>
+          <meta name="description" content="a Loading-screen" />
+        </Head>
+        <HeaderNav />
+        <MobileViewWrapper>
+          <LoadingSection>
+            <LoadFetching />
+          </LoadingSection>
+        </MobileViewWrapper>
+        <FooterNav />
+      </>
+    );
   }
 
-  if (!data) {
-    return <div>Loading...</div>;
+  if (error) {
+    return (
+      <>
+        <Head>
+          <title>Error</title>
+          <meta name="description" content="a error-screen" />
+        </Head>
+        <MobileViewWrapper>
+          <ErrorFetching />
+        </MobileViewWrapper>
+      </>
+    );
   }
 
   function handleAnswer(answer) {
@@ -89,33 +115,35 @@ export default function Quiz() {
     setQuizState((prevState) => ({ ...prevState, quizStarted: true }));
   }
 
-  return (
-    <>
-      <Head>
-        <title>Movie Quiz</title>
-        <meta name="description" content="a random Movie spotlightpage" />
-      </Head>
-      <HeaderNav />
-      <MobileViewWrapper>
-        {quizState.quizStarted ? (
-          quizState.showResults ? (
-            <QuizResult quizState={quizState} data={data} />
+  if (data) {
+    return (
+      <>
+        <Head>
+          <title>Movie Quiz</title>
+          <meta name="description" content="a random Movie spotlightpage" />
+        </Head>
+        <HeaderNav />
+        <MobileViewWrapper>
+          {quizState.quizStarted ? (
+            quizState.showResults ? (
+              <QuizResult quizState={quizState} data={data} />
+            ) : (
+              <QuizQuestions
+                quizState={quizState}
+                handleNextQuestion={handleNextQuestion}
+                data={data}
+                question={question}
+                handleAnswer={handleAnswer}
+              />
+            )
           ) : (
-            <QuizQuestions
-              quizState={quizState}
-              handleNextQuestion={handleNextQuestion}
-              data={data}
-              question={question}
-              handleAnswer={handleAnswer}
-            />
-          )
-        ) : (
-          <QuizHomePage handleStartQuiz={handleStartQuiz} />
-        )}
-      </MobileViewWrapper>
-      <FooterNav />
-    </>
-  );
+            <QuizHomePage handleStartQuiz={handleStartQuiz} />
+          )}
+        </MobileViewWrapper>
+        <FooterNav />
+      </>
+    );
+  }
 }
 
 const MobileViewWrapper = styled.div`
@@ -123,5 +151,8 @@ const MobileViewWrapper = styled.div`
   display: grid;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 12vh;
+`;
+
+const LoadingSection = styled.section`
+  height: 100vh;
 `;

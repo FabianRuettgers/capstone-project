@@ -53,6 +53,7 @@ const Main = styled.main`
   display: grid;
   text-align: center;
   margin-inline: 2rem;
+  margin-top: 12vh;
 `;
 const Heading = styled.h2`
   font-size: var(--header-h1);
