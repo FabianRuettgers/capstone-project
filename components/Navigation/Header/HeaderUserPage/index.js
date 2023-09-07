@@ -5,25 +5,25 @@ export default function HeaderUserPage({ activeTab, handleTabClick }) {
     <StyledHeader>
       <MobileViewWrapper>
         <StyledButton
-          aria-label="Gespeicherte Filme"
+          aria-label="Watchlist"
           onClick={() => handleTabClick("saved")}
           isActive={activeTab === "saved"}
         >
-          Gespeicherte Filme
+          To Watch
         </StyledButton>
         <StyledButton
-          aria-label="Geschaute Filme"
+          aria-label="Finished Movies"
           onClick={() => handleTabClick("watched")}
           isActive={activeTab === "watched"}
         >
-          Geschaute Filme
+          Finished
         </StyledButton>
       </MobileViewWrapper>
     </StyledHeader>
   );
 }
 const MobileViewWrapper = styled.div`
-  max-width: 420px;
+  max-width: 414px;
   width: 100%;
   height: 100%;
   display: grid;

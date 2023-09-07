@@ -1,7 +1,4 @@
 import { styled } from "styled-components";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-
 import ButtonSection from "./MovieDetails/ButtonSection";
 import MovieImage from "./MovieDetails/MovieImage";
 import MovieTitle from "./MovieDetails/MovieTitle";
@@ -34,28 +31,17 @@ export default function SingleMovieDetails({
     (item) => item && item.id === movie.data.id
   );
   const userRating = userItem ? userItem.rating : null;
-
+  const videoId = movie.videos.results.find(
+    (movie) => movie.type === "Trailer"
+  )?.key;
   return (
     <StyledMain>
-      {movie.videos.results[0]?.key ? (
-        <CustomCarousel>
-          <GridContainer>
-            <MovieImage movie={movie} />
-            <MovieDuration movie={movie.data} />
-            <MovieGenre movie={movie.data} />
-            <MovieRating movie={movie.data} />
-          </GridContainer>
-          <MovieTrailer movie={movie} />
-        </CustomCarousel>
-      ) : (
-        <GridContainer>
-          <MovieImage movie={movie} />
-          <MovieDuration movie={movie.data} />
-          <MovieGenre movie={movie.data} />
-          <MovieRating movie={movie.data} />
-        </GridContainer>
-      )}
-
+      <GridContainer>
+        <MovieImage movie={movie} />
+        <MovieDuration movie={movie.data} />
+        <MovieGenre movie={movie.data} />
+        <MovieRating movie={movie.data} />
+      </GridContainer>
       <MovieTitle movie={movie.data} />
       <UserRating rating={userRating} />
       <ButtonSection
@@ -67,10 +53,14 @@ export default function SingleMovieDetails({
         handleDeleteButtonClick={handleDeleteButtonClick}
         handleCommentButtonClick={handleCommentButtonClick}
       />
-      <MovieDescribtion
-        movie={movie}
-        handleProviderButtonClick={handleProviderButtonClick}
-      />
+      {movie.data.overview ? (
+        <MovieDescribtion
+          movie={movie}
+          handleProviderButtonClick={handleProviderButtonClick}
+        />
+      ) : null}
+
+      {videoId ? <MovieTrailer videoId={videoId} /> : null}
       <MovieActors credits={movie.credits} />
       <MovieComments
         id={movie.data.id}
@@ -90,6 +80,7 @@ export default function SingleMovieDetails({
 const StyledMain = styled.main`
   margin-bottom: var(--margin-medium);
   max-width: 414px;
+  width: 100vw;
 `;
 
 const GridContainer = styled.div`
@@ -99,8 +90,4 @@ const GridContainer = styled.div`
   grid-template-columns: 70fr 30fr;
   grid-column-gap: 2rem;
   grid-row-gap: 1rem;
-`;
-
-const CustomCarousel = styled(Carousel)`
-  margin-right: 0.5rem;
 `;

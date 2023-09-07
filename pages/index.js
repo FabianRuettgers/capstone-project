@@ -37,7 +37,7 @@ export default function HomePage({ isFetchLoading, startFetchLoading }) {
     );
   }
 
-  if (error || !data || data.success === false) {
+  if (error) {
     return (
       <>
         <Head>
@@ -51,27 +51,29 @@ export default function HomePage({ isFetchLoading, startFetchLoading }) {
     );
   }
 
-  return (
-    <>
-      <Head>
-        <title>Random Movie Spotlight-page</title>
-        <meta name="description" content="a random Movie spotlightpage" />
-      </Head>
-      <HeaderNav />
-      <MobileViewWrapper>
-        <MovieRandom
-          randomMovie={
-            data.results[Math.floor(Math.random() * data.results.length)]
-          }
-        />
-      </MobileViewWrapper>
-      <FooterNav />
-    </>
-  );
+  if (data) {
+    return (
+      <>
+        <Head>
+          <title>Random Movie Spotlight-page</title>
+          <meta name="description" content="a random Movie spotlightpage" />
+        </Head>
+        <HeaderNav />
+        <MobileViewWrapper>
+          <MovieRandom
+            randomMovie={
+              data.results[Math.floor(Math.random() * data.results.length)]
+            }
+          />
+        </MobileViewWrapper>
+        <FooterNav />
+      </>
+    );
+  }
 }
 
 const MobileViewWrapper = styled.div`
-  max-width: 420px;
+  max-width: 414px;
   display: grid;
   margin-left: auto;
   margin-right: auto;

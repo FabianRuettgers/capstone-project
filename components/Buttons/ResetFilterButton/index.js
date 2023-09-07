@@ -2,7 +2,11 @@ import { styled } from "styled-components";
 
 export default function ResetFilterButton({ onClick }) {
   return (
-    <StyledButton onClick={onClick} type="button">
+    <StyledButton
+      onClick={onClick}
+      type="button"
+      aria-label="reset filter Button"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24"

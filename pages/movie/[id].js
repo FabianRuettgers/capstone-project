@@ -39,10 +39,6 @@ export default function Detailpage({
   if (isLoading) {
     return (
       <>
-        <Head>
-          <title>Loading screen</title>
-          <meta name="description" content="a Loading-screen" />
-        </Head>
         <MobileViewWrapper>
           <LoadingSection>
             <LoadFetching />
@@ -55,10 +51,6 @@ export default function Detailpage({
   if (error || !data) {
     return (
       <>
-        <Head>
-          <title>Error</title>
-          <meta name="description" content="a error-screen" />
-        </Head>
         <MobileViewWrapper>
           <ErrorFetching />
         </MobileViewWrapper>
@@ -69,10 +61,10 @@ export default function Detailpage({
   return (
     <>
       <Head>
-        <title>Movie Detailpage</title>
-        <meta name="description" content="a Movie Detailpage" />
+        <title>{data.data.title}</title>
+        <meta name="description" content={`Detailpage of ${data.data.title}`} />
       </Head>
-      <HeaderMenu title={"Film Details"} />
+      <HeaderMenu title={"Movie Details"} />
       <MobileViewWrapper>
         <SingleMovieDetails
           movie={data}

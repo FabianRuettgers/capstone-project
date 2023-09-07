@@ -3,6 +3,7 @@ import EditCommentButton from "@/components/Buttons/EditCommentButton";
 import ExitCommentButton from "@/components/Buttons/ExitCommentButton";
 
 import SaveCommentButton from "@/components/Buttons/SaveCommentButton";
+import { PageNotFoundError } from "next/dist/shared/lib/utils";
 import { useState } from "react";
 import { keyframes, styled } from "styled-components";
 
@@ -56,7 +57,7 @@ export default function MovieComments({
           onClick={() => handleEditButtonClick(currentAction.editingComment.id)}
         />
       ) : null}
-      <ListHeading>Kommentare ({combinedComments.length})</ListHeading>
+      <ListHeading>Comments ({combinedComments.length})</ListHeading>
       {combinedComments && combinedComments.length > 0 && (
         <List>
           {combinedComments.map((comment) => (
@@ -76,14 +77,20 @@ export default function MovieComments({
                   />
                 </>
               ) : (
-                <EditCommentButton
-                  onClick={() => handleEditButtonClick(comment.id)}
-                />
+                <>
+                  {foundUser?.comments?.some(
+                    (commentary) => commentary.id === comment.id
+                  ) ? (
+                    <EditCommentButton
+                      onClick={() => handleEditButtonClick(comment.id)}
+                    />
+                  ) : null}
+                </>
               )}
 
               <Heading>{comment.author}</Heading>
               <Date>
-                erstellt am {comment.created_at.slice(8, 10)}.
+                {comment.created_at.slice(8, 10)}.
                 {comment.created_at.slice(5, 7)}.
                 {comment.created_at.slice(0, 4)}
               </Date>
@@ -94,7 +101,7 @@ export default function MovieComments({
                   <TextareaContent
                     rows="3"
                     value={currentAction.editingComment.content}
-                    placeholder="Das Textfeld darf nicht leer sein"
+                    placeholder="The input can not be empty"
                     onChange={handleInputChange}
                   />
                 </EditSection>
@@ -110,7 +117,7 @@ export default function MovieComments({
                   </Content>
                   {comment.content.length > characterLength && (
                     <ToggleShowButton onClick={handleToggleShowAll}>
-                      {showAll ? "Weniger anzeigen" : "Mehr anzeigen"}
+                      {showAll ? "Show less" : "Show more"}
                     </ToggleShowButton>
                   )}
                 </>
@@ -125,9 +132,10 @@ export default function MovieComments({
 
 const StyledExitButton = styled.button`
   height: 100vh;
-  width: 100vw;
+  width: 150vw;
   position: fixed;
   top: 0;
+  left: -50%;
   background-color: black;
   opacity: 0.2;
   z-index: 9999;
@@ -190,6 +198,7 @@ const Content = styled.p`
   color: var(--text-color-light-content);
   margin-top: var(--margin-small);
   font-size: var(--big-text);
+  max-width: 414px;
 `;
 
 const TextareaContent = styled.textarea`
@@ -201,7 +210,7 @@ const TextareaContent = styled.textarea`
 
 const ToggleShowButton = styled.button`
   background: none;
-  color: var(--text-color-light-heading);
+  color: var(--text-color-highlight-heading);
   font-size: var(--big-text);
 `;
 

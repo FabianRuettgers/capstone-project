@@ -28,55 +28,55 @@ export default function UserStatistics({ userInformation }) {
       {ratedMovies.length ? (
         <StyledStatisticsSection>
           <StatisticItem
-            caption={"Geschaute Filme"}
+            caption={"Movies finished"}
             content={ratedMovies.length}
           />
           <StatisticItem
-            caption={"gespeicherte filme"}
+            caption={"Movies to watch"}
             content={
               userInformation.filter((movie) => movie?.isBookmarked).length
             }
           />
 
           <StatisticItem
-            caption={"Beste Bewertung"}
+            caption={"Best rating"}
             content={
               sortedMoviesHightoLow[0]
                 ? sortedMoviesHightoLow[0].rating
-                : "keine Bewertung bisher"
+                : "no rating yet"
             }
           />
           <StatisticItem
-            caption={"Beste Bewertung"}
+            caption={"Best rating"}
             content={
               sortedMoviesHightoLow[0]
                 ? sortedMoviesHightoLow[0].title
-                : "keine Bewertung bisher"
+                : "no rating yetr"
             }
           />
           <StatisticItem
-            caption={"Schlechteste Bewertung"}
+            caption={"Worst rating"}
             content={
               sortedMoviesHightoLow[sortedMoviesHightoLow.length - 1]
                 ? sortedMoviesHightoLow[sortedMoviesHightoLow.length - 1].rating
-                : "keine Bewertung bisher"
+                : "no rating yet"
             }
           />
           <StatisticItem
-            caption={"Schlechteste Bewertung"}
+            caption={"Worst rating"}
             content={
               sortedMoviesHightoLow[sortedMoviesHightoLow.length - 1]
                 ? sortedMoviesHightoLow[sortedMoviesHightoLow.length - 1].title
-                : "keine Bewertung bisher"
+                : "no rating yet"
             }
           />
           <StatisticItem
-            caption={"Durchschnitts Rating"}
+            caption={"Average Rating"}
             content={averageRating.toFixed(1)}
           />
           <StatisticItem
-            caption={"gesamte Watchtime"}
-            content={`${totalWatchtimeHour.toFixed(1)} std`}
+            caption={"Watchtime"}
+            content={`${totalWatchtimeHour.toFixed(1)} h`}
           />
         </StyledStatisticsSection>
       ) : (
@@ -89,16 +89,16 @@ export default function UserStatistics({ userInformation }) {
           >
             <path d="M626-533q22.5 0 38.25-15.75T680-587q0-22.5-15.75-38.25T626-641q-22.5 0-38.25 15.75T572-587q0 22.5 15.75 38.25T626-533Zm-292 0q22.5 0 38.25-15.75T388-587q0-22.5-15.75-38.25T334-641q-22.5 0-38.25 15.75T280-587q0 22.5 15.75 38.25T334-533Zm146.174 116Q413-417 358.5-379.5T278-280h53q22-42 62.173-65t87.5-23Q528-368 567.5-344.5T630-280h52q-25-63-79.826-100-54.826-37-122-37ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 340q142.375 0 241.188-98.812Q820-337.625 820-480t-98.812-241.188Q622.375-820 480-820t-241.188 98.812Q140-622.375 140-480t98.812 241.188Q337.625-140 480-140Z" />
           </StyledSvg>
-          <Caption>Keine Statistik gefunden</Caption>
+          <Caption>no statistic found</Caption>
           <StyledErrorParagraph>
-            bewerte Filme, damit dir deine Statistik angezeigt wird
+            Finish Movies, to get your own statistic
           </StyledErrorParagraph>
         </StyledFigure>
       )}
 
       {sortedMoviesHightoLow.length ? (
         <>
-          <Heading>Deine Top {howManyBestRatedToShow}</Heading>
+          <Heading>Your Top {howManyBestRatedToShow}</Heading>
           <StyledRankingSection>
             {sortedMoviesHightoLow
               .slice(0, howManyBestRatedToShow)

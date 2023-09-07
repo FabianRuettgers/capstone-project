@@ -5,7 +5,7 @@ export default function MovieDescribtion({ movie, handleProviderButtonClick }) {
   return (
     <article>
       <Wrapper>
-        <Heading>Filmbeschreibung</Heading>
+        <Heading>Overview</Heading>
         {movie.provider.results.DE?.flatrate ||
         movie.provider.results.DE?.buy ? (
           <StreamingkButton
@@ -13,11 +13,7 @@ export default function MovieDescribtion({ movie, handleProviderButtonClick }) {
           />
         ) : null}
       </Wrapper>
-      <Content>
-        {movie.data.overview
-          ? movie.data.overview
-          : "keine Filmbeschreibung vorhanden"}
-      </Content>
+      <Content>{movie.data.overview}</Content>
     </article>
   );
 }
@@ -26,7 +22,7 @@ const Content = styled.p`
   color: var(--text-color-light-content);
   font-size: var(--big-text);
   text-align: justify;
-  margin-top: var(--margin-medium);
+  margin-top: var(--margin-small);
   margin-inline: var(--margin-medium);
 `;
 

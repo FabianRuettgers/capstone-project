@@ -21,8 +21,8 @@ export default function MovieActors({ credits }) {
                     loading="lazy"
                   />
                 </ImageContainer>
-                <HeadingH2>{castMember.name}</HeadingH2>
                 <HeadingH3>{castMember.character}</HeadingH3>
+                <HeadingH2>{castMember.name}</HeadingH2>
               </StyledListItem>
             ))}
           </List>
@@ -37,12 +37,18 @@ const StyledSection = styled.section`
   margin-inline: var(--margin-medium);
   margin-top: var(--margin-medium);
 `;
+
+const Heading = styled.h2`
+  font-size: var(--header-h2);
+  color: var(--text-color-light-content);
+`;
+
 const List = styled.ul`
   color: var(--text-color-light-content);
   display: flex;
   overflow-x: scroll;
   white-space: nowrap;
-
+  gap: 0.5rem;
   &::-webkit-scrollbar {
     width: 10px;
     height: 8px;
@@ -59,12 +65,10 @@ const List = styled.ul`
 `;
 const StyledListItem = styled.li`
   width: 116px;
-  margin: 0.5rem;
   display: grid;
   text-align: center;
   border-radius: var(--border-radius-small);
   margin-bottom: 1rem;
-  box-shadow: 0 0 8px var(--shadow-color-dark);
   background-color: var(--background-color-dark-content);
 `;
 const ImageContainer = styled.div`

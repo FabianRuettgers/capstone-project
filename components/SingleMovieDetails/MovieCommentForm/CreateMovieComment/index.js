@@ -10,25 +10,25 @@ export default function CreateMovieComment({
     <>
       <StyledButton onClick={handleCommentButtonClick} />
       <Container>
-        <Heading>Kommentar</Heading>
+        <Heading>Comment</Heading>
         <Form onSubmit={handleComment(id)}>
           <StyledInput type="text" placeholder="Autor" name="author" required />
           <StyledTextarea
-            placeholder="Kommentar"
+            placeholder="Comment"
             name="comment"
             rows="6"
             required
           />
           <ButtonWrapper>
             <FormButton
-              title={"zurück"}
+              title={"cancel"}
               backgroundcolor={"var(--background-color-light)"}
               textcolor={"var( --text-color-dark-content)"}
               handleClick={handleCommentButtonClick}
             />
             <FormButton
               type={"submit"}
-              title={"speichern"}
+              title={"save"}
               backgroundcolor={"var(--highlight-color)"}
               textcolor={"var( --text-color-dark-content)"}
             />
@@ -51,11 +51,15 @@ const StyledButton = styled.button`
 const Container = styled.section`
   color: var(--text-color-light-heading);
   fill: var(--text-color-light-heading);
-  background-color: var(--background-color-dark-content);
-  box-shadow: 0 0 28px var(--shadow-color-dark);
-  width: 100%;
+  background-color: var(--background-color);
+  box-shadow: 0 0 12px var(--shadow-color-dark);
+  border-radius: var(--border-radius-medium);
   position: fixed;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50%), -50%);
+  width: calc(414px - 4rem);
+
   display: grid;
   justify-items: center;
   align-items: center;
@@ -72,15 +76,14 @@ const Heading = styled.h2`
 
 const Form = styled.form`
   width: 100%;
-  max-width: calc(420px - 4rem);
+  max-width: calc(414px - 4rem);
   display: grid;
   gap: var(--gap-medium);
 `;
 
 const StyledInput = styled.input`
   color: var(--text-color-dark-content);
-  text-align: center;
-  height: 3rem;
+  padding: var(--padding-small);
   width: 100%;
   border-radius: var(--border-radius-small);
   margin-right: auto;

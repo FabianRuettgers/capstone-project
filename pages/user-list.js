@@ -22,10 +22,6 @@ export default function userList({
     <>
       {isFetchLoading ? (
         <>
-          <Head>
-            <title>Random Movie Spotlight-page</title>
-            <meta name="description" content="a random Movie spotlightpage" />
-          </Head>
           <HeaderNav />
           <HeaderUserPage
             activeTab={currentAction.activeTab}
@@ -40,8 +36,8 @@ export default function userList({
       {!isFetchLoading ? (
         <>
           <Head>
-            <title>Random Movie Spotlight-page</title>
-            <meta name="description" content="a random Movie spotlightpage" />
+            <title>Userlist</title>
+            <meta name="description" content="a Userlist page" />
           </Head>
           <HeaderNav
             activeTab={currentAction.activeTab}
@@ -77,7 +73,7 @@ export default function userList({
 }
 
 const MobileViewWrapper = styled.div`
-  max-width: 420px;
+  max-width: 414px;
   display: grid;
   margin-left: auto;
   margin-right: auto;

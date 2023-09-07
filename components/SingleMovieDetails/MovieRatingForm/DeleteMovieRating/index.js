@@ -10,20 +10,20 @@ export default function DeleteMovieRating({
     <>
       <StyledButton onClick={handleGoBackDelete} />
       <Container>
-        <Heading>Bewertung löschen?</Heading>
+        <Heading>Delete rating?</Heading>
         <GridWrapper>
           <StyledLabel>
-            sicher das du deine Bewertung löschen willst?
+            are you sure you want to delete your rating?
           </StyledLabel>
           <ButtonWrapper>
             <FormButton
-              title={"zurück"}
+              title={"cancel"}
               backgroundcolor={"var(--background-color-light)"}
               textcolor={"var( --text-color-dark-content)"}
               handleClick={handleGoBackDelete}
             />
             <FormButton
-              title={"löschen"}
+              title={"delete"}
               backgroundcolor={"var(--highlight-color)"}
               textcolor={"var( --text-color-dark-content)"}
               handleClick={() => handleDelete(id)}
@@ -47,11 +47,14 @@ const StyledButton = styled.button`
 const Container = styled.section`
   color: var(--text-color-light-heading);
   fill: var(--text-color-light-heading);
-  background-color: var(--background-color-dark-content);
-  box-shadow: 0 0 28px var(--shadow-color-dark);
-  width: 100%;
+  background-color: var(--background-color);
+  box-shadow: 0 0 12px var(--shadow-color-dark);
+  border-radius: var(--border-radius-medium);
   position: fixed;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50%), -50%);
+  width: calc(414px - 4rem);
   display: grid;
   justify-items: center;
   align-items: center;
@@ -68,7 +71,7 @@ const Heading = styled.h2`
 const GridWrapper = styled.div`
   display: grid;
   width: 100%;
-  max-width: calc(420px - 4rem);
+  max-width: calc(414px - 4rem);
   gap: var(--gap-medium);
 `;
 

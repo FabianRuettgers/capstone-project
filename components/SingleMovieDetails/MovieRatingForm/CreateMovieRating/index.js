@@ -11,9 +11,9 @@ export default function CreateMovieRating({
     <>
       <StyledButton onClick={handleGoBackRating} />
       <Container>
-        <Heading>Bewerte den Film</Heading>
+        <Heading>Rate the Movie</Heading>
         <Form onSubmit={handleRate(id, data)}>
-          <StyledLabel>bewerte den Film von 0 bis 10 </StyledLabel>
+          <StyledLabel>Rate this movie from 0 to 10</StyledLabel>
           <StyledInput
             type="number"
             min="0"
@@ -25,14 +25,14 @@ export default function CreateMovieRating({
           />
           <ButtonWrapper>
             <FormButton
-              title={"zurück"}
+              title={"cancel"}
               backgroundcolor={"var(--background-color-light)"}
               textcolor={"var( --text-color-dark-content)"}
               handleClick={handleGoBackRating}
             />
             <FormButton
               type={"submit"}
-              title={"bewerten"}
+              title={"rate"}
               backgroundcolor={"var(--highlight-color)"}
               textcolor={"var( --text-color-dark-content)"}
             />
@@ -55,11 +55,15 @@ const StyledButton = styled.button`
 const Container = styled.section`
   color: var(--text-color-light-heading);
   fill: var(--text-color-light-heading);
-  background-color: var(--background-color-dark-content);
-  box-shadow: 0 0 28px var(--shadow-color-dark);
+  background-color: var(--background-color);
+  box-shadow: 0 0 12px var(--shadow-color-dark);
+  border-radius: var(--border-radius-medium);
   width: 100%;
   position: fixed;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50%), -50%);
+  width: calc(414px - 4rem);
   display: grid;
   justify-items: center;
   align-items: center;

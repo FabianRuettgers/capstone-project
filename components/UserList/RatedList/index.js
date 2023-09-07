@@ -22,7 +22,7 @@ export default function RatedList({
             <MovieItem
               id={movie.id}
               key={movie.id}
-              date={`bewertet am ${movie.ratingDate}`}
+              date={`finished ${movie.ratingDate}`}
               content={
                 <GridWrapper>
                   <StyledParagraph>{movie.rating}</StyledParagraph>
