@@ -4,7 +4,7 @@ export default function DeleteButton({ handleDeleteButtonClick }) {
   return (
     <>
       <StyledButton
-        aria-label="Delete button"
+        aria-label="click to delete rating"
         onClick={handleDeleteButtonClick}
       >
         <svg

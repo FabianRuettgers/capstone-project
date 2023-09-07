@@ -9,7 +9,7 @@ export default function BookmarkButton({
     <>
       <StyledButton
         onClick={() => handleBookmarkToggle(id)}
-        aria-label="Bookmark button"
+        aria-label="click to toggle Bookmark"
       >
         {isBookmarked ? (
           <svg

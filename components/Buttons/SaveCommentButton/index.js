@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export default function SaveCommentButton({ onClick, disabled, editMode }) {
+export default function SaveCommentButton({ onClick, disabled }) {
   return (
     <StyledButton
       onClick={onClick}

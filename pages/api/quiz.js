@@ -3,7 +3,7 @@ export default async function handler(request, response) {
     const amountOfQuestions = 15;
     try {
       const moviesResponse = await fetch(
-        `https://opentdb.com/api.php?amount=${amountOfQuestions}&category=11&difficulty=easy&type=multiple`
+        `https://opentdb.com/api.php?amount=${amountOfQuestions}&category=11&type=multiple`
       );
       const movies = await moviesResponse.json();
       response.status(200).json({ results: movies.results });

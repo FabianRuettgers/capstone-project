@@ -5,7 +5,7 @@ export default function CommentButton({ handleCommentButtonClick }) {
     <>
       <StyledButton
         onClick={handleCommentButtonClick}
-        aria-label="comment button"
+        aria-label="click button to comment"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
