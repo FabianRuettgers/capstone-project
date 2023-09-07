@@ -41,8 +41,9 @@ const StyledMain = styled.main`
 const StyledInput = styled.input`
   font-size: var(--header-h2);
   width: 100%;
-  height: 3rem;
+  padding: 1rem;
   margin-bottom: var(--margin-medium);
+  border-radius: 1rem;
 `;
 
 const LoadFetchWrapper = styled.div`

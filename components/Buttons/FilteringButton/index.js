@@ -9,7 +9,7 @@ export default function FilteringButton({
     <StyledButton
       onClick={handleFilterButtonClick}
       isActive={isActive}
-      aria-label="Filtering Button"
+      aria-label="click to filter movies"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

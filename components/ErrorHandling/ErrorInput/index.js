@@ -21,7 +21,10 @@ export default function ErrorInput() {
           try again or discover the new Trends by clicking the button below
         </Content>
         <div>
-          <Button onClick={() => router.push("/")} aria-label="Trends button">
+          <Button
+            onClick={() => router.push("/")}
+            aria-label="click to get to treding movies"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="48"

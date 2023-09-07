@@ -5,7 +5,7 @@ export default function SaveCommentButton({ onClick, disabled, editMode }) {
     <StyledButton
       onClick={onClick}
       disabled={disabled}
-      aria-label="save Comment Button"
+      aria-label="click to save changes"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -3,7 +3,10 @@ import { styled } from "styled-components";
 export default function RateButton({ handleRateButtonClick }) {
   return (
     <>
-      <StyledButton onClick={handleRateButtonClick} aria-label="Rate button">
+      <StyledButton
+        onClick={handleRateButtonClick}
+        aria-label="click to rate the movie"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="30"
