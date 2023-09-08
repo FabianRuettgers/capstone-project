@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import BookmarkButton from "../../../Buttons/BookmarkButton";
 import RateButton from "@/components/Buttons/RateButton";
 import DeleteButton from "@/components/Buttons/DeleteButton";

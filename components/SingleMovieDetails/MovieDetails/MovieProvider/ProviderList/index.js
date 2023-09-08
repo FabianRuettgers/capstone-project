@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import ProviderImage from "../ProviderImage";
 
 export default function ProviderList({ heading, providerData }) {

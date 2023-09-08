@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import RatingItem from "./RatingItem";
 
 export default function UserRating({ rating }) {

@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import ButtonSection from "./MovieDetails/ButtonSection";
 import MovieImage from "./MovieDetails/MovieImage";
 import MovieTitle from "./MovieDetails/MovieTitle";

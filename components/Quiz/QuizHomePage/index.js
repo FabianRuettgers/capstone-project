@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function QuizHomePage({ handleStartQuiz }) {
   return (
@@ -26,6 +26,7 @@ const Main = styled.main`
   align-items: center;
   margin-inline: 2rem;
   margin-top: 12vh;
+  margin-bottom: 12vh;
 `;
 const Heading = styled.h2`
   font-size: var(--header-h1);

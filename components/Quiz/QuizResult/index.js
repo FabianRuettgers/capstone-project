@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function QuizResult({ quizState, data }) {
   const router = useRouter();
@@ -37,6 +37,7 @@ const Main = styled.main`
   align-content: center;
   margin-inline: 2rem;
   margin-top: 12vh;
+  margin-bottom: 12vh;
 `;
 
 const Heading = styled.h2`

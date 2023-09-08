@@ -1,6 +1,6 @@
 import FormButton from "@/components/Buttons/FormButton";
 import ResetFilterButton from "@/components/Buttons/ResetFilterButton";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function FilteringMoviesForm({
   handleFilterButtonClick,

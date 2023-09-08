@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import ReloadFetchButton from "../Buttons/RelaodFetchButton";
 import Image from "next/image";
 import Link from "next/link";

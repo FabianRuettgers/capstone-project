@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function MovieRating({ movie }) {
   const movieRating = movie.vote_average.toFixed(1);

@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import LoadFetching from "../LoadingHandling/LoadFetching";
 import ErrorInput from "../ErrorHandling/ErrorInput";
 import MovieSearchList from "./MovieSearchList";

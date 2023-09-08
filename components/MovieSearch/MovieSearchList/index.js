@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function MovieSearchList({ movie }) {
   const filteredMovies = movie.filter((movie) => movie.poster_path !== null);

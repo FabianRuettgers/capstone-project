@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
 import SingleMovieDetails from "@/components/SingleMovieDetails";
 import LoadFetching from "@/components/LoadingHandling/LoadFetching";

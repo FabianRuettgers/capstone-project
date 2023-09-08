@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function MovieImage({ movie }) {
   const movieImage = movie.images?.posters[0]?.file_path
