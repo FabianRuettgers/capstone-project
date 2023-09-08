@@ -14,8 +14,8 @@ export default function MovieTrailer({ videoId }) {
 }
 
 const StyledSection = styled.section`
-  margin-top: 2rem;
-  margin-inline: 2rem;
+  margin-top: var(--margin-medium);
+  margin-inline: var(--margin-medium);
   display: flex;
   justify-content: center;
   align-content: center;
@@ -24,5 +24,5 @@ const StyledSection = styled.section`
 const ResponsiveIframe = styled.iframe`
   width: 100%;
   height: 24vh;
-  border-radius: 1rem;
+  border-radius: var(--border-radius-small);
 `;

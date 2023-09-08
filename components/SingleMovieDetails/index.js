@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import ButtonSection from "./MovieDetails/ButtonSection";
-import MovieImage from "./MovieDetails/MovieImage";
-import MovieTitle from "./MovieDetails/MovieTitle";
-import MovieDescribtion from "./MovieDetails/MovieDescribtion";
-import MovieComments from "./MovieDetails/MovieComments";
-import MovieRating from "./MovieDetails/MovieRating";
-import UserRating from "./MovieDetails/UserRating";
-import MovieGenre from "./MovieDetails/MovieGenre";
 import MovieActors from "./MovieDetails/MovieActors";
+import MovieComments from "./MovieDetails/MovieComments";
+import MovieDescribtion from "./MovieDetails/MovieDescribtion";
 import MovieDuration from "./MovieDetails/MovieDuration";
+import MovieGenre from "./MovieDetails/MovieGenre";
+import MovieImage from "./MovieDetails/MovieImage";
+import MovieRating from "./MovieDetails/MovieRating";
+import MovieTitle from "./MovieDetails/MovieTitle";
 import MovieTrailer from "./MovieDetails/MovieTrailer";
+import UserRating from "./MovieDetails/UserRating";
 
 export default function SingleMovieDetails({
   movie,
@@ -84,10 +84,10 @@ const StyledMain = styled.main`
 `;
 
 const GridContainer = styled.div`
-  margin-top: 2rem;
-  margin-inline: 2rem;
+  margin-top: var(--margin-medium);
+  margin-inline: var(--margin-medium);
   display: grid;
   grid-template-columns: 70fr 30fr;
-  grid-column-gap: 2rem;
-  grid-row-gap: 1rem;
+  grid-column-gap: var(--gap-medium);
+  grid-row-gap: var(--gap-small);
 `;

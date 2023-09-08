@@ -24,7 +24,7 @@ const StyledButton = styled.button`
   right: 3.5rem;
   top: 1rem;
   fill: var(--text-color-light-button);
-  background-color: var(--ternery-color);
+  background-color: var(--color-green);
   border-radius: 50%;
   &:active {
     transform: scale(0.85);

@@ -6,7 +6,7 @@ import QuizHomePage from "@/components/Quiz/QuizHomePage";
 import QuizQuestions from "@/components/Quiz/QuizQuestions";
 import QuizResult from "@/components/Quiz/QuizResult";
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useSWR from "swr";
 

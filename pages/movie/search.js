@@ -1,9 +1,9 @@
 import ErrorFetching from "@/components/ErrorHandling/ErrorFetching";
+import MovieSearch from "@/components/MovieSearch";
 import HeaderMenu from "@/components/Navigation/Header/HeaderMenu";
+import Head from "next/head";
 import styled from "styled-components";
 import useSWR from "swr";
-import MovieSearch from "@/components/MovieSearch";
-import Head from "next/head";
 
 export default function Search({ currentAction, handleQueryInputChange }) {
   const { data, error, isLoading } = useSWR(

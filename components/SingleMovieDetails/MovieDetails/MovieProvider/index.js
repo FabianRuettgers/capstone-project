@@ -1,5 +1,5 @@
-import ProviderList from "./ProviderList";
 import styled from "styled-components";
+import ProviderList from "./ProviderList";
 
 export default function MovieProvider({ movie, handleProviderButtonClick }) {
   return (
