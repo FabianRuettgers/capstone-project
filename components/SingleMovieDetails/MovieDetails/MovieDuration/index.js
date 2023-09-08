@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function MovieDuration({ movie }) {
   return (
@@ -21,8 +21,8 @@ const StyledFigure = styled.div`
   background-color: var(--background-color-dark-content);
   box-shadow: 0 0 8px var(--shadow-color-dark);
   text-align: center;
-  padding: 0.5rem;
-  border-radius: 1rem;
+  padding: var(--padding-x-small);
+  border-radius: var(--border-radius-small);
 `;
 
 const Content = styled.p`
@@ -34,8 +34,8 @@ const Content = styled.p`
 const Heading = styled.figcaption`
   color: var(--text-color-lighter-heading);
   font-size: var(--header-h3);
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: var(--padding-xx-small);
+  padding-bottom: var(--padding-xx-small);
 `;
 
 const StyledSvg = styled.svg`

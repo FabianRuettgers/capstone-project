@@ -1,5 +1,5 @@
 import FormButton from "@/components/Buttons/FormButton";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function CreateMovieRating({
   id,

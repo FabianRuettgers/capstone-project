@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function MovieActors({ credits }) {
   const cast = credits.cast.filter(
@@ -68,7 +68,7 @@ const StyledListItem = styled.li`
   display: grid;
   text-align: center;
   border-radius: var(--border-radius-small);
-  margin-bottom: 1rem;
+  margin-bottom: var(--margin-small);
   background-color: var(--background-color-dark-content);
 `;
 const ImageContainer = styled.div`

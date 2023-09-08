@@ -1,5 +1,5 @@
 import StreamingkButton from "@/components/Buttons/StreamingButton";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function MovieDescribtion({ movie, handleProviderButtonClick }) {
   return (

@@ -5,7 +5,7 @@ import FooterNav from "@/components/Navigation/Footer/FooterNav";
 import HeaderNav from "@/components/Navigation/Header/HeaderNav";
 import Head from "next/head";
 import { useEffect } from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import useSWR from "swr";
 
 const API_KEY = process.env.API_KEY;

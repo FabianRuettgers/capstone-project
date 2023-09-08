@@ -1,11 +1,11 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function CommentButton({ handleCommentButtonClick }) {
   return (
     <>
       <StyledButton
         onClick={handleCommentButtonClick}
-        aria-label="comment button"
+        aria-label="click button to comment"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ const StyledButton = styled.button`
   background-color: var(--background-color-dark-content);
   fill: var(--text-color-highlight-button);
   box-shadow: 0 0 2px var(--shadow-color-dark);
-  padding: 0.5rem;
+  padding: var(--padding-x-small);
   border-radius: 50%;
   &:active {
     transform: scale(0.85);

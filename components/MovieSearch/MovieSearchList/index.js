@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function MovieSearchList({ movie }) {
   const filteredMovies = movie.filter((movie) => movie.poster_path !== null);
@@ -36,7 +36,7 @@ export default function MovieSearchList({ movie }) {
             <StyledParagraph>
               {movie.release_date
                 ? movie.release_date.slice(0, 4)
-                : "Release unbekannt"}
+                : "release unknown"}
             </StyledParagraph>
             <SvgContainer>
               <svg

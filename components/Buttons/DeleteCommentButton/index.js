@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function DeleteCommentButton({ onClick }) {
   return (
@@ -20,7 +20,7 @@ const StyledButton = styled.button`
   right: 6rem;
   top: 1rem;
   fill: var(--text-color-light-button);
-  background-color: var(--primary-color);
+  background-color: var(--color-red);
   border-radius: 50%;
   &:active {
     transform: scale(0.85);

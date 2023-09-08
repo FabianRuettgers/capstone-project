@@ -1,9 +1,7 @@
 import DeleteCommentButton from "@/components/Buttons/DeleteCommentButton";
 import EditCommentButton from "@/components/Buttons/EditCommentButton";
 import ExitCommentButton from "@/components/Buttons/ExitCommentButton";
-
 import SaveCommentButton from "@/components/Buttons/SaveCommentButton";
-import { PageNotFoundError } from "next/dist/shared/lib/utils";
 import { useState } from "react";
 import { keyframes, styled } from "styled-components";
 
@@ -143,7 +141,7 @@ const StyledExitButton = styled.button`
 
 const EditSection = styled.section`
   display: grid;
-  gap: 1rem;
+  gap: var(--gap-small);
 `;
 
 const ListHeading = styled.h2`
@@ -172,12 +170,10 @@ const StyledListItem = styled.li`
   background-color: var(--background-color-dark-content);
   border: 3px solid
     ${(props) =>
-      props.deleteMode
-        ? "var(--primary-color)"
-        : "var(--text-color-dark-content)"};
+      props.deleteMode ? "var(--color-red)" : "var(--text-color-dark-content)"};
   position: relative;
-  padding: 1rem;
-  border-radius: 1rem;
+  padding: var(--padding-small);
+  border-radius: var(--border-radius-small);
   box-shadow: 0 0 12px var(--shadow-color-dark);
   animation: ${spinAnimation} ${(props) => (props.deleteMode ? "0.25s" : "0s")}
     infinite;
@@ -212,9 +208,4 @@ const ToggleShowButton = styled.button`
   background: none;
   color: var(--text-color-highlight-heading);
   font-size: var(--big-text);
-`;
-
-const ErrorInput = styled.p`
-  color: var(--text-color-light-content);
-  opacity: 0.7;
 `;

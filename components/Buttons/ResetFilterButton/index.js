@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function ResetFilterButton({ onClick }) {
   return (
@@ -22,7 +22,7 @@ export default function ResetFilterButton({ onClick }) {
 const StyledButton = styled.button`
   color: var(--text-color-light-button);
   fill: var(--text-color-light-button);
-  background-color: var(--primary-color);
+  background-color: var(--color-red);
   height: 3rem;
   width: 3rem;
   border-radius: 50%;

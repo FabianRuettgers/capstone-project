@@ -6,7 +6,7 @@ import HeaderUserPage from "@/components/Navigation/Header/HeaderUserPage";
 import UserList from "@/components/UserList";
 import FilteringMoviesForm from "@/components/UserList/FilteringMoviesForm";
 import Head from "next/head";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function userList({
   userInformation,

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function ProviderImage({ provider }) {
   return (
@@ -28,7 +28,7 @@ const Container = styled.figure`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--gap-x-small);
 `;
 
 const Heading = styled.figcaption`

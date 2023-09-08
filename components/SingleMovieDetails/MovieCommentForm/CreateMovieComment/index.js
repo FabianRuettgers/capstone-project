@@ -1,5 +1,5 @@
 import FormButton from "@/components/Buttons/FormButton";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function CreateMovieComment({
   id,
@@ -65,7 +65,7 @@ const Container = styled.section`
   align-items: center;
   padding: var(--padding-medium);
   gap: var(--gap-small);
-  z-index: 1000;
+
   z-index: 999999999;
 `;
 

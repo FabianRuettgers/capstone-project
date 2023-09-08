@@ -9,43 +9,25 @@ const roboto = Roboto({
 
 export default createGlobalStyle`
 :root {
-  --primary-color: #D93636; //noch helleres rot
-  --secondary-color: #A62626; //helleres rot
-  --ternery-color: #008000; //dunkelrot
-  
-  --lowlight-dark:#404040; // dunkel grau
-  --background-color: #353535; //rot #8C1127
-  --background-color-light: #ffffff; //weiß
-  --text-color-light: #ffffff; // weiß
-
-
-
-  --highlight-color: #BF8F54;// gold
-
-  --text-color-dark: #404040; // dunkel grau
-  --shadow-color-dark: black; // schwarz
-   
-
-
-  --background-color-light-button: #ffffff;
-  --background-color-highlight-button: #BF8F54;
-  --background-color-highlight-content: #BF8F54;
-  --background-color-dark-content:#404040;
-  --background-color-light-content: #ffffff;
-
-
-
-  --text-color-dark-heading: #404040; // dunkel grau
-  --text-color-dark-content: #404040; // dunkel grau
-  --text-color-dark-button: #404040; // dunkel grau
-  --text-color-light-heading: #ffffff; // weiß
-  --text-color-lighter-heading: #DCDCDC; // hellgrau
-  --text-color-light-content: #ffffff; // weiß
-  --text-color-light-button: #ffffff; // weiß
---text-color-highlight-heading: #BF8F54;
---text-color-highlight-content: #BF8F54;
---text-color-highlight-button: #BF8F54;
-
+  --color-red: #D93636; // red
+  --color-green: #008000; // green
+  --background-color: #353535; // grey
+  --shadow-color-dark: black; // black
+  --background-color-light-button: #ffffff; // white
+  --background-color-highlight-button: #BF8F54; // gold
+  --background-color-highlight-content: #BF8F54; // gold
+  --background-color-dark-content:#404040; // grey
+  --background-color-light-content: #ffffff; // white
+  --text-color-dark-heading: #404040; // grey
+  --text-color-dark-content: #404040; // grey
+  --text-color-dark-button: #404040; // grey
+  --text-color-light-heading: #ffffff; // white
+  --text-color-lighter-heading: #DCDCDC; // grey
+  --text-color-light-content: #ffffff; // white
+  --text-color-light-button: #ffffff; // white
+--text-color-highlight-heading: #BF8F54; // gold
+--text-color-highlight-content: #BF8F54; // gold
+--text-color-highlight-button: #BF8F54; // gold
 
 --gap-x-small:0.5rem;
 --gap-small:1rem;
@@ -112,4 +94,5 @@ time, mark, audio, video,textarea {
   font-family: "roboto", sans-serif;
   font-weight: 400;
 }
+button{cursor:pointer}
 `;

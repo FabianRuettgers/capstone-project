@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function HeaderMenu({ title }) {
   const router = useRouter();

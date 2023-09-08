@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function HeaderUserPage({ activeTab, handleTabClick }) {
   return (
@@ -7,14 +7,14 @@ export default function HeaderUserPage({ activeTab, handleTabClick }) {
         <StyledButton
           aria-label="Watchlist"
           onClick={() => handleTabClick("saved")}
-          isActive={activeTab === "saved"}
+          isactive={activeTab === "saved"}
         >
-          To Watch
+          Watchlist
         </StyledButton>
         <StyledButton
           aria-label="Finished Movies"
           onClick={() => handleTabClick("watched")}
-          isActive={activeTab === "watched"}
+          isactive={activeTab === "watched"}
         >
           Finished
         </StyledButton>
@@ -51,10 +51,10 @@ const StyledHeader = styled.header`
 const StyledButton = styled.button`
   background-color: transparent;
   color: ${(props) =>
-    props.isActive
+    props.isactive
       ? `var(--text-color-highlight-heading)`
       : "var(--text-color-light-heading)"};
   font-size: large;
   border-bottom: ${(props) =>
-    props.isActive ? `4px solid var(--text-color-highlight-heading)` : "none"};
+    props.isactive ? `4px solid var(--text-color-highlight-heading)` : "none"};
 `;

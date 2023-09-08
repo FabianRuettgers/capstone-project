@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function MovieImage({ movie }) {
   const movieImage = movie.images?.posters[0]?.file_path
@@ -29,5 +29,5 @@ const ImageContainer = styled.div`
 
 const StyledImage = styled(Image)`
   box-shadow: 0 0 8px var(--shadow-color-dark);
-  border-radius: 1rem;
+  border-radius: var(--border-radius-small);
 `;

@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import BookmarkedList from "./BookmarkedList";
 import RatedList from "./RatedList";
 

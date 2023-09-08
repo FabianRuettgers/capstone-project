@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function QuizQuestions({
   question,
@@ -52,29 +52,30 @@ export default function QuizQuestions({
 const Main = styled.main`
   display: grid;
   text-align: center;
-  margin-inline: 2rem;
+  margin-inline: var(--margin-medium);
   margin-top: 12vh;
+  margin-bottom: 12vh;
 `;
 const Heading = styled.h2`
   font-size: var(--header-h1);
   color: white;
-  margin-top: 2rem;
+  margin-top: var(--margin-medium);
 `;
 const Tagline = styled.h2`
   font-size: var(--header-h3);
   color: white;
-  margin-top: 1rem;
+  margin-top: var(--margin-small);
 `;
 const Question = styled.p`
   font-size: var(--header-h2);
   color: white;
-  margin-top: 2rem;
+  margin-top: var(--margin-medium);
 `;
 const List = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: var(--gap-small);
+  margin-top: var(--margin-medium);
 `;
 const Listitem = styled.li`
   width: 100%;
@@ -82,14 +83,14 @@ const Listitem = styled.li`
 const Counter = styled.p`
   font-size: var(--header-h2);
   color: white;
-  margin-top: 1rem;
+  margin-top: var(--margin-small);
 `;
 const AnswerButton = styled.button`
   width: 100%;
   height: 100%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-radius: 1rem;
+  padding-top: var(--margin-small);
+  padding-bottom: var(--margin-small);
+  border-radius: var(--margin-small);
   background-color: ${(props) => {
     if (props.correct && props.selected) return "green";
     if (props.correct) return props.selected ? "white" : "green";
@@ -103,11 +104,11 @@ const AnswerButton = styled.button`
 `;
 
 const NextButton = styled.button`
-  margin-top: 2rem;
+  margin-top: var(--margin-medium);
   margin-inline: 7rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-radius: 1rem;
+  padding-top: var(--margin-small);
+  padding-bottom: var(--margin-small);
+  border-radius: var(--margin-small);
   &:active {
     transform: scale(0.85);
   }

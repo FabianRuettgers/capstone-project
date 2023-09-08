@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function StreamingkButton({ handleProviderButtonClick }) {
   return (
@@ -24,12 +24,12 @@ const StyledButton = styled.button`
   color: var(--text-color-highlight-button);
   box-shadow: 0 0 2px var(--shadow-color-dark);
   font-size: var(--header-h3);
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: var(--padding-x-small);
+  border-radius: var(--border-radius-x-small);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--gap-x-small);
   &:active {
     transform: scale(0.85);
   }

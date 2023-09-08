@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function BookmarkButton({
   isBookmarked,
@@ -9,7 +9,7 @@ export default function BookmarkButton({
     <>
       <StyledButton
         onClick={() => handleBookmarkToggle(id)}
-        aria-label="Bookmark button"
+        aria-label="click to toggle Bookmark"
       >
         {isBookmarked ? (
           <svg
@@ -39,7 +39,7 @@ const StyledButton = styled.button`
   background-color: var(--background-color-dark-content);
   fill: var(--text-color-highlight-button);
   box-shadow: 0 0 2px var(--shadow-color-dark);
-  padding: 0.5rem;
+  padding: var(--padding-x-small);
   border-radius: 50%;
   &:active {
     transform: scale(0.85);

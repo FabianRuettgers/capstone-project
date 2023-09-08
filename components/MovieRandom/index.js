@@ -1,7 +1,7 @@
-import { styled } from "styled-components";
-import ReloadFetchButton from "../Buttons/RelaodFetchButton";
 import Image from "next/image";
 import Link from "next/link";
+import styled from "styled-components";
+import ReloadFetchButton from "../Buttons/RelaodFetchButton";
 
 export default function MovieRandom({ randomMovie }) {
   return (

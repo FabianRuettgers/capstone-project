@@ -1,14 +1,14 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function FilteringButton({
   handleFilterButtonClick,
   currentAction,
 }) {
-  const isActive = currentAction.ratingFilter > 0;
+  const isactive = currentAction.ratingFilter > 0;
   return (
     <StyledButton
       onClick={handleFilterButtonClick}
-      isActive={isActive}
+      isactive={isactive}
       aria-label="click to filter movies"
     >
       <svg
@@ -26,7 +26,7 @@ export default function FilteringButton({
 const StyledButton = styled.button`
   background-color: transparent;
   fill: ${(props) =>
-    props.isActive
+    props.isactive
       ? "var(--text-color-highlight-button)"
       : "var(--text-color-light-button)"};
   padding-left: var(--padding-small);
