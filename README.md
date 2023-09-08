@@ -9,7 +9,6 @@ You can find the hosted version on Vercel: [Demo Version of Capstone Project](ht
 ![App screens](/public/Devices.png)
 **Important:** This demo is optimized for mobile screen.
 
-Here is a small Walkthrough
 ![Mockup](/public/Mockup.gif)
 
 ## Tech Stack
