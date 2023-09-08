@@ -58,7 +58,7 @@ const List = styled.ul`
 `;
 
 const GridWrapper = styled.div`
-  background-color: var(--highlight-color);
+  background-color: var(--background-color-highlight-button);
   padding: var(--padding-small);
   width: 100%;
   border-radius: var(--border-radius-medium);

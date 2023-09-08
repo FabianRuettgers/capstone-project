@@ -52,7 +52,7 @@ const StyledImage = styled(Image)`
 
 const Rating = styled.p`
   color: var(--text-color-dark-heading);
-  background-color: var(--highlight-color);
+  background-color: var(--background-color-highlight-content);
   font-size: var(--header-h3);
   position: absolute;
   border-radius: var(--border-radius-medium);

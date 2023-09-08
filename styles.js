@@ -12,6 +12,7 @@ export default createGlobalStyle`
   --color-red: #D93636; // red
   --color-green: #008000; // green
   --background-color: #353535; // grey
+  --background-color-light: #ffffff; // white
   --shadow-color-dark: black; // black
   --background-color-light-button: #ffffff; // white
   --background-color-highlight-button: #BF8F54; // gold

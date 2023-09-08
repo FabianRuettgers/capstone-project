@@ -33,7 +33,7 @@ export default function CreateMovieRating({
             <FormButton
               type={"submit"}
               title={"rate"}
-              backgroundcolor={"var(--highlight-color)"}
+              backgroundcolor={"var(--background-color-highlight-button)"}
               textcolor={"var( --text-color-dark-content)"}
             />
           </ButtonWrapper>

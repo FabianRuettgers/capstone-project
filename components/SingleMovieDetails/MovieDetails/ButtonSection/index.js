@@ -76,7 +76,7 @@ export default function ButtonSection({
   );
 }
 const SectionContainer = styled.section`
-  border-bottom: 2px solid var(--highlight-color);
+  border-bottom: 2px solid var(--background-color-highlight-button);
   margin-top: var(--margin-medium);
   padding-bottom: 1rem;
   margin-inline: var(--margin-medium);

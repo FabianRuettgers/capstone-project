@@ -29,7 +29,7 @@ export default function CreateMovieComment({
             <FormButton
               type={"submit"}
               title={"save"}
-              backgroundcolor={"var(--highlight-color)"}
+              backgroundcolor={"var(--background-color-highlight-button)"}
               textcolor={"var( --text-color-dark-content)"}
             />
           </ButtonWrapper>
