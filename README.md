@@ -26,7 +26,7 @@ You can find the hosted version on Vercel: [Demo Version of Capstone Project](ht
 ## Project Setup
 
 - Clone this repository
-- You don't need an API key
+- You **need** an API key from [themoviedb.org](https://developer.themoviedb.org/docs)
 - Install all dependencies with `$ npm install`
 - Run app in dev mode with `$ npm run dev`
 - Server: [http://localhost:3000/](http://localhost:3000/)
