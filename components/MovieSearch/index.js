@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import LoadFetching from "../LoadingHandling/LoadFetching";
 import ErrorInput from "../ErrorHandling/ErrorInput";
+import LoadFetching from "../LoadingHandling/LoadFetching";
 import MovieSearchList from "./MovieSearchList";
 
 export default function MovieSearch({
@@ -41,9 +41,9 @@ const StyledMain = styled.main`
 const StyledInput = styled.input`
   font-size: var(--header-h2);
   width: 100%;
-  padding: 1rem;
+  padding: var(--padding-small);
   margin-bottom: var(--margin-medium);
-  border-radius: 1rem;
+  border-radius: var(--border-radius-small);
 `;
 
 const LoadFetchWrapper = styled.div`

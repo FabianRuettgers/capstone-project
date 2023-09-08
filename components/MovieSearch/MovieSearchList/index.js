@@ -36,7 +36,7 @@ export default function MovieSearchList({ movie }) {
             <StyledParagraph>
               {movie.release_date
                 ? movie.release_date.slice(0, 4)
-                : "Release unbekannt"}
+                : "release unknown"}
             </StyledParagraph>
             <SvgContainer>
               <svg

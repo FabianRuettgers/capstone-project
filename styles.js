@@ -112,4 +112,5 @@ time, mark, audio, video,textarea {
   font-family: "roboto", sans-serif;
   font-weight: 400;
 }
+button{cursor:pointer}
 `;

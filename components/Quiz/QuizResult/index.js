@@ -35,7 +35,7 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   align-content: center;
-  margin-inline: 2rem;
+  margin-inline: var(--margin-medium);
   margin-top: 12vh;
   margin-bottom: 12vh;
 `;
@@ -43,28 +43,28 @@ const Main = styled.main`
 const Heading = styled.h2`
   font-size: var(--header-h1);
   color: white;
-  margin-top: 2rem;
+  margin-top: var(--margin-medium);
 `;
 
 const Tagline = styled.p`
   font-size: var(--header-h2);
   color: white;
-  margin-top: 3rem;
+  margin-top: var(--margin-large);
 `;
 
 const Button = styled.button`
-  margin-top: 3rem;
+  margin-top: var(--margin-large);
   margin-inline: 7rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-radius: 1rem;
+  padding-top: var(--padding-small);
+  padding-bottom: var(--padding-small);
+  border-radius: var(--border-radius-small);
   &:active {
     transform: scale(0.85);
   }
 `;
 
 const SvgContainer = styled.div`
-  margin-top: 3rem;
+  margin-top: var(--margin-large);
   animation: spin 1.75s linear infinite;
   fill: var(--background-color-highlight-content);
 

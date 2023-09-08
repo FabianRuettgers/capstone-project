@@ -9,7 +9,7 @@ export default function HeaderUserPage({ activeTab, handleTabClick }) {
           onClick={() => handleTabClick("saved")}
           isactive={activeTab === "saved"}
         >
-          To Watch
+          Watchlist
         </StyledButton>
         <StyledButton
           aria-label="Finished Movies"
