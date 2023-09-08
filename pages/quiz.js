@@ -32,9 +32,59 @@ export default function Quiz() {
 
   useEffect(() => {
     if (data) {
+      const modifiedData = {
+        ...data,
+        results: data.results.map((result) => ({
+          ...result,
+          incorrect_answers: result.incorrect_answers.map((answer) =>
+            answer
+              .replace(/&quot;/g, '"')
+              .replace(/&amp;/g, "&")
+              .replace(/&#039;/g, "'")
+              .replace(/&rsquo;/g, "'")
+              .replace(/&ldquo;/g, '"')
+              .replace(/&rdquo;/g, '"')
+              .replace(/&eacute;/g, "é")
+              .replace(/&egrave;/g, "è")
+              .replace(/&auml;/g, "ä")
+              .replace(/&ouml;/g, "ö")
+              .replace(/&uuml;/g, "ü")
+              .replace(/&Auml;/g, "Ä")
+              .replace(/&Ouml;/g, "Ö")
+              .replace(/&Uuml;/g, "Ü")
+              .replace(/&szlig;/g, "ß")
+              .replace(/&amp;/g, "&")
+              .replace(/&lt;/g, "<")
+              .replace(/&gt;/g, ">")
+              .replace(/&hellip;/g, "…")
+          ),
+          correct_answer: result.correct_answer
+            .replace(/&quot;/g, '"')
+            .replace(/&amp;/g, "&")
+            .replace(/&#039;/g, "'")
+            .replace(/&rsquo;/g, "'")
+            .replace(/&ldquo;/g, '"')
+            .replace(/&rdquo;/g, '"')
+            .replace(/&eacute;/g, "é")
+            .replace(/&egrave;/g, "è")
+            .replace(/&auml;/g, "ä")
+            .replace(/&ouml;/g, "ö")
+            .replace(/&uuml;/g, "ü")
+            .replace(/&Auml;/g, "Ä")
+            .replace(/&Ouml;/g, "Ö")
+            .replace(/&Uuml;/g, "Ü")
+            .replace(/&szlig;/g, "ß")
+            .replace(/&amp;/g, "&")
+            .replace(/&lt;/g, "<")
+            .replace(/&gt;/g, ">")
+            .replace(/&hellip;/g, "…"),
+        })),
+      };
+
       const combinedAnswers = [
-        ...data.results[quizState.currentQuestionIndex].incorrect_answers,
-        data.results[quizState.currentQuestionIndex].correct_answer,
+        ...modifiedData.results[quizState.currentQuestionIndex]
+          .incorrect_answers,
+        modifiedData.results[quizState.currentQuestionIndex].correct_answer,
       ];
       setQuizState((prevState) => ({
         ...prevState,
@@ -96,7 +146,22 @@ export default function Quiz() {
     .replace(/&quot;/g, '"')
     .replace(/&amp;/g, "&")
     .replace(/&#039;/g, "'")
-    .replace(/&rsquo;/g, "'");
+    .replace(/&rsquo;/g, "'")
+    .replace(/&ldquo;/g, '"')
+    .replace(/&rdquo;/g, '"')
+    .replace(/&eacute;/g, "é")
+    .replace(/&egrave;/g, "è")
+    .replace(/&auml;/g, "ä")
+    .replace(/&ouml;/g, "ö")
+    .replace(/&uuml;/g, "ü")
+    .replace(/&Auml;/g, "Ä")
+    .replace(/&Ouml;/g, "Ö")
+    .replace(/&Uuml;/g, "Ü")
+    .replace(/&szlig;/g, "ß")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&hellip;/g, "…");
 
   function handleNextQuestion() {
     if (quizState.currentQuestionIndex < data.results.length - 1) {

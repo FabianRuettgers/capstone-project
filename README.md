@@ -1,37 +1,34 @@
-# New Next Project
+# Capstone Project: Cinematrix
 
-This project was created from the neue fische `next` template.
+Welcome to my movie app! Immerse yourself in the world of cinema with features such as discovering trending movies or efficient movie searching with saving, rating, and commenting capabilities. I would highly recommend the enriching movie quiz to test your cinematic knowledge. Explore, engage, and elevate your movie experience with my app today. 🎬
 
-You can [🔗 **use this template on CodeSandbox**](https://codesandbox.io/p/sandbox/github/neuefische/web-exercises/tree/main/templates/next?file=/README.md) or locally by running this command in your Terminal:
+## Demo:
 
-```bash
-npx -y ghcd@latest neuefische/web-exercises/tree/main/templates/next my-app -i
-```
+You can find the hosted version on Vercel: [Demo Version of Capstone Project](https://capstone-cinematrix.vercel.app/)
 
-## Development
+![App screens](/public/Devices.png)
+**Important:** This demo is optimized for mobile screen.
 
-### Local Development
+Here is a small Walkthrough
+![Mockup](/public/Mockup.gif)
 
-To work locally, please install the dependencies using `npm i` first.
+## Tech Stack
 
-Run `npm run dev` to start a development server and open the displayed URL in a browser.
+- React
+- React Hooks
+- React Router
+- React Testing Library / Jest
+- JavaScript
+- styled-components
+- localStorage
+- npm
+- Vercel
 
-Use `npm run test` to run the tests.
+## Project Setup
 
-### CodeSandbox Cloud
-
-Select the "Preview: 3000" tab to view this project.
-
-Select the "Tests: logs" tab to view the tests.
-
-> The `npm run dev` and `npm run test` scripts run automatically.
-
-### Scripts
-
-You can use the following commands:
-
-- `npm run dev` to start a development server
-- `npm run build` to build the project
-- `npm run start` to start a production server
-- `npm run test` to run the tests
-- `npm run lint` to run the linter
+- Clone this repository
+- You don't need an API key
+- Install all dependencies with `$ npm install`
+- Run app in dev mode with `$ npm run dev`
+- Server: [http://localhost:3000/](http://localhost:3000/)
+- Run tests via `$ npm run test`

@@ -163,6 +163,7 @@ export default function App({ Component, pageProps }) {
                       id: uid(),
                       author: event.target.elements.author.value,
                       content: event.target.elements.comment.value,
+                      showingAll: false,
                       created_at: new Date()
                         .toLocaleDateString("de-DE", {
                           year: "numeric",
@@ -187,6 +188,7 @@ export default function App({ Component, pageProps }) {
                   id: uid(),
                   author: event.target.elements.author.value,
                   content: event.target.elements.comment.value,
+                  showingAll: false,
                   created_at: new Date()
                     .toLocaleDateString("de-DE", {
                       year: "numeric",
