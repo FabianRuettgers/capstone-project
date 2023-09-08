@@ -30,7 +30,7 @@ export default function FilteringMoviesForm({
             <FormButton
               type={"submit"}
               title={"anwenden"}
-              backgroundcolor={"var(--highlight-color)"}
+              backgroundcolor={"var(--background-color-highlight-button)"}
               textcolor={"var( --text-color-dark-content)"}
             />
           </ButtonWrapper>

@@ -25,7 +25,7 @@ export default function DeleteMovieComment({
             />
             <FormButton
               title={"delete"}
-              backgroundcolor={"var(--highlight-color)"}
+              backgroundcolor={"var(--background-color-highlight-button)"}
               textcolor={"var( --text-color-dark-content)"}
               handleClick={() => handleDeleteComment(id, commentId)}
             />
