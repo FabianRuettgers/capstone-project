@@ -57,6 +57,8 @@ export default function Quiz() {
               .replace(/&lt;/g, "<")
               .replace(/&gt;/g, ">")
               .replace(/&hellip;/g, "…")
+              .replace(/&ntilde;/g, "ñ")
+              .replace(/&aacute;/g, "á")
           ),
           correct_answer: result.correct_answer
             .replace(/&quot;/g, '"')
@@ -77,7 +79,9 @@ export default function Quiz() {
             .replace(/&amp;/g, "&")
             .replace(/&lt;/g, "<")
             .replace(/&gt;/g, ">")
-            .replace(/&hellip;/g, "…"),
+            .replace(/&hellip;/g, "…")
+            .replace(/&ntilde;/g, "ñ")
+            .replace(/&aacute;/g, "á"),
         })),
       };
 
@@ -161,7 +165,9 @@ export default function Quiz() {
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
-    .replace(/&hellip;/g, "…");
+    .replace(/&hellip;/g, "…")
+    .replace(/&ntilde;/g, "ñ")
+    .replace(/&aacute;/g, "á");
 
   function handleNextQuestion() {
     if (quizState.currentQuestionIndex < data.results.length - 1) {
