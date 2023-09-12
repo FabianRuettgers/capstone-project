@@ -24,7 +24,7 @@ export default function UserStatistics({ userInformation }) {
 
   return (
     <StyledMain>
-      <Heading>Gesamt Statistik</Heading>
+      <Heading>User Statistic</Heading>
       {ratedMovies.length ? (
         <StyledStatisticsSection>
           <StatisticItem

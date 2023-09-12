@@ -30,7 +30,7 @@ export default function Search({ currentAction, handleQueryInputChange }) {
         <title>Movie Search</title>
         <meta name="description" content="a movie search form" />
       </Head>
-      <HeaderMenu title={"Film suchen"} />
+      <HeaderMenu title={"search Movie"} />
       <MobileViewWrapper>
         <MovieSearch
           query={currentAction.query}
