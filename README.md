@@ -4,7 +4,7 @@ Welcome to my movie app! Immerse yourself in the world of cinema with features s
 
 ## Demo:
 
-You can find the hosted version on Vercel: [Demo Version of Capstone Project](https://capstone-cinematrix.vercel.app/)
+You can find the hosted version on Vercel: [Demo Version of Capstone Project]([https://capstone-cinematrix.vercel.app/](https://fabian-ruettgers-capstone-project.vercel.app/))
 
 ![App screens](/public/Devices.png)
 **Important:** This demo is optimized for mobile screen.
